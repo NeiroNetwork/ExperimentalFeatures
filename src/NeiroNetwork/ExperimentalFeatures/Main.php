@@ -10,11 +10,7 @@ use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemFactory;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
-use pocketmine\crafting\FurnaceRecipe;
-use pocketmine\crafting\FurnaceRecipeManager;
-use pocketmine\crafting\FurnaceType;
 use pocketmine\item\StringToItemParser;
-use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
