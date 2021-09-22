@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
+use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\block\Opaque;
 use pocketmine\item\Item;
-use pocketmine\item\VanillaItems;
 
 class IronOre extends Opaque{
 
 	public function getDropsForCompatibleTool(Item $item) : array{
 		return [
-			VanillaItems::RAW_IRON()
+			ExperimentalItems::RAW_IRON()
 		];
 	}
 

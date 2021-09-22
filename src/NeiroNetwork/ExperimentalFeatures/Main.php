@@ -6,12 +6,10 @@ namespace NeiroNetwork\ExperimentalFeatures;
 
 use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlockFactory;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
-use NeiroNetwork\ExperimentalFeatures\hack\VanillaItemsHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemFactory;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
-use pocketmine\item\ItemFactory;
+use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\item\StringToItemParser;
-use pocketmine\item\VanillaItems;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
@@ -20,15 +18,10 @@ class Main extends PluginBase{
 		// Register item instance
 		ExperimentalItemFactory::init();
 
-		// Register registries
-		VanillaItemsHack::prepare();
-		$factory = ItemFactory::getInstance();
-		VanillaItemsHack::hack("raw_iron", $factory->get(Ids::RAW_IRON));
-		VanillaItemsHack::hack("raw_gold", $factory->get(Ids::RAW_GOLD));
-
+		// Add strings to parser
 		$parser = StringToItemParser::getInstance();
-		$parser->register("raw_iron", fn() => VanillaItems::RAW_IRON());
-		$parser->register("raw_gold", fn() => VanillaItems::RAW_GOLD());
+		$parser->register("raw_iron", fn() => ExperimentalItems::RAW_IRON());
+		$parser->register("raw_gold", fn() => ExperimentalItems::RAW_GOLD());
 
 		// Register (override) block instance
 		ExperimentalBlockFactory::init();
