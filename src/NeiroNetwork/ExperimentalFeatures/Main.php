@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures;
 
 use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlockFactory;
+use NeiroNetwork\ExperimentalFeatures\crafting\CraftingRecipeInitializer;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemFactory;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
@@ -36,21 +37,6 @@ class Main extends PluginBase{
 		ItemTranslatorHack::hack(Ids::RAW_GOLD, Ids::NET_RAW_GOLD);
 
 		// Add recipes
-		$recipes = [
-			new FurnaceRecipe(VanillaItems::IRON_INGOT(), ExperimentalItems::RAW_IRON()),
-			new FurnaceRecipe(VanillaItems::GOLD_INGOT(), ExperimentalItems::RAW_GOLD()),
-		];
-		$craft = $this->getServer()->getCraftingManager();
-		$furnaces = [
-			$craft->getFurnaceRecipeManager(FurnaceType::FURNACE()),
-			$craft->getFurnaceRecipeManager(FurnaceType::BLAST_FURNACE()),
-		];
-		foreach($furnaces as $furnace){
-			foreach($recipes as $recipe){
-				/** @var FurnaceRecipeManager $furnace */
-				/** @var FurnaceRecipe $recipe */
-				$furnace->register($recipe);
-			}
-		}
+		CraftingRecipeInitializer::init();
 	}
 }
