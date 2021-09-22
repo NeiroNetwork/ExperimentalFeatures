@@ -8,7 +8,7 @@ use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlockFactory;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\hack\VanillaItemsHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemFactory;
-use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
+use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
 use pocketmine\item\ItemFactory;
 use pocketmine\plugin\PluginBase;
 
@@ -18,13 +18,14 @@ class Main extends PluginBase{
 		ExperimentalItemFactory::init();
 
 		VanillaItemsHack::prepare();
-		VanillaItemsHack::hack("raw_iron", ItemFactory::getInstance()->get(ExperimentalItemIds::RAW_IRON));
-		VanillaItemsHack::hack("raw_iron", ItemFactory::getInstance()->get(ExperimentalItemIds::RAW_GOLD));
+		$factory = ItemFactory::getInstance();
+		VanillaItemsHack::hack("raw_iron", $factory->get(Ids::RAW_IRON));
+		VanillaItemsHack::hack("raw_gold", $factory->get(Ids::RAW_GOLD));
 
 		ExperimentalBlockFactory::init();
 
 		ItemTranslatorHack::prepare();
-		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, ExperimentalItemIds::NET_RAW_IRON);
-		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, ExperimentalItemIds::NET_RAW_GOLD);
+		ItemTranslatorHack::hack(Ids::RAW_IRON, Ids::NET_RAW_IRON);
+		ItemTranslatorHack::hack(Ids::RAW_GOLD, Ids::NET_RAW_GOLD);
 	}
 }
