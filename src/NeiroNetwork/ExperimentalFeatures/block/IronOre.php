@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\item;
+namespace NeiroNetwork\ExperimentalFeatures\block;
 
+use NeiroNetwork\ExperimentalFeatures\item\ItemIds;
 use pocketmine\block\Opaque;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;

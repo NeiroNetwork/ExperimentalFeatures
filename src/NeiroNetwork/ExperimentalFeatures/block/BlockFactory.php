@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\item;
+namespace NeiroNetwork\ExperimentalFeatures\block;
 
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockIdentifier;
