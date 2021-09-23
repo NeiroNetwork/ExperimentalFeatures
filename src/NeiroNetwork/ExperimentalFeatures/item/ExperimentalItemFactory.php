@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\item;
 
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
-use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
