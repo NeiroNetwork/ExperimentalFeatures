@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\item;
 
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
+use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds as Ids;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
@@ -32,7 +33,7 @@ class ExperimentalItemFactory{
 
 	private static function hackItemTranslator() : void{
 		ItemTranslatorHack::prepare();
-		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, ExperimentalItemIds::NET_RAW_IRON);
-		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, ExperimentalItemIds::NET_RAW_GOLD);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, NetworkItemIds::RAW_IRON);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, NetworkItemIds::RAW_GOLD);
 	}
 }
