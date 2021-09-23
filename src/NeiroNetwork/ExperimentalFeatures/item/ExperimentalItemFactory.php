@@ -22,7 +22,7 @@ class ExperimentalItemFactory{
 		$factory = ItemFactory::getInstance();
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_IRON, 0), "Raw Iron"));
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_GOLD, 0), "Raw Gold"));
-		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::GLOW_INK_SAC, 0), "Glow Ink Sac"));
+		$factory->register(new GlowInkSac(new ItemIdentifier(ExperimentalItemIds::GLOW_INK_SAC, 0), "Glow Ink Sac"));
 	}
 
 	private static function registerItemStrings() : void{
