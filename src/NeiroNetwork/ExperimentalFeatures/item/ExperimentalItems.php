@@ -11,6 +11,7 @@ use pocketmine\utils\CloningRegistryTrait;
 /**
  * @method static Item RAW_IRON()
  * @method static Item RAW_GOLD()
+ * @method static GlowInkSac GLOW_INK_SAC()
  */
 class ExperimentalItems{
 	use CloningRegistryTrait;
@@ -36,5 +37,6 @@ class ExperimentalItems{
 		$factory = ItemFactory::getInstance();
 		self::register("raw_iron", $factory->get(ExperimentalItemIds::RAW_IRON));
 		self::register("raw_gold", $factory->get(ExperimentalItemIds::RAW_GOLD));
+		self::register("glow_ink_sac", $factory->get(ExperimentalItemIds::GLOW_INK_SAC));
 	}
 }
