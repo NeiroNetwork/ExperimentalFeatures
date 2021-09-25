@@ -9,6 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
+use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\item\VanillaItems;
 use pocketmine\Server;
 
@@ -24,6 +25,8 @@ class CraftingRecipeInitializer{
 		$manager = Server::getInstance()->getCraftingManager();
 		$manager->registerShapedRecipe(new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_IRON()], [ExperimentalBlocks::RAW_IRON()->asItem()]));
 		$manager->registerShapedRecipe(new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_GOLD()], [ExperimentalBlocks::RAW_GOLD()->asItem()]));
+		$manager->registerShapelessRecipe(new ShapelessRecipe([ExperimentalBlocks::RAW_IRON()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)]));
+		$manager->registerShapelessRecipe(new ShapelessRecipe([ExperimentalBlocks::RAW_GOLD()->asItem()], [ExperimentalItems::RAW_GOLD()->setCount(9)]));
 	}
 
 	private static function furnace() : void{
