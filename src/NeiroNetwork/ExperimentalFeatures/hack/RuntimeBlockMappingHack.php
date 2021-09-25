@@ -37,12 +37,10 @@ class RuntimeBlockMappingHack{
 	}
 
 	public static function test() : void{
-		/*
 		$map = RuntimeBlockMapping::getInstance();
 		$method = (new \ReflectionClass($map))->getMethod("registerMapping");
 		$method->setAccessible(true);
-		$method->invoke($map, self::$counter++, 603, 0);
-		*/
+		//$method->invoke($map, self::$counter++, 603, 0);
 
 		$KEY = "minecraft:raw_iron_block";
 
@@ -52,7 +50,7 @@ class RuntimeBlockMappingHack{
 		}
 
 		foreach($idToStatesMap[$KEY] as $k){
-			var_dump($k);
+			$method->invoke($map, $k, 603, 0);
 		}
 	}
 }
