@@ -10,3 +10,4 @@
   - [x] Raw Iron Block / Raw Gold Bock の追加
     - [x] レシピの追加
 - [x] Glow Ink Sac
+  - [x] 光る看板
