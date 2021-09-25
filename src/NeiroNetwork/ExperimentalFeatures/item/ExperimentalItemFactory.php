@@ -33,8 +33,8 @@ class ExperimentalItemFactory{
 		$parser->register("raw_iron", fn() => ExperimentalItems::RAW_IRON());
 		$parser->register("raw_gold", fn() => ExperimentalItems::RAW_GOLD());
 		$parser->register("glow_ink_sac", fn() => ExperimentalItems::GLOW_INK_SAC());
-		$parser->register("raw_iron_block", fn() => ExperimentalBlocks::RAW_IRON());
-		$parser->register("raw_gold_block", fn() => ExperimentalBlocks::RAW_GOLD());
+		$parser->registerBlock("raw_iron_block", fn() => ExperimentalBlocks::RAW_IRON());
+		$parser->registerBlock("raw_gold_block", fn() => ExperimentalBlocks::RAW_GOLD());
 	}
 
 	private static function hackItemTranslator() : void{
