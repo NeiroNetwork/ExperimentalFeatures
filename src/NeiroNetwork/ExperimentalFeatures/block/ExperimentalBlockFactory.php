@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
+use NeiroNetwork\ExperimentalFeatures\hack\blamepmmp\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
 use pocketmine\block\BlockBreakInfo;
@@ -45,5 +46,9 @@ class ExperimentalBlockFactory{
 		BlockMappingHack::prepare();
 		BlockMappingHack::hack("minecraft:raw_iron_block", ExperimentalBlocks::RAW_IRON());
 		BlockMappingHack::hack("minecraft:raw_gold_block", ExperimentalBlocks::RAW_GOLD());
+
+		BlameChunkRequestTask::add("minecraft:raw_iron_block", ExperimentalBlocks::RAW_IRON());
+		BlameChunkRequestTask::add("minecraft:raw_gold_block", ExperimentalBlocks::RAW_GOLD());
+		BlameChunkRequestTask::doHack();
 	}
 }
