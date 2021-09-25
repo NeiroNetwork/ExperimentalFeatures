@@ -5,30 +5,43 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
 use pocketmine\block\Block;
-use pocketmine\block\utils\NormalHorizontalFacingInMetadataTrait;
-use pocketmine\block\WallSign;
+use pocketmine\block\utils\SignLikeRotationTrait;
 use pocketmine\item\Item;
-use pocketmine\math\Axis;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
 /**
- * @see WallSign
+ * @see \pocketmine\block\FloorSign
  */
-class ExperimentalWallSign extends ExperimentalBaseSign{
-	use NormalHorizontalFacingInMetadataTrait;
+class FloorSign extends BaseSign{
+	use SignLikeRotationTrait;
+
+	public function readStateFromData(int $id, int $stateMeta) : void{
+		$this->rotation = $stateMeta;
+	}
+
+	protected function writeStateToMeta() : int{
+		return $this->rotation;
+	}
+
+	public function getStateBitmask() : int{
+		return 0b1111;
+	}
 
 	protected function getSupportingFace() : int{
-		return Facing::opposite($this->facing);
+		return Facing::DOWN;
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		if(Facing::axis($face) === Axis::Y){
+		if($face !== Facing::UP){
 			return false;
 		}
-		$this->facing = $face;
+
+		if($player !== null){
+			$this->rotation = self::getRotationFromYaw($player->getLocation()->getYaw());
+		}
 		return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 	}
 }

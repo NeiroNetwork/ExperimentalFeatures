@@ -7,15 +7,14 @@ namespace NeiroNetwork\ExperimentalFeatures\block;
 use NeiroNetwork\ExperimentalFeatures\block\tile\ExperimentalSign as TileSign;
 use pocketmine\block\BlockIdentifier as BID;
 use pocketmine\block\BlockLegacyIds as Ids;
-use pocketmine\block\BlockLegacyIdHelper;
 use pocketmine\block\utils\TreeType;
 use pocketmine\item\ItemIds;
 use pocketmine\utils\AssumptionFailedError;
 
 /**
- * @see BlockLegacyIdHelper
+ * @see \pocketmine\block\BlockLegacyIdHelper
  */
-class ExperimentalBlockLegacyIdHelper{
+class BlockLegacyIdHelper{
 
 	public static function getWoodenFloorSignIdentifier(TreeType $treeType) : BID{
 		switch($treeType->id()){
