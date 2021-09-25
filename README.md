@@ -7,4 +7,4 @@
   - [x] 鉱石ブロックのドロップ変更
   - [x] かまどのレシピ追加
   - [ ] Raw Iron Block / Raw Gold Bock の追加
-- [ ] Glow Ink Sac
+- [x] Glow Ink Sac
