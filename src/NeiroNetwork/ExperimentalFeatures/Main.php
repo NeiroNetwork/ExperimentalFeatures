@@ -9,6 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\block\tile\ExperimentalTileFactory;
 use NeiroNetwork\ExperimentalFeatures\crafting\CraftingRecipeInitializer;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemFactory;
+use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
@@ -19,6 +20,6 @@ class Main extends PluginBase{
 		ExperimentalTileFactory::init();
 		CraftingRecipeInitializer::init();
 
-		var_dump(ExperimentalBlocks::RAW_IRON()->asItem());
+		var_dump(LegacyBlockIdToStringIdMap::getInstance()->legacyToString(603));
 	}
 }

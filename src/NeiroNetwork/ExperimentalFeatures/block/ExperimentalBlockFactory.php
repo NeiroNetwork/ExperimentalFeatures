@@ -4,7 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
-use NeiroNetwork\ExperimentalFeatures\hack\BlockIdHack;
+use NeiroNetwork\ExperimentalFeatures\hack\LegacyToStringMapHack;
+use NeiroNetwork\ExperimentalFeatures\hack\RuntimeBlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockFactory;
@@ -20,7 +21,8 @@ class ExperimentalBlockFactory{
 	public static function init() : void{
 		self::registerBlocks();
 		self::overrideSigns();
-		self::hackBlockId();
+		self::registerLegacyIds();
+		RuntimeBlockMappingHack::test();
 	}
 
 	public static function registerBlocks() : void{
@@ -41,9 +43,9 @@ class ExperimentalBlockFactory{
 		}
 	}
 
-	public static function hackBlockId() : void{
-		BlockIdHack::prepare();
-		BlockIdHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, "minecraft:raw_iron_block");
-		BlockIdHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, "minecraft:raw_gold_block");
+	public static function registerLegacyIds() : void{
+		LegacyToStringMapHack::prepare();
+		LegacyToStringMapHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, "minecraft:raw_iron_block");
+		LegacyToStringMapHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, "minecraft:raw_gold_block");
 	}
 }

@@ -6,7 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\hack;
 
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 
-class BlockIdHack{
+class LegacyToStringMapHack{
 
 	private static \ReflectionProperty $legacyToString;
 	private static \ReflectionProperty $stringToLegacy;
