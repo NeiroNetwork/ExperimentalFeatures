@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\item;
 
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
+use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
@@ -37,5 +38,12 @@ class ExperimentalItemFactory{
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, NetworkItemIds::RAW_IRON);
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, NetworkItemIds::RAW_GOLD);
 		ItemTranslatorHack::hack(ExperimentalItemIds::GLOW_INK_SAC, NetworkItemIds::GLOW_INK_SAC);
+	}
+
+	private static function registerCreativeItems() : void{
+		$inventory = CreativeInventory::getInstance();
+		$inventory->add(ExperimentalItems::RAW_IRON());
+		$inventory->add(ExperimentalItems::RAW_GOLD());
+		$inventory->add(ExperimentalItems::GLOW_INK_SAC());
 	}
 }
