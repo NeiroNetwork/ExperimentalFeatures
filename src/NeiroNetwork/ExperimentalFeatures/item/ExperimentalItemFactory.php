@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\item;
 
+use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;

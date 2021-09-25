@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\item;
+namespace NeiroNetwork\ExperimentalFeatures\block;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
