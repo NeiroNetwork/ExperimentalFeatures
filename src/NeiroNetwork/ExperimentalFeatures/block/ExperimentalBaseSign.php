@@ -23,6 +23,7 @@ abstract class ExperimentalBaseSign extends BaseSign{
 	}
 
 	public function writeStateToWorld() : void{
+		echo "BaseSign::writeStateToWorld()\n";
 		parent::writeStateToWorld();
 		$tile = $this->position->getWorld()->getTile($this->position);
 		assert($tile instanceof TileSign);
@@ -31,6 +32,7 @@ abstract class ExperimentalBaseSign extends BaseSign{
 
 	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 		$this->setGlowing(true);
+		$this->position->getWorld()->setBlock($this->position, $this);
 		return parent::onInteract($item, $face, $clickVector, $player);
 	}
 
