@@ -32,6 +32,8 @@ class ExperimentalItemFactory{
 		$parser->register("raw_iron", fn() => ExperimentalItems::RAW_IRON());
 		$parser->register("raw_gold", fn() => ExperimentalItems::RAW_GOLD());
 		$parser->register("glow_ink_sac", fn() => ExperimentalItems::GLOW_INK_SAC());
+		$parser->register("raw_iron_block", fn() => ExperimentalBlocks::RAW_IRON());
+		$parser->register("raw_gold_block", fn() => ExperimentalBlocks::RAW_GOLD());
 	}
 
 	private static function hackItemTranslator() : void{
@@ -39,6 +41,8 @@ class ExperimentalItemFactory{
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, NetworkItemIds::RAW_IRON);
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, NetworkItemIds::RAW_GOLD);
 		ItemTranslatorHack::hack(ExperimentalItemIds::GLOW_INK_SAC, NetworkItemIds::GLOW_INK_SAC);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, NetworkItemIds::RAW_IRON_BLOCK);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, NetworkItemIds::RAW_GOLD_BLOCK);
 	}
 
 	private static function registerCreativeItems() : void{
