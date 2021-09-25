@@ -36,12 +36,23 @@ class RuntimeBlockMappingHack{
 		//var_dump($legacyStateMap);
 	}
 
-	private static int $counter = 9000;
-
 	public static function test() : void{
+		/*
 		$map = RuntimeBlockMapping::getInstance();
 		$method = (new \ReflectionClass($map))->getMethod("registerMapping");
 		$method->setAccessible(true);
 		$method->invoke($map, self::$counter++, 603, 0);
+		*/
+
+		$KEY = "minecraft:raw_iron_block";
+
+		$idToStatesMap = [];
+		foreach(RuntimeBlockMapping::getInstance()->getBedrockKnownStates() as $k => $state){
+			$idToStatesMap[$state->getString("name")][] = $k;
+		}
+
+		foreach($idToStatesMap[$KEY] as $k){
+			var_dump($k);
+		}
 	}
 }
