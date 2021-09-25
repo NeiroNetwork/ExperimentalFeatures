@@ -39,7 +39,6 @@ class ExperimentalSign extends Sign{
 
 	protected function addAdditionalSpawnData(CompoundTag $nbt) : void{
 		parent::addAdditionalSpawnData($nbt);
-		var_dump($this->glowing);
 		if($this->glowing){
 			$nbt->setByte(self::TAG_TEXT_GLOWING, 1);
 		}
