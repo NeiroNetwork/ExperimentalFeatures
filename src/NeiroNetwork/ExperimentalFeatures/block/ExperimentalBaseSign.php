@@ -23,7 +23,6 @@ abstract class ExperimentalBaseSign extends BaseSign{
 	}
 
 	public function writeStateToWorld() : void{
-		echo "BaseSign::writeStateToWorld()\n";
 		parent::writeStateToWorld();
 		$tile = $this->position->getWorld()->getTile($this->position);
 		assert($tile instanceof TileSign);
