@@ -8,6 +8,7 @@ use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;
+use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\StringToItemParser;
@@ -26,6 +27,8 @@ class ExperimentalItemFactory{
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_IRON, 0), "Raw Iron"));
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_GOLD, 0), "Raw Gold"));
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::GLOW_INK_SAC, 0), "Glow Ink Sac"));
+		$factory->register(new ItemBlock(new ItemIdentifier(ExperimentalItemIds::RAW_IRON_BLOCK, 0), ExperimentalBlocks::RAW_IRON()));
+		$factory->register(new ItemBlock(new ItemIdentifier(ExperimentalItemIds::RAW_GOLD_BLOCK, 0), ExperimentalBlocks::RAW_GOLD()));
 	}
 
 	private static function registerItemStrings() : void{
