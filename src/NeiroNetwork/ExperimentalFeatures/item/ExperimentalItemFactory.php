@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\item;
 
+use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;
+use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\StringToItemParser;
@@ -25,6 +27,8 @@ class ExperimentalItemFactory{
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_IRON, 0), "Raw Iron"));
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::RAW_GOLD, 0), "Raw Gold"));
 		$factory->register(new Item(new ItemIdentifier(ExperimentalItemIds::GLOW_INK_SAC, 0), "Glow Ink Sac"));
+		$factory->register(new ItemBlock(new ItemIdentifier(ExperimentalItemIds::RAW_IRON_BLOCK, 0), ExperimentalBlocks::RAW_IRON()));
+		$factory->register(new ItemBlock(new ItemIdentifier(ExperimentalItemIds::RAW_GOLD_BLOCK, 0), ExperimentalBlocks::RAW_GOLD()));
 	}
 
 	private static function registerItemStrings() : void{
@@ -32,6 +36,8 @@ class ExperimentalItemFactory{
 		$parser->register("raw_iron", fn() => ExperimentalItems::RAW_IRON());
 		$parser->register("raw_gold", fn() => ExperimentalItems::RAW_GOLD());
 		$parser->register("glow_ink_sac", fn() => ExperimentalItems::GLOW_INK_SAC());
+		$parser->registerBlock("raw_iron_block", fn() => ExperimentalBlocks::RAW_IRON());
+		$parser->registerBlock("raw_gold_block", fn() => ExperimentalBlocks::RAW_GOLD());
 	}
 
 	private static function hackItemTranslator() : void{
@@ -39,6 +45,8 @@ class ExperimentalItemFactory{
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON, NetworkItemIds::RAW_IRON);
 		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD, NetworkItemIds::RAW_GOLD);
 		ItemTranslatorHack::hack(ExperimentalItemIds::GLOW_INK_SAC, NetworkItemIds::GLOW_INK_SAC);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, NetworkItemIds::RAW_IRON_BLOCK);
+		ItemTranslatorHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, NetworkItemIds::RAW_GOLD_BLOCK);
 	}
 
 	private static function registerCreativeItems() : void{
@@ -46,5 +54,7 @@ class ExperimentalItemFactory{
 		$inventory->add(ExperimentalItems::RAW_IRON());
 		$inventory->add(ExperimentalItems::RAW_GOLD());
 		$inventory->add(ExperimentalItems::GLOW_INK_SAC());
+		$inventory->add(ExperimentalBlocks::RAW_IRON()->asItem());
+		$inventory->add(ExperimentalBlocks::RAW_GOLD()->asItem());
 	}
 }
