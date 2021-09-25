@@ -25,8 +25,8 @@ class ExperimentalBlockFactory{
 		$factory = BlockFactory::getInstance();
 		$factory->register(new IronOre(new BID(BlockLegacyIds::IRON_ORE, 0), "Iron Ore", new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel())), true);
 		$factory->register(new GoldOre(new BID(BlockLegacyIds::GOLD_ORE, 0), "Gold Ore", new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel())), true);
-		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_IRON_BLOCK, 0), "Raw Iron Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)));
-		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_GOLD_BLOCK, 0), "Raw Gold Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)));
+		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_IRON_BLOCK, 0, ExperimentalItemIds::RAW_IRON_BLOCK), "Raw Iron Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)));
+		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_GOLD_BLOCK, 0, ExperimentalItemIds::RAW_IRON_BLOCK), "Raw Gold Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)));
 	}
 
 	public static function overrideSigns() : void{

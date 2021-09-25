@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures;
 
 use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlockFactory;
+use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\block\tile\ExperimentalTileFactory;
 use NeiroNetwork\ExperimentalFeatures\crafting\CraftingRecipeInitializer;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
