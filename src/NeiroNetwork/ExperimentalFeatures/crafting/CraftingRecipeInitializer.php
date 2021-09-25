@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\crafting;
 
+use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
+use pocketmine\crafting\ShapedRecipe;
 use pocketmine\item\VanillaItems;
 use pocketmine\Server;
 
@@ -19,6 +21,9 @@ class CraftingRecipeInitializer{
 	}
 
 	private static function craftingTable() : void{
+		$manager = Server::getInstance()->getCraftingManager();
+		$manager->registerShapedRecipe(new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_IRON()], [ExperimentalBlocks::RAW_IRON()->asItem()]));
+		$manager->registerShapedRecipe(new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_GOLD()], [ExperimentalBlocks::RAW_GOLD()->asItem()]));
 	}
 
 	private static function furnace() : void{
