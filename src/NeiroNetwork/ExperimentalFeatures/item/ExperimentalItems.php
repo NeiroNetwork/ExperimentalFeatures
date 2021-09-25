@@ -11,7 +11,7 @@ use pocketmine\utils\CloningRegistryTrait;
 /**
  * @method static Item RAW_IRON()
  * @method static Item RAW_GOLD()
- * @method static GlowInkSac GLOW_INK_SAC()
+ * @method static Item GLOW_INK_SAC()
  */
 class ExperimentalItems{
 	use CloningRegistryTrait;
