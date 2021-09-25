@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
+use NeiroNetwork\ExperimentalFeatures\hack\BlockIdHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockFactory;
@@ -19,6 +20,7 @@ class ExperimentalBlockFactory{
 	public static function init() : void{
 		self::registerBlocks();
 		self::overrideSigns();
+		self::hackBlockId();
 	}
 
 	public static function registerBlocks() : void{
@@ -37,5 +39,11 @@ class ExperimentalBlockFactory{
 			$factory->register(new FloorSign(BlockLegacyIdHelper::getWoodenFloorSignIdentifier($treeType), $name . " Sign", $signBreakInfo), true);
 			$factory->register(new WallSign(BlockLegacyIdHelper::getWoodenWallSignIdentifier($treeType), $name . " Wall Sign", $signBreakInfo), true);
 		}
+	}
+
+	public static function hackBlockId() : void{
+		BlockIdHack::prepare();
+		BlockIdHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, "minecraft:raw_iron_block");
+		BlockIdHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, "minecraft:raw_gold_block");
 	}
 }
