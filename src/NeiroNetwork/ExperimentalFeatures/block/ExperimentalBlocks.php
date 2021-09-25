@@ -36,7 +36,7 @@ class ExperimentalBlocks{
 
 	protected static function setup() : void{
 		$factory = BlockFactory::getInstance();
-		self::register("raw_iron", $factory->get(ExperimentalItemIds::RAW_IRON_BLOCK));
-		self::register("raw_gold", $factory->get(ExperimentalItemIds::RAW_GOLD_BLOCK));
+		self::register("raw_iron", $factory->get(ExperimentalItemIds::RAW_IRON_BLOCK, 0));
+		self::register("raw_gold", $factory->get(ExperimentalItemIds::RAW_GOLD_BLOCK, 0));
 	}
 }
