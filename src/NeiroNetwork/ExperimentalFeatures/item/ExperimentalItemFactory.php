@@ -54,5 +54,7 @@ class ExperimentalItemFactory{
 		$inventory->add(ExperimentalItems::RAW_IRON());
 		$inventory->add(ExperimentalItems::RAW_GOLD());
 		$inventory->add(ExperimentalItems::GLOW_INK_SAC());
+		$inventory->add(ExperimentalBlocks::RAW_IRON()->asItem());
+		$inventory->add(ExperimentalBlocks::RAW_GOLD()->asItem());
 	}
 }

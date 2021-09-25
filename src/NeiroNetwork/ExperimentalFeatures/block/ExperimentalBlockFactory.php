@@ -4,8 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
-use NeiroNetwork\ExperimentalFeatures\hack\LegacyToStringMapHack;
-use NeiroNetwork\ExperimentalFeatures\hack\RuntimeBlockMappingHack;
+use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockFactory;
@@ -21,8 +20,7 @@ class ExperimentalBlockFactory{
 	public static function init() : void{
 		self::registerBlocks();
 		self::overrideSigns();
-		self::registerLegacyIds();
-		RuntimeBlockMappingHack::test();
+		self::registerBlocksToNetworkLayer();
 	}
 
 	public static function registerBlocks() : void{
@@ -30,7 +28,7 @@ class ExperimentalBlockFactory{
 		$factory->register(new IronOre(new BID(BlockLegacyIds::IRON_ORE, 0), "Iron Ore", new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel())), true);
 		$factory->register(new GoldOre(new BID(BlockLegacyIds::GOLD_ORE, 0), "Gold Ore", new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel())), true);
 		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_IRON_BLOCK, 0, ExperimentalItemIds::RAW_IRON_BLOCK), "Raw Iron Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)));
-		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_GOLD_BLOCK, 0, ExperimentalItemIds::RAW_IRON_BLOCK), "Raw Gold Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)));
+		$factory->register(new Opaque(new BID(ExperimentalItemIds::RAW_GOLD_BLOCK, 0, ExperimentalItemIds::RAW_GOLD_BLOCK), "Raw Gold Block", new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)));
 	}
 
 	public static function overrideSigns() : void{
@@ -43,9 +41,9 @@ class ExperimentalBlockFactory{
 		}
 	}
 
-	public static function registerLegacyIds() : void{
-		LegacyToStringMapHack::prepare();
-		LegacyToStringMapHack::hack(ExperimentalItemIds::RAW_IRON_BLOCK, "minecraft:raw_iron_block");
-		LegacyToStringMapHack::hack(ExperimentalItemIds::RAW_GOLD_BLOCK, "minecraft:raw_gold_block");
+	public static function registerBlocksToNetworkLayer(){
+		BlockMappingHack::prepare();
+		BlockMappingHack::hack("minecraft:raw_iron_block", ExperimentalBlocks::RAW_IRON());
+		BlockMappingHack::hack("minecraft:raw_gold_block", ExperimentalBlocks::RAW_GOLD());
 	}
 }
