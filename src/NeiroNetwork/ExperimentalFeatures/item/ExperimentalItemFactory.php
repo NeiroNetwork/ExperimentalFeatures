@@ -17,6 +17,7 @@ class ExperimentalItemFactory{
 		self::registerItems();
 		self::registerItemStrings();
 		self::hackItemTranslator();
+		self::registerCreativeItems();
 	}
 
 	private static function registerItems() : void{
