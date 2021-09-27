@@ -10,7 +10,9 @@ final class NewFeatures{
 	public static function get() : array{
 		return [
 			new RawIron(),
+			new RawGold(),
 			new RawIronBlock(),
+			new RawGoldBlock(),
 		];
 	}
 }

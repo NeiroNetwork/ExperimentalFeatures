@@ -21,33 +21,33 @@ use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 
-class RawIronBlock implements IBlock, IItem, Craftable{
+class RawGoldBlock implements IBlock, IItem, Craftable{
 
 	public function recipe() : CraftingRecipe{
-		return new ShapelessRecipe([ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)]);
+		return new ShapelessRecipe([ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()], [ExperimentalItems::RAW_GOLD()->setCount(9)]);
 	}
 
 	public function internalId() : int{
-		return 603;
+		return 604;
 	}
 
 	public function networkId() : int{
-		return -451;
+		return -453;
 	}
 
 	public function name() : string{
-		return "raw_iron_block";
+		return "raw_gold_block";
 	}
 
 	public function block() : Block{
 		return new Opaque(
 			new BlockIdentifier($this->internalId(), 0, $this->internalId()),
-			"Raw Iron Block",
-			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
+			"Raw Gold Block",
+			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		);
 	}
 
 	public function item() : Item{
-		return new ItemBlock(new ItemIdentifier($this->internalId(), 0), ExperimentalBlocks::RAW_IRON_BLOCK());
+		return new ItemBlock(new ItemIdentifier($this->internalId(), 0), ExperimentalBlocks::RAW_GOLD_BLOCK());
 	}
 }

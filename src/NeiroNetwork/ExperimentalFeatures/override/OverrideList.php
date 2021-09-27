@@ -8,6 +8,7 @@ final class OverrideList{
 	public static function get() : array{
 		return [
 			new IronOre(),
+			new GoldOre(),
 		];
 	}
 }
