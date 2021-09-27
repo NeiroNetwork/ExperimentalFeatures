@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\block;
+namespace NeiroNetwork\ExperimentalFeatures\registry;
 
 use NeiroNetwork\ExperimentalFeatures\hack\blamepmmp\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;

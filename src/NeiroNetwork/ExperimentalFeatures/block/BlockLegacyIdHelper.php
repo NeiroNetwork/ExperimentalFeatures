@@ -2,9 +2,9 @@
 
 namespace pocketmine\block;
 
-namespace NeiroNetwork\ExperimentalFeatures\block;
+namespace NeiroNetwork\ExperimentalFeatures\registry;
 
-use NeiroNetwork\ExperimentalFeatures\block\tile\ExperimentalSign as TileSign;
+use NeiroNetwork\ExperimentalFeatures\registry\tile\ExperimentalSign as TileSign;
 use pocketmine\block\BlockIdentifier as BID;
 use pocketmine\block\BlockLegacyIds as Ids;
 use pocketmine\block\utils\TreeType;

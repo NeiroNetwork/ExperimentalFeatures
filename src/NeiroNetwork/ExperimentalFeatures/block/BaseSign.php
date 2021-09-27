@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\block;
+namespace NeiroNetwork\ExperimentalFeatures\registry;
 
-use NeiroNetwork\ExperimentalFeatures\block\tile\ExperimentalSign as TileSign;
+use NeiroNetwork\ExperimentalFeatures\registry\tile\ExperimentalSign as TileSign;
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\item\Item;
 use pocketmine\math\Vector3;

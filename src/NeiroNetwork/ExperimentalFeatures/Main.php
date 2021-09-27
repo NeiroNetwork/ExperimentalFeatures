@@ -19,9 +19,7 @@ class Main extends PluginBase{
 		*/
 
 		$newFeatureRegister = new NewFeatureRegister();
-		foreach(NewFeatures::get() as $feature){
-			$newFeatureRegister->register($feature);
-		}
-		$newFeatureRegister->
+		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register($feature);
+		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register2($feature);
 	}
 }

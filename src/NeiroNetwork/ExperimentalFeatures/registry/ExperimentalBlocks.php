@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\block;
+namespace NeiroNetwork\ExperimentalFeatures\registry;
 
 use pocketmine\block\Block;
 use pocketmine\utils\CloningRegistryTrait;

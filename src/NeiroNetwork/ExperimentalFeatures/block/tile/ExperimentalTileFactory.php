@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\block\tile;
+namespace NeiroNetwork\ExperimentalFeatures\registry\tile;
 
 use pocketmine\block\tile\TileFactory;
 

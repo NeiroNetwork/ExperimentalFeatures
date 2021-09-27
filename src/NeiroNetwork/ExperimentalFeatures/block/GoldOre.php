@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\block;
+namespace NeiroNetwork\ExperimentalFeatures\registry;
 
 use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItems;
 use pocketmine\block\Opaque;
