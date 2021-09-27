@@ -13,9 +13,11 @@ use pocketmine\plugin\PluginBase;
 class Main extends PluginBase{
 
 	protected function onEnable() : void{
+		/*
 		ExperimentalBlockFactory::init();
 		ExperimentalItemFactory::init();
 		ExperimentalTileFactory::init();
 		CraftingRecipeInitializer::init();
+		*/
 	}
 }

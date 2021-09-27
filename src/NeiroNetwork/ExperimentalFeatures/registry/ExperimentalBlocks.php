@@ -4,16 +4,9 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\block;
 
-use NeiroNetwork\ExperimentalFeatures\item\ExperimentalItemIds;
 use pocketmine\block\Block;
-use pocketmine\block\BlockFactory;
-use pocketmine\block\Opaque;
 use pocketmine\utils\CloningRegistryTrait;
 
-/**
- * @method static Opaque RAW_IRON()
- * @method static Opaque RAW_GOLD()
- */
 class ExperimentalBlocks{
 	use CloningRegistryTrait;
 
@@ -35,8 +28,6 @@ class ExperimentalBlocks{
 	}
 
 	protected static function setup() : void{
-		$factory = BlockFactory::getInstance();
-		self::register("raw_iron", $factory->get(ExperimentalItemIds::RAW_IRON_BLOCK, 0));
-		self::register("raw_gold", $factory->get(ExperimentalItemIds::RAW_GOLD_BLOCK, 0));
+		// NOOP
 	}
 }
