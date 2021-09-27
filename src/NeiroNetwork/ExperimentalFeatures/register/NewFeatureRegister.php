@@ -36,7 +36,6 @@ class NewFeatureRegister{
 	}
 
 	public function __destruct(){
-		echo get_class($this) . "::__destruct()\n";
 		$this->blameChunkRequestTask->doHack();
 	}
 
@@ -52,9 +51,9 @@ class NewFeatureRegister{
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->name(), ItemFactory::getInstance()->get($feature->internalId()));
 			if($feature instanceof IBlock){
-				StringToItemParser::getInstance()->registerBlock($feature->name(), fn() => ExperimentalBlocks::fromString($feature->name()));
+				StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, strtoupper($feature->name())]));
 			}else{
-				StringToItemParser::getInstance()->register($feature->name(), fn() => ExperimentalItems::fromString($feature->name()));
+				StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, strtoupper($feature->name())]));
 			}
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
 			if($feature instanceof IBlock){

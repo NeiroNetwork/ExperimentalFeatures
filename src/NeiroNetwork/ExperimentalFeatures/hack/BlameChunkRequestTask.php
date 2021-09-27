@@ -12,7 +12,7 @@ use pocketmine\Server;
 class BlameChunkRequestTask{
 
 	/** @var Block[] $queue */
-	private array $queue;
+	private array $queue = [];
 
 	public function add(string $name, Block $block) : void{
 		$this->queue[$name] = $block->getId();
