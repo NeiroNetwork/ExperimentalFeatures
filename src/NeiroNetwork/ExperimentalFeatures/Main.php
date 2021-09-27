@@ -11,13 +11,6 @@ use pocketmine\plugin\PluginBase;
 class Main extends PluginBase{
 
 	protected function onEnable() : void{
-		/*
-		ExperimentalBlockFactory::init();
-		ExperimentalItemFactory::init();
-		ExperimentalTileFactory::init();
-		CraftingRecipeInitializer::init();
-		*/
-
 		$newFeatureRegister = new NewFeatureRegister();
 		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register($feature);
 		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register2($feature);
