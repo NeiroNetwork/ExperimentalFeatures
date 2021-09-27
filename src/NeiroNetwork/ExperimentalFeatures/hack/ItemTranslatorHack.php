@@ -8,25 +8,29 @@ use pocketmine\network\mcpe\convert\ItemTranslator;
 
 class ItemTranslatorHack{
 
-	private static \ReflectionProperty $coreToNet;
-	private static \ReflectionProperty $netToCore;
+	private \ReflectionProperty $coreToNet;
+	private \ReflectionProperty $netToCore;
 
-	public static function prepare() : void{
+	public function __construct(){
 		$translator = ItemTranslator::getInstance();
 		$reflection = new \ReflectionClass($translator);
-		self::$coreToNet = $reflection->getProperty("simpleCoreToNetMapping");
-		self::$coreToNet->setAccessible(true);
-		self::$netToCore = $reflection->getProperty("simpleNetToCoreMapping");
-		self::$netToCore->setAccessible(true);
+
+		$this->coreToNet = $reflection->getProperty("simpleCoreToNetMapping");
+		$this->coreToNet->setAccessible(true);
+
+		$this->netToCore = $reflection->getProperty("simpleNetToCoreMapping");
+		$this->netToCore->setAccessible(true);
 	}
 
-	public static function hack(int $internal, int $network) : void{
+	public function hack(int $internal, int $network) : void{
 		$translator = ItemTranslator::getInstance();
-		$value = self::$coreToNet->getValue($translator);
+
+		$value = $this->coreToNet->getValue($translator);
 		$value[$internal] = $network;
-		self::$coreToNet->setValue($translator, $value);
-		$value = self::$netToCore->getValue($translator);
+		$this->coreToNet->setValue($translator, $value);
+
+		$value = $this->netToCore->getValue($translator);
 		$value[$network] = $internal;
-		self::$netToCore->setValue($translator, $value);
+		$this->netToCore->setValue($translator, $value);
 	}
 }
