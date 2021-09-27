@@ -14,41 +14,41 @@ use ReflectionProperty;
 class BlockMappingHack{
 
 	// RuntimeBlockMapping
-	private static ReflectionMethod $registerMapping;
-	private static array $idToStatesMap = [];
+	private ReflectionMethod $registerMapping;
+	private array $idToStatesMap = [];
 
 	// LegacyBlockIdToStringIdMap
-	private static ReflectionProperty $legacyToString;
-	private static ReflectionProperty $stringToLegacy;
+	private ReflectionProperty $legacyToString;
+	private ReflectionProperty $stringToLegacy;
 
-	public static function prepare() : void{
+	public function __construct(){
 		$map = RuntimeBlockMapping::getInstance();
-		self::$registerMapping = (new ReflectionClass($map))->getMethod("registerMapping");
-		self::$registerMapping->setAccessible(true);
+		$this->registerMapping = (new ReflectionClass($map))->getMethod("registerMapping");
+		$this->registerMapping->setAccessible(true);
 
 		foreach($map->getBedrockKnownStates() as $k => $state){
-			self::$idToStatesMap[$state->getString("name")][] = $k;
+			$this->idToStatesMap[$state->getString("name")][] = $k;
 		}
 
 		$parent = (new ReflectionClass(LegacyBlockIdToStringIdMap::getInstance()))->getParentClass();
-		self::$legacyToString = $parent->getProperty("legacyToString");
-		self::$legacyToString->setAccessible(true);
-		self::$stringToLegacy = $parent->getProperty("stringToLegacy");
-		self::$stringToLegacy->setAccessible(true);
+		$this->legacyToString = $parent->getProperty("legacyToString");
+		$this->legacyToString->setAccessible(true);
+		$this->stringToLegacy = $parent->getProperty("stringToLegacy");
+		$this->stringToLegacy->setAccessible(true);
 	}
 
-	public static function hack(string $name, Block $block) : void{
+	public function hack(string $name, Block $block) : void{
 		$map = RuntimeBlockMapping::getInstance();
-		foreach(self::$idToStatesMap[$name] as $key => $staticRuntimeId){
-			self::$registerMapping->invoke($map, $staticRuntimeId, $block->getId(), $key);
+		foreach($this->idToStatesMap[$name] as $key => $staticRuntimeId){
+			$this->registerMapping->invoke($map, $staticRuntimeId, $block->getId(), $key);
 		}
 
 		$map = LegacyBlockIdToStringIdMap::getInstance();
-		$value = self::$legacyToString->getValue($map);
+		$value = $this->legacyToString->getValue($map);
 		$value[$block->getId()] = $name;
-		self::$legacyToString->setValue($map, $value);
-		$value = self::$stringToLegacy->getValue($map);
+		$this->legacyToString->setValue($map, $value);
+		$value = $this->stringToLegacy->getValue($map);
 		$value[$name] = $block->getId();
-		self::$stringToLegacy->setValue($map, $value);
+		$this->stringToLegacy->setValue($map, $value);
 	}
 }

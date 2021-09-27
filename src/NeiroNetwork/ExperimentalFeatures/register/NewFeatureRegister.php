@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
+use NeiroNetwork\ExperimentalFeatures\block\ExperimentalBlocks;
+use NeiroNetwork\ExperimentalFeatures\hack\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\new\interface\Craftable;
@@ -12,6 +14,7 @@ use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable;
 use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
+use pocketmine\block\BlockFactory;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
@@ -24,15 +27,25 @@ class NewFeatureRegister{
 
 	private BlockMappingHack $blockMappingHack;
 	private ItemTranslatorHack $itemTranslatorHack;
+	private BlameChunkRequestTask $blameChunkRequestTask;
 
 	public function __construct(){
 		$this->blockMappingHack = new BlockMappingHack();
 		$this->itemTranslatorHack = new ItemTranslatorHack();
+		$this->blameChunkRequestTask = new BlameChunkRequestTask();
+	}
+
+	public function __destruct(){
+		echo get_class($this) . "::__destruct()\n";
+		$this->blameChunkRequestTask->doHack();
 	}
 
 	public function register(object $feature) : void{
 		if($feature instanceof IBlock){
-			// TODO
+			BlockFactory::getInstance()->register($feature->block());
+			ExperimentalBlocks::register($feature->name(), BlockFactory::getInstance()->get($feature->internalId()));
+			$this->blockMappingHack->hack("minecraft:" . $feature->name(), ExperimentalBlocks::fromString($feature->name()));
+			$this->blameChunkRequestTask->add("minecraft:" . $feature->name(), ExperimentalBlocks::fromString($feature->name()));
 		}
 
 		if($feature instanceof IItem){

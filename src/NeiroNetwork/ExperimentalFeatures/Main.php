@@ -22,5 +22,6 @@ class Main extends PluginBase{
 		foreach(NewFeatures::get() as $feature){
 			$newFeatureRegister->register($feature);
 		}
+		$newFeatureRegister->
 	}
 }
