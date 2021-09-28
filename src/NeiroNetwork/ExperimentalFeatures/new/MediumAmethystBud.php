@@ -8,18 +8,18 @@ use NeiroNetwork\ExperimentalFeatures\new\base\BaseAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
 use pocketmine\block\Block;
 
-class LargeAmethystBud extends Feature implements IBlock{
+class MediumAmethystBud extends Feature implements IBlock{
 
 	public function networkId() : int{
-		return -330;
+		return -331;
 	}
 
 	public function name() : string{
-		return "large_amethyst_bud";
+		return "medium_amethyst_bud";
 	}
 
 	public function block() : Block{
-		return new class($this->blockId(), "Large Amethyst Bud") extends BaseAmethystBud{
+		return new class($this->blockId(), "Medium Amethyst Bud") extends BaseAmethystBud{
 			// TODO: recalculateCollisionBoxes()
 		};
 	}
