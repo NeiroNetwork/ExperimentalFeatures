@@ -11,4 +11,8 @@ abstract class BaseAmethystBud extends BaseAmethystCluster{
 	public function getDropsForCompatibleTool(Item $item) : array{
 		return [];
 	}
+
+	public function getDropsForIncompatibleTool(Item $item) : array{
+		return [];
+	}
 }

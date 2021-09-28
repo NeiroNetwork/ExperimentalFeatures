@@ -21,6 +21,7 @@ final class NewFeatures{
 			new LargeAmethystBud(),
 			new MediumAmethystBud(),
 			new SmallAmethystBud(),
+			new AmethystCluster(),
 		];
 	}
 }
