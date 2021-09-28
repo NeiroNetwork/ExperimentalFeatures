@@ -15,6 +15,7 @@ final class NewFeatures{
 			new RawIronBlock(),
 			new RawGoldBlock(),
 			new GlowInkSac(),
+			new AmethystBlock(),
 		];
 	}
 }
