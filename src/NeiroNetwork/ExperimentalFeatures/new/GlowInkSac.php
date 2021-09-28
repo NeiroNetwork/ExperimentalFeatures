@@ -5,8 +5,14 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\new;
 
 use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\override\SignTile;
+use pocketmine\block\BaseSign;
+use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
+use pocketmine\item\ItemUseResult;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 
 class GlowInkSac implements IItem{
 
@@ -23,6 +29,24 @@ class GlowInkSac implements IItem{
 	}
 
 	public function item() : Item{
-		return new Item(new ItemIdentifier($this->internalId(), 0), "Glow Ink Sac");
+		// BaseSignをオーバーライドするのはとてもめんどくさいのでアイテム側で実装する
+		return new class(new ItemIdentifier($this->internalId(), 0), "Glow Ink Sac") extends Item{
+			public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
+				if(!$player->isSneaking() && !$player->isAdventure() && $blockClicked instanceof BaseSign){
+					$tile = $player->getWorld()->getTile($blockClicked->getPosition());
+					if($tile instanceof SignTile && !$tile->isGlowing()){
+						$tile->setGlowing(true);
+						$player->getWorld()->setBlock($blockClicked->getPosition(), $blockClicked);
+						if($player->hasFiniteResources()){
+							$stack = clone $this;
+							$stack->pop();
+							$player->getInventory()->setItemInHand($stack);
+						}
+						return ItemUseResult::SUCCESS();
+					}
+				}
+				return ItemUseResult::NONE();
+			}
+		};
 	}
 }

@@ -14,4 +14,4 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
   - [x] Raw Iron Block / Raw Gold Bock の追加
     - [x] レシピの追加
 - [x] Glow Ink Sac
-  - [ ] 光る看板
+  - [x] 光る看板

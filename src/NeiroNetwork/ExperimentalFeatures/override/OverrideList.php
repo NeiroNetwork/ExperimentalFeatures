@@ -4,11 +4,9 @@ namespace NeiroNetwork\ExperimentalFeatures\override;
 
 final class OverrideList{
 
-	/** @return object[] */
-	public static function get() : array{
-		return [
-			new IronOre(),
-			new GoldOre(),
-		];
+	public static function override() : void{
+		new IronOre();
+		new GoldOre();
+		new Signs();
 	}
 }

@@ -22,16 +22,19 @@ class BlameChunkRequestTask{
 		$pool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $pool->getSize(); ++$i){
 			$pool->submitTaskToWorker(new class($this->queue) extends AsyncTask{
-				public function __construct(private array $queue){}
+				public function __construct(array $queue){
+					// private array $queue は使っちゃダメ
+					$this->queue = $queue;
+				}
 				public function onRun() : void{
 					$map = RuntimeBlockMapping::getInstance();
 					$method = (new \ReflectionClass($map))->getMethod("registerMapping");
 					$method->setAccessible(true);
 					$idToStatesMap = [];
 					foreach($map->getBedrockKnownStates() as $k => $state) $idToStatesMap[$state->getString("name")][] = $k;
-					foreach($this->queue as $hackValue){
-						foreach($idToStatesMap[$hackValue[0]] as $key => $staticRuntimeId){
-							$method->invoke($map, $staticRuntimeId, $hackValue[1], $key);
+					foreach($this->queue as $name => $block){
+						foreach($idToStatesMap[$name] as $key => $staticRuntimeId){
+							$method->invoke($map, $staticRuntimeId, $block, $key);
 						}
 					}
 				}

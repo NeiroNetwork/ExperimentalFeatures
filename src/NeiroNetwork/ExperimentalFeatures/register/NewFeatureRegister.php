@@ -51,9 +51,9 @@ class NewFeatureRegister{
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->name(), ItemFactory::getInstance()->get($feature->internalId()));
 			if($feature instanceof IBlock){
-				StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, strtoupper($feature->name())]));
+				StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
 			}else{
-				StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, strtoupper($feature->name())]));
+				StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			}
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
 			if($feature instanceof IBlock){
