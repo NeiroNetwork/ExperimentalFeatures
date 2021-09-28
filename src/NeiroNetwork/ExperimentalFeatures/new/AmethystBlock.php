@@ -7,11 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\new;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
 use pocketmine\block\Block;
 
-class AmethystBlock implements IBlock{
-
-	public function internalId() : int{
-		// TODO: Implement internalId() method.
-	}
+class AmethystBlock extends Feature implements IBlock{
 
 	public function networkId() : int{
 		// TODO: Implement networkId() method.

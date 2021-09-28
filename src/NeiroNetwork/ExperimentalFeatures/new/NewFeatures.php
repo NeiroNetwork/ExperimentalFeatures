@@ -6,8 +6,9 @@ namespace NeiroNetwork\ExperimentalFeatures\new;
 
 final class NewFeatures{
 
-	/** @return object[] */
+	/** @return Feature[] */
 	public static function get() : array{
+		// 要素の順番で内部IDが決定するので並び変えてはいけない
 		return [
 			new RawIron(),
 			new RawGold(),

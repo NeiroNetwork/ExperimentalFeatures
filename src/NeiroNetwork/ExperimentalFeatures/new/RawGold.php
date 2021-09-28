@@ -17,14 +17,10 @@ use pocketmine\item\Item;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\VanillaItems;
 
-class RawGold implements IItem, Smeltable, Smeltable2, Craftable{
+class RawGold extends Feature implements IItem, Smeltable, Smeltable2, Craftable{
 
 	public function recipe() : CraftingRecipe{
 		return new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_GOLD()], [ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()]);
-	}
-
-	public function internalId() : int{
-		return 601;
 	}
 
 	public function networkId() : int{

@@ -7,6 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\register;
 use NeiroNetwork\ExperimentalFeatures\hack\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
+use NeiroNetwork\ExperimentalFeatures\new\Feature;
 use NeiroNetwork\ExperimentalFeatures\new\interface\Craftable;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
@@ -41,7 +42,7 @@ class NewFeatureRegister{
 		$this->blameChunkRequestTask->doHack();
 	}
 
-	public function register(object $feature) : void{
+	public function register(Feature $feature) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->name(), BlockFactory::getInstance()->get($feature->internalId(), 0));
@@ -67,7 +68,7 @@ class NewFeatureRegister{
 	/**
 	 * レシピ用 (アイテムやブロックを全て登録してから実行する必要がある)
 	 */
-	public function register2(object $feature) : void{
+	public function register2(Feature $feature) : void{
 		$craftingManager = Server::getInstance()->getCraftingManager();
 		if($feature instanceof Craftable){
 			if(($recipe = $feature->recipe()) instanceof ShapedRecipe){

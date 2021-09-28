@@ -8,7 +8,6 @@ use pocketmine\item\Item;
 
 interface IItem{
 
-	public function internalId() : int;
 	public function networkId() : int;
 
 	public function name() : string;

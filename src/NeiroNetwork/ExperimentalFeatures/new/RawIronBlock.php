@@ -18,14 +18,10 @@ use pocketmine\crafting\CraftingRecipe;
 use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\item\ToolTier;
 
-class RawIronBlock implements IBlock, Craftable{
+class RawIronBlock extends Feature implements IBlock, Craftable{
 
 	public function recipe() : CraftingRecipe{
 		return new ShapelessRecipe([ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)]);
-	}
-
-	public function internalId() : int{
-		return 603;
 	}
 
 	public function networkId() : int{

@@ -21,14 +21,10 @@ use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 
-class RawGoldBlock implements IBlock, Craftable{
+class RawGoldBlock extends Feature implements IBlock, Craftable{
 
 	public function recipe() : CraftingRecipe{
 		return new ShapelessRecipe([ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()], [ExperimentalItems::RAW_GOLD()->setCount(9)]);
-	}
-
-	public function internalId() : int{
-		return 604;
 	}
 
 	public function networkId() : int{

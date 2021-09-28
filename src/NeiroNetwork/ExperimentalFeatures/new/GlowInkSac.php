@@ -14,11 +14,7 @@ use pocketmine\item\ItemUseResult;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 
-class GlowInkSac implements IItem{
-
-	public function internalId() : int{
-		return 602;
-	}
+class GlowInkSac extends Feature implements IItem{
 
 	public function networkId() : int{
 		return 503;
