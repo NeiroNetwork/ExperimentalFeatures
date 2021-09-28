@@ -21,7 +21,7 @@ use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 
-class RawGoldBlock implements IBlock, IItem, Craftable{
+class RawGoldBlock implements IBlock, Craftable{
 
 	public function recipe() : CraftingRecipe{
 		return new ShapelessRecipe([ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()], [ExperimentalItems::RAW_GOLD()->setCount(9)]);
@@ -45,9 +45,5 @@ class RawGoldBlock implements IBlock, IItem, Craftable{
 			"Raw Gold Block",
 			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		);
-	}
-
-	public function item() : Item{
-		return new ItemBlock(new ItemIdentifier($this->internalId(), 0), ExperimentalBlocks::RAW_GOLD_BLOCK());
 	}
 }

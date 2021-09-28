@@ -9,6 +9,7 @@ use pocketmine\block\Block;
 interface IBlock{
 
 	public function internalId() : int;
+	public function networkId() : int;
 	public function name() : string;
 
 	public function block() : Block;

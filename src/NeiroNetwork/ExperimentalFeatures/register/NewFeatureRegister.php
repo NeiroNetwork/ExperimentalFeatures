@@ -19,7 +19,9 @@ use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\inventory\CreativeInventory;
+use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIdentifier;
 use pocketmine\item\StringToItemParser;
 use pocketmine\Server;
 
@@ -45,22 +47,20 @@ class NewFeatureRegister{
 			ExperimentalBlocks::register($feature->name(), BlockFactory::getInstance()->get($feature->internalId(), 0));
 			$this->blockMappingHack->hack("minecraft:" . $feature->name(), ExperimentalBlocks::fromString($feature->name()));
 			$this->blameChunkRequestTask->add("minecraft:" . $feature->name(), ExperimentalBlocks::fromString($feature->name()));
+
+			// (ブロックはほとんどの場合アイテムとしても存在するので) アイテムも登録する
+			ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->internalId(), 0), ExperimentalBlocks::fromString($feature->name())));
+			StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
+			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
+			CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
 		}
 
 		if($feature instanceof IItem){
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->name(), ItemFactory::getInstance()->get($feature->internalId()));
-			if($feature instanceof IBlock){
-				StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
-			}else{
-				StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
-			}
+			StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
-			if($feature instanceof IBlock){
-				CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
-			}else{
-				CreativeInventory::getInstance()->add(ExperimentalItems::fromString($feature->name()));
-			}
+			CreativeInventory::getInstance()->add(ExperimentalItems::fromString($feature->name()));
 		}
 	}
 

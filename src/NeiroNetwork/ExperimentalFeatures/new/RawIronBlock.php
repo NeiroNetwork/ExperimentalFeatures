@@ -16,12 +16,9 @@ use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
 use pocketmine\crafting\CraftingRecipe;
 use pocketmine\crafting\ShapelessRecipe;
-use pocketmine\item\Item;
-use pocketmine\item\ItemBlock;
-use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 
-class RawIronBlock implements IBlock, IItem, Craftable{
+class RawIronBlock implements IBlock, Craftable{
 
 	public function recipe() : CraftingRecipe{
 		return new ShapelessRecipe([ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)]);
@@ -45,9 +42,5 @@ class RawIronBlock implements IBlock, IItem, Craftable{
 			"Raw Iron Block",
 			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
 		);
-	}
-
-	public function item() : Item{
-		return new ItemBlock(new ItemIdentifier($this->internalId(), 0), ExperimentalBlocks::RAW_IRON_BLOCK());
 	}
 }
