@@ -18,6 +18,7 @@ final class NewFeatures{
 			new AmethystBlock(),
 			new BuddingAmethyst(),
 			new AmethystShard(),
+			new LargeAmethystBud(),
 		];
 	}
 }
