@@ -7,7 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\new;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
-use pocketmine\block\BlockIdentifier;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
 use pocketmine\item\ToolTier;
@@ -24,8 +23,7 @@ class AmethystBlock extends Feature implements IBlock{
 
 	public function block() : Block{
 		return new Opaque(
-			new BlockIdentifier($this->internalId(), 0, $this->internalId()),
-			"Amethyst Block",
+			$this->blockId(), "Amethyst Block",
 			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
 		);
 	}

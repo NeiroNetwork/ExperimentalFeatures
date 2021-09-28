@@ -6,19 +6,14 @@ namespace NeiroNetwork\ExperimentalFeatures\new;
 
 use NeiroNetwork\ExperimentalFeatures\new\interface\Craftable;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
-use pocketmine\block\BlockIdentifier;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
 use pocketmine\crafting\CraftingRecipe;
 use pocketmine\crafting\ShapelessRecipe;
-use pocketmine\item\Item;
-use pocketmine\item\ItemBlock;
-use pocketmine\item\ItemIdentifier;
 use pocketmine\item\ToolTier;
 
 class RawGoldBlock extends Feature implements IBlock, Craftable{
@@ -37,8 +32,7 @@ class RawGoldBlock extends Feature implements IBlock, Craftable{
 
 	public function block() : Block{
 		return new Opaque(
-			new BlockIdentifier($this->internalId(), 0, $this->internalId()),
-			"Raw Gold Block",
+			$this->blockId(), "Raw Gold Block",
 			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		);
 	}

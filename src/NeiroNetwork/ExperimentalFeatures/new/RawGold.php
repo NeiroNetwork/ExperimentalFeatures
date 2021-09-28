@@ -14,7 +14,6 @@ use pocketmine\crafting\CraftingRecipe;
 use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\item\Item;
-use pocketmine\item\ItemIdentifier;
 use pocketmine\item\VanillaItems;
 
 class RawGold extends Feature implements IItem, Smeltable, Smeltable2, Craftable{
@@ -32,7 +31,7 @@ class RawGold extends Feature implements IItem, Smeltable, Smeltable2, Craftable
 	}
 
 	public function item() : Item{
-		return new Item(new ItemIdentifier($this->internalId(), 0), "Raw Gold");
+		return new Item($this->itemId(), "Raw Gold");
 	}
 
 	public function furnace() : FurnaceRecipe{

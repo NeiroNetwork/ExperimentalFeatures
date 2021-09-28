@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\new;
 
-class Feature{
+use pocketmine\block\BlockIdentifier;
+use pocketmine\item\ItemIdentifier;
+
+abstract class Feature{
 
 	private int $internalId;
 
@@ -14,5 +17,13 @@ class Feature{
 
 	final public function internalId() : int{
 		return $this->internalId;
+	}
+
+	protected function blockId() : BlockIdentifier{
+		return new BlockIdentifier($this->internalId(), 0, $this->internalId());
+	}
+
+	protected function itemId() : ItemIdentifier{
+		return new ItemIdentifier($this->internalId(), 0);
 	}
 }

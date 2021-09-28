@@ -6,7 +6,6 @@ namespace NeiroNetwork\ExperimentalFeatures\new;
 
 use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
 use pocketmine\item\Item;
-use pocketmine\item\ItemIdentifier;
 
 class AmethystShard extends Feature implements IItem{
 
@@ -19,6 +18,6 @@ class AmethystShard extends Feature implements IItem{
 	}
 
 	public function item() : Item{
-		return new Item(new ItemIdentifier($this->internalId(), 0), "Amethyst Shard");
+		return new Item($this->itemId(), "Amethyst Shard");
 	}
 }

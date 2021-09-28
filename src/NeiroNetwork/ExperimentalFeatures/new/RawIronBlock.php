@@ -33,9 +33,7 @@ class RawIronBlock extends Feature implements IBlock, Craftable{
 	}
 
 	public function block() : Block{
-		return new Opaque(
-			new BlockIdentifier($this->internalId(), 0, $this->internalId()),
-			"Raw Iron Block",
+		return new Opaque($this->blockId(), "Raw Iron Block",
 			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
 		);
 	}
