@@ -13,6 +13,7 @@ final class NewFeatures{
 			new RawGold(),
 			new RawIronBlock(),
 			new RawGoldBlock(),
+			new GlowInkSac(),
 		];
 	}
 }
