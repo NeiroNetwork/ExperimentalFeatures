@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\new\interface;
 
-use pocketmine\crafting\FurnaceRecipe;
-
+/**
+ * かまどレシピ判別 (溶鉱炉)
+ */
 interface Smeltable2{
-
-	public function furnace() : FurnaceRecipe;
 }

@@ -4,24 +4,21 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\new;
 
-use NeiroNetwork\ExperimentalFeatures\new\interface\Craftable;
+use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
-use pocketmine\block\BlockIdentifier;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
-use pocketmine\crafting\CraftingRecipe;
-use pocketmine\crafting\ShapelessRecipe;
+use pocketmine\crafting\ShapedRecipe;
 use pocketmine\item\ToolTier;
 
-class RawIronBlock extends Feature implements IBlock, Craftable{
+class RawIronBlock extends Feature implements IBlock, HasRecipe{
 
-	public function recipe() : CraftingRecipe{
-		return new ShapelessRecipe([ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)]);
+	public function recipe() : array{
+		return [new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_IRON()], [ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()])];
 	}
 
 	public function networkId() : int{

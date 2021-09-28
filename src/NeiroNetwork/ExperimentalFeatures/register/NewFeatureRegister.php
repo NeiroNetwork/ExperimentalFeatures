@@ -8,7 +8,7 @@ use NeiroNetwork\ExperimentalFeatures\hack\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\new\Feature;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Craftable;
+use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable;
@@ -16,6 +16,7 @@ use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
+use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
@@ -70,18 +71,21 @@ class NewFeatureRegister{
 	 */
 	public function register2(Feature $feature) : void{
 		$craftingManager = Server::getInstance()->getCraftingManager();
-		if($feature instanceof Craftable){
-			if(($recipe = $feature->recipe()) instanceof ShapedRecipe){
-				$craftingManager->registerShapedRecipe($recipe);
-			}elseif($recipe instanceof ShapelessRecipe){
-				$craftingManager->registerShapelessRecipe($recipe);
+		if($feature instanceof HasRecipe){
+			foreach($feature->recipe() as $recipe){
+				if($recipe instanceof ShapedRecipe){
+					$craftingManager->registerShapedRecipe($recipe);
+				}elseif($recipe instanceof ShapelessRecipe){
+					$craftingManager->registerShapelessRecipe($recipe);
+				}elseif($recipe instanceof FurnaceRecipe){
+					if($feature instanceof Smeltable){
+						$craftingManager->getFurnaceRecipeManager(FurnaceType::FURNACE())->register($recipe);
+					}
+					if($feature instanceof Smeltable2){
+						$craftingManager->getFurnaceRecipeManager(FurnaceType::BLAST_FURNACE())->register($recipe);
+					}
+				}
 			}
-		}
-		if($feature instanceof Smeltable){
-			$craftingManager->getFurnaceRecipeManager(FurnaceType::FURNACE())->register($feature->furnace());
-		}
-		if($feature instanceof Smeltable2){
-			$craftingManager->getFurnaceRecipeManager(FurnaceType::BLAST_FURNACE())->register($feature->furnace());
 		}
 	}
 }
