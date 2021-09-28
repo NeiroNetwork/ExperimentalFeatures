@@ -17,6 +17,7 @@ final class NewFeatures{
 			new GlowInkSac(),
 			new AmethystBlock(),
 			new BuddingAmethyst(),
+			new AmethystShard(),
 		];
 	}
 }
