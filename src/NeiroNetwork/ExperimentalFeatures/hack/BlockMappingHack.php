@@ -5,6 +5,9 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\hack;
 
 use pocketmine\block\Block;
+use pocketmine\block\BlockFactory;
+use pocketmine\block\BlockIdentifier;
+use pocketmine\block\UnknownBlock;
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use ReflectionClass;
@@ -41,6 +44,13 @@ class BlockMappingHack{
 		$map = RuntimeBlockMapping::getInstance();
 		foreach($this->idToStatesMap[$name] as $key => $staticRuntimeId){
 			$this->registerMapping->invoke($map, $staticRuntimeId, $block->getId(), $key);
+
+			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
+				$newBlock = new ($block::class)(
+					new BlockIdentifier($block->getId(), $key, $block->getIdInfo()->getItemId(), $block->getIdInfo()->getTileClass()),
+					$block->getName(), $block->getBreakInfo());
+				BlockFactory::getInstance()->register($newBlock);
+			}
 		}
 
 		$map = LegacyBlockIdToStringIdMap::getInstance();
