@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 class AmethystShard extends Feature implements IItem{
 
 	public function networkId() : int{
-		return 624;
+		return 623;
 	}
 
 	public function name() : string{
