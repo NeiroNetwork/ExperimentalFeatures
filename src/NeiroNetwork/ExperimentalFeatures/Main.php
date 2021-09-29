@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures;
 
-use NeiroNetwork\ExperimentalFeatures\new\NewFeatures;
+use NeiroNetwork\ExperimentalFeatures\feature\NewFeatures;
 use NeiroNetwork\ExperimentalFeatures\override\OverrideList;
 use NeiroNetwork\ExperimentalFeatures\register\NewFeatureRegister;
 use pocketmine\plugin\PluginBase;

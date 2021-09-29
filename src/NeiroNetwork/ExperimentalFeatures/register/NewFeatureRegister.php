@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\hack\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
-use NeiroNetwork\ExperimentalFeatures\new\Feature;
-use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
@@ -52,7 +52,10 @@ class NewFeatureRegister{
 
 			// (ブロックはほとんどの場合アイテムとしても存在するので) アイテムも登録する
 			ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->internalId(), 0), ExperimentalBlocks::fromString($feature->name())));
-			StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
+			StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([
+				ExperimentalBlocks::class,
+				"fromString"
+			]));
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
 			CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
 		}
@@ -60,7 +63,10 @@ class NewFeatureRegister{
 		if($feature instanceof IItem){
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->name(), ItemFactory::getInstance()->get($feature->internalId()));
-			StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
+			StringToItemParser::getInstance()->register($feature->name(), \Closure::fromCallable([
+				ExperimentalItems::class,
+				"fromString"
+			]));
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
 			CreativeInventory::getInstance()->add(ExperimentalItems::fromString($feature->name()));
 		}
