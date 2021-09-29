@@ -8,6 +8,7 @@ use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\BlockToolType;
 use pocketmine\item\ToolTier;
+use pocketmine\math\Facing;
 
 abstract class BaseAmethystCluster extends AnyFacingBlock{
 
@@ -17,5 +18,11 @@ abstract class BaseAmethystCluster extends AnyFacingBlock{
 
 	public function isAffectedBySilkTouch() : bool{
 		return true;
+	}
+
+	public function onNearbyBlockChange() : void{
+		if(!$this->getSide(Facing::opposite($this->facing))->isSolid()){
+			$this->position->getWorld()->useBreakOn($this->position);
+		}
 	}
 }
