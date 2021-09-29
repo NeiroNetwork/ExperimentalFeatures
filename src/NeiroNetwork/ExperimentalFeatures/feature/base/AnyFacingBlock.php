@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new\base;
+namespace NeiroNetwork\ExperimentalFeatures\feature\base;
 
 use pocketmine\block\Block;
 use pocketmine\block\utils\AnyFacingTrait;

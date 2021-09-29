@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\new\base\BaseAmethystBud;
-use NeiroNetwork\ExperimentalFeatures\new\base\BaseAmethystCluster;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\base\BaseAmethystCluster;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\item\Item;

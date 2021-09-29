@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable2;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\crafting\FurnaceRecipe;

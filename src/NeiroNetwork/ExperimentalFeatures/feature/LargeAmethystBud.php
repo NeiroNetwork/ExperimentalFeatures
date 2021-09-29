@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\new\base\BaseAmethystBud;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\base\BaseAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use pocketmine\block\Block;
 
 class LargeAmethystBud extends Feature implements IBlock{

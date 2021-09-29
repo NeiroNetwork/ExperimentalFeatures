@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;

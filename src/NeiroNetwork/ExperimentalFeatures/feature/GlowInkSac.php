@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\override\SignTile;
 use pocketmine\block\BaseSign;
 use pocketmine\block\Block;

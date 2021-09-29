@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\ItemIdentifier;

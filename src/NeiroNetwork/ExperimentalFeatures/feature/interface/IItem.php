@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\new\interface;
+namespace NeiroNetwork\ExperimentalFeatures\feature\interface;
 
 use pocketmine\item\Item;
 
