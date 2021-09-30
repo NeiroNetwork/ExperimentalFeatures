@@ -5,14 +5,20 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature\base;
 
 use pocketmine\block\Block;
+use pocketmine\block\Slab;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
+use pocketmine\item\ItemFactory;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
-abstract class SimpleSlab extends Transparent{
+/**
+ * @see Slab
+ */
+class SimpleSlab extends Transparent{
 
 	protected bool $top = false;
 
@@ -44,15 +50,29 @@ abstract class SimpleSlab extends Transparent{
 		if($blockReplace instanceof SimpleSlab and $blockReplace->isSameType($this) and (
 				($blockReplace->top and ($clickVector->y <= 0.5 or $face === Facing::UP)) or
 				(!$blockReplace->top and ($clickVector->y >= 0.5 or $face === Facing::DOWN))
-			)){
-			//Clicked in empty half of existing slab
-			$player?->sendMessage("double slab!");
+			)){ //Clicked in empty half of existing slab
 			// TODO: place double slab
-			// $tx->addBlock($blockReplace->position, $this);
-			// return true;
+			$tx->addBlock($blockReplace->position, \pocketmine\block\VanillaBlocks::COBBLESTONE());
+			return true;
 		}
 
 		$this->top = (($face !== Facing::UP && $clickVector->y > 0.5) || $face === Facing::DOWN);
 		return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
+	}
+
+	protected function recalculateCollisionBoxes() : array{
+		return [AxisAlignedBB::one()->trim($this->top ? Facing::DOWN : Facing::UP, 0.5)];
+	}
+
+	public function getDropsForCompatibleTool(Item $item) : array{
+		return [$this->asItem()];
+	}
+
+	public function asItem() : Item{
+		return ItemFactory::getInstance()->get($this->idInfo->getItemId(), 0);
+	}
+
+	public function isSameType(Block $other) : bool{
+		return $this->idInfo->getBlockId() === $other->idInfo->getBlockId();
 	}
 }
