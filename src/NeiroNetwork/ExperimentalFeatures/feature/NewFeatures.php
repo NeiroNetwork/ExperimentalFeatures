@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonPlanks;
+
 final class NewFeatures{
 
 	/** @return Feature[] */
@@ -22,6 +24,8 @@ final class NewFeatures{
 			new MediumAmethystBud(),
 			new SmallAmethystBud(),
 			new AmethystCluster(),
+
+			new CrimsonPlanks(),
 		];
 	}
 }
