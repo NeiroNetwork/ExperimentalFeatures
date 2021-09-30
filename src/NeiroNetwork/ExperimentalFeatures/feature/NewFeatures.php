@@ -8,10 +8,19 @@ use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonPlanks;
 
 final class NewFeatures{
 
-	/** @return Feature[] */
+	/** @var Feature[] */
+	private static array $featureCache;
+
 	public static function get() : array{
+		if(!isset(self::$featureCache)){
+			self::generate();
+		}
+		return self::$featureCache;
+	}
+
+	public static function generate() : void{
 		// 要素の順番で内部IDが決定するので並び変えてはいけない
-		return [
+		self::$featureCache = [
 			new RawIron(),
 			new RawGold(),
 			new RawIronBlock(),
