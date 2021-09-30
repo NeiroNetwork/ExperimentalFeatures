@@ -23,7 +23,6 @@ class BuddingAmethyst extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		// FIXME: 採掘にかかる時間がwikiと合致しない
 		return new class(
 			$this->blockId(), "Budding Amethyst",
 			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
