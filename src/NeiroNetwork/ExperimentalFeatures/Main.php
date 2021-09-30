@@ -15,6 +15,7 @@ class Main extends PluginBase{
 		$newFeatureRegister = new NewFeatureRegister();
 		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register($feature);
 		foreach(NewFeatures::get() as $feature) $newFeatureRegister->registerRecipe($feature);
+		foreach(NewFeatures::get() as $feature) $newFeatureRegister->remapExistsRecipe($feature);
 		OverrideList::override();
 	}
 }

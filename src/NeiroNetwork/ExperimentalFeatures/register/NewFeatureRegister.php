@@ -88,4 +88,63 @@ class NewFeatureRegister{
 			}
 		}
 	}
+
+	/**
+	 * PocketMine-MPのレシピはネットワークIDが使われている (ブロックはレガシーID使ってるのに)
+	 * 見つけたらインターナルIDのレシピを追加する
+	 * TODO: 元のレシピを削除しなくても問題はなさそうだが、CraftingManagerにレシピを削除するメソッドがないのが辛い
+	 */
+	public function remapExistsRecipe(Feature $feature) : void{
+		if(!$feature instanceof IItem && !$feature instanceof IBlock) return;
+
+		$craftingManager = Server::getInstance()->getCraftingManager();
+		foreach($craftingManager->getShapelessRecipes() as $hash => $shapelessRecipes){
+			foreach($shapelessRecipes as $shapelessRecipe){
+				$recipeModified = false;
+				$newInputs = $shapelessRecipe->getIngredientList();
+				$newOutputs = $shapelessRecipe->getResults();
+				foreach($shapelessRecipe->getIngredientList() as $key => $input){
+					if($input->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newInputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $input->getMeta(), $input->getCount(), $input->getNamedTag());
+					}
+				}
+				foreach($shapelessRecipe->getResults() as $key => $output){
+					if($output->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newOutputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $output->getMeta(), $output->getCount(), $output->getNamedTag());
+					}
+				}
+				if($recipeModified){
+					$craftingManager->registerShapelessRecipe(new ShapelessRecipe($newInputs, $newOutputs));
+				}
+			}
+		}
+
+		foreach($craftingManager->getShapedRecipes() as $hash => $shapedRecipes){
+			foreach($shapedRecipes as $shapedRecipe){
+				$p = (new \ReflectionClass($shapedRecipe))->getProperty("ingredientList");
+				$p->setAccessible(true);
+
+				$recipeModified = false;
+				$newInputs = $p->getValue($shapedRecipe);
+				$newOutputs = $shapedRecipe->getResults();
+				foreach($p->getValue($shapedRecipe) as $stringKey => $input){
+					if($input->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newInputs[$stringKey] = ItemFactory::getInstance()->get($feature->internalId(), $input->getMeta(), $input->getCount(), $input->getNamedTag());
+					}
+				}
+				foreach($shapedRecipe->getResults() as $key => $output){
+					if($output->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newOutputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $output->getMeta(), $output->getCount(), $output->getNamedTag());
+					}
+				}
+				if($recipeModified){
+					$craftingManager->registerShapedRecipe(new ShapedRecipe($shapedRecipe->getShape(), $newInputs, $newOutputs));
+				}
+			}
+		}
+	}
 }
