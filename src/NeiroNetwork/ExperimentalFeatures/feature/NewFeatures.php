@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\nether\WarpedPlanks;
 
 final class NewFeatures{
 
@@ -35,6 +38,9 @@ final class NewFeatures{
 			new AmethystCluster(),
 
 			new CrimsonPlanks(),
+			new CrimsonFence(),
+			new CrimsonSlab(),
+			//new WarpedPlanks(),
 		];
 	}
 }
