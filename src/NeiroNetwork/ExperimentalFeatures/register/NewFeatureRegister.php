@@ -69,7 +69,7 @@ class NewFeatureRegister{
 	/**
 	 * レシピ用 (アイテムやブロックを全て登録してから実行する必要がある)
 	 */
-	public function register2(Feature $feature) : void{
+	public function registerRecipe(Feature $feature) : void{
 		$craftingManager = Server::getInstance()->getCraftingManager();
 		if($feature instanceof HasRecipe){
 			foreach($feature->recipe() as $recipe){

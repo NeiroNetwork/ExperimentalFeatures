@@ -14,7 +14,7 @@ class Main extends PluginBase{
 	protected function onEnable() : void{
 		$newFeatureRegister = new NewFeatureRegister();
 		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register($feature);
-		foreach(NewFeatures::get() as $feature) $newFeatureRegister->register2($feature);
+		foreach(NewFeatures::get() as $feature) $newFeatureRegister->registerRecipe($feature);
 		OverrideList::override();
 	}
 }
