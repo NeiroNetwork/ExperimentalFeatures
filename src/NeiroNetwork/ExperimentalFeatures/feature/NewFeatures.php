@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonSlab;
@@ -40,6 +41,7 @@ final class NewFeatures{
 			new CrimsonPlanks(),
 			new CrimsonFence(),
 			new CrimsonSlab(),
+			new CrimsonDoubleSlab(),
 			//new WarpedPlanks(),
 		];
 	}

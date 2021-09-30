@@ -52,8 +52,7 @@ class SimpleSlab extends Transparent{
 				($blockReplace->top and ($clickVector->y <= 0.5 or $face === Facing::UP)) or
 				(!$blockReplace->top and ($clickVector->y >= 0.5 or $face === Facing::DOWN))
 			)){ //Clicked in empty half of existing slab
-			// TODO: place double slab
-			$tx->addBlock($blockReplace->position, \pocketmine\block\VanillaBlocks::COBBLESTONE());
+			$tx->addBlock($blockReplace->position, $this->getDoubleSlab());
 			return true;
 		}
 
