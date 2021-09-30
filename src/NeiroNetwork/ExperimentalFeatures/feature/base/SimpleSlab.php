@@ -7,6 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\base;
 use pocketmine\block\Block;
 use pocketmine\block\Slab;
 use pocketmine\block\Transparent;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\math\AxisAlignedBB;
@@ -74,5 +75,9 @@ class SimpleSlab extends Transparent{
 
 	public function isSameType(Block $other) : bool{
 		return $this->idInfo->getBlockId() === $other->idInfo->getBlockId();
+	}
+
+	public function getDoubleSlab() : Block{
+		return VanillaBlocks::AIR();
 	}
 }

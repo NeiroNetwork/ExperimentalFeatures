@@ -1,8 +1,10 @@
 <?php
 
+declare(strict_types=1);
+
 namespace NeiroNetwork\ExperimentalFeatures\feature\nether;
 
-use NeiroNetwork\ExperimentalFeatures\feature\base\SimpleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\base\SimpleWoodenSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use pocketmine\block\Block;
@@ -20,6 +22,6 @@ class CrimsonSlab extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new SimpleSlab($this->blockId(), "Crimson Slab", new BlockBreakInfo(2.0, BlockToolType::AXE, 0, 15.0));
+		return new SimpleWoodenSlab($this->blockId(), "Crimson Slab", new BlockBreakInfo(2.0, BlockToolType::AXE, 0, 15.0));
 	}
 }
