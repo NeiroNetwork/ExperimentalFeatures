@@ -8,5 +8,6 @@ final class OverrideList{
 		new IronOre();
 		new GoldOre();
 		new Signs();
+		new NetherWartBlock();
 	}
 }
