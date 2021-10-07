@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
@@ -16,6 +17,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
@@ -70,6 +72,7 @@ final class NewFeatures{
 			new StrippedCrimsonStem(),
 			new CrimsonHyphae(),
 			new StrippedCrimsonHyphae(),
+			new CrimsonFenceGate(),
 			new WarpedPlanks(),
 			new WarpedFence(),
 			new WarpedSlab(),
@@ -79,6 +82,7 @@ final class NewFeatures{
 			new StrippedWarpedStem(),
 			new WarpedHyphae(),
 			new StrippedWarpedHyphae(),
+			new WarpedFenceGate(),
 		];
 	}
 }
