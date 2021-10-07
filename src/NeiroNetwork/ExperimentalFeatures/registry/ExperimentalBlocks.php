@@ -12,6 +12,8 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static RAW_GOLD_BLOCK()
  * @method static CRIMSON_SLAB()
  * @method static CRIMSON_DOUBLE_SLAB()
+ * @method static WARPED_SLAB()
+ * @method static WARPED_DOUBLE_SLAB()
  */
 class ExperimentalBlocks{
 	use CloningRegistryTrait;

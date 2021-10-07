@@ -8,7 +8,10 @@ use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\CrimsonSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\nether\WarpedDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\nether\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\nether\WarpedPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\nether\WarpedSlab;
 
 final class NewFeatures{
 
@@ -42,7 +45,11 @@ final class NewFeatures{
 			new CrimsonFence(),
 			new CrimsonSlab(),
 			new CrimsonDoubleSlab(),
-			//new WarpedPlanks(),
+
+			new WarpedPlanks(),
+			new WarpedFence(),
+			new WarpedSlab(),
+			new WarpedDoubleSlab(),
 		];
 	}
 }
