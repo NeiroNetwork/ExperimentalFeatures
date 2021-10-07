@@ -10,6 +10,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
@@ -21,6 +22,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
@@ -73,6 +75,7 @@ final class NewFeatures{
 			new CrimsonHyphae(),
 			new StrippedCrimsonHyphae(),
 			new CrimsonFenceGate(),
+			new CrimsonStairs(),
 			new WarpedPlanks(),
 			new WarpedFence(),
 			new WarpedSlab(),
@@ -83,6 +86,7 @@ final class NewFeatures{
 			new WarpedHyphae(),
 			new StrippedWarpedHyphae(),
 			new WarpedFenceGate(),
+			new WarpedStairs(),
 		];
 	}
 }
