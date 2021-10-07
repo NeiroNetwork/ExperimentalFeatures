@@ -12,6 +12,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
@@ -54,14 +55,14 @@ final class NewFeatures{
 			new AmethystCluster(),
 
 			new CrimsonPlanks(),
-			new CrimsonFence(),
-			new CrimsonSlab(),
-			new CrimsonDoubleSlab(),
-
 			new WarpedPlanks(),
+			new CrimsonFence(),
 			new WarpedFence(),
+			new CrimsonSlab(),
 			new WarpedSlab(),
+			new CrimsonDoubleSlab(),
 			new WarpedDoubleSlab(),
+			new WarpedWartBlock(),
 		];
 	}
 }
