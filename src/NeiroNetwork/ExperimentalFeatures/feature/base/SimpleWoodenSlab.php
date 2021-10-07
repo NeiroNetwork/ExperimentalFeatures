@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\base;
 
-class SimpleWoodenSlab extends SimpleSlab{
+abstract class SimpleWoodenSlab extends SimpleSlab{
 
 	public function getFuelTime() : int{
 		return 300;

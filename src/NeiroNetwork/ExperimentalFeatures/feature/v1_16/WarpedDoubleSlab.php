@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_16;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlockOnly;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
@@ -13,7 +14,7 @@ use pocketmine\block\BlockToolType;
 use pocketmine\block\Planks;
 use pocketmine\item\Item;
 
-class WarpedDoubleSlab extends Feature implements IBlock{
+class WarpedDoubleSlab extends Feature implements IBlockOnly{
 
 	public function networkId() : int{
 		return -267;
@@ -29,6 +30,9 @@ class WarpedDoubleSlab extends Feature implements IBlock{
 		) extends Planks{
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [ExperimentalBlocks::WARPED_SLAB()->asItem()->setCount(2)];
+			}
+			public function getPickedItem(bool $addUserData = false) : Item{
+				return ExperimentalBlocks::WARPED_SLAB()->asItem();
 			}
 		};
 	}

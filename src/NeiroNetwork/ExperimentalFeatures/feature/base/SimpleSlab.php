@@ -7,7 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\base;
 use pocketmine\block\Block;
 use pocketmine\block\Slab;
 use pocketmine\block\Transparent;
-use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\math\AxisAlignedBB;
@@ -19,7 +18,7 @@ use pocketmine\world\BlockTransaction;
 /**
  * @see Slab
  */
-class SimpleSlab extends Transparent{
+abstract class SimpleSlab extends Transparent{
 
 	protected bool $top = false;
 
@@ -76,7 +75,5 @@ class SimpleSlab extends Transparent{
 		return $this->idInfo->getBlockId() === $other->idInfo->getBlockId();
 	}
 
-	public function getDoubleSlab() : Block{
-		return VanillaBlocks::AIR();
-	}
+	abstract public function getDoubleSlab() : Block;
 }

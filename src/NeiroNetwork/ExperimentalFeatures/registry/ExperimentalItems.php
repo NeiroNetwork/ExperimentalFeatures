@@ -8,9 +8,9 @@ use pocketmine\item\Item;
 use pocketmine\utils\CloningRegistryTrait;
 
 /**
- * @method static RAW_IRON()
- * @method static RAW_GOLD()
- * @method static AMETHYST_SHARD()
+ * @method static Item RAW_IRON()
+ * @method static Item RAW_GOLD()
+ * @method static Item AMETHYST_SHARD()
  */
 class ExperimentalItems{
 	use CloningRegistryTrait;

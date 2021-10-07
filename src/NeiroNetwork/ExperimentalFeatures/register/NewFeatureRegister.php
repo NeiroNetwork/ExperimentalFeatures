@@ -7,6 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\register;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlockOnly;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable2;
@@ -54,7 +55,10 @@ class NewFeatureRegister{
 			ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->internalId(), 0), ExperimentalBlocks::fromString($feature->name())));
 			StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
-			CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
+			if(!$feature instanceof IBlockOnly){
+				// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
+				CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
+			}
 		}
 
 		if($feature instanceof IItem){
