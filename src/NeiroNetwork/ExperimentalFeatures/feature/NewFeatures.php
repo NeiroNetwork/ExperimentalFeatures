@@ -53,6 +53,7 @@ final class NewFeatures{
 	public static function generate() : void{
 		// 要素の順番で内部IDが決定するので並び変えてはいけない
 		self::$featureCache = [
+			// 1.17~
 			new RawIron(),
 			new RawGold(),
 			new RawIronBlock(),
@@ -66,27 +67,30 @@ final class NewFeatures{
 			new SmallAmethystBud(),
 			new AmethystCluster(),
 
+			// 真紅の木
 			new CrimsonPlanks(),
 			new CrimsonFence(),
+			new CrimsonFenceGate(),
+			new CrimsonStairs(),
 			new CrimsonSlab(),
 			new CrimsonDoubleSlab(),
 			new CrimsonStem(),
 			new StrippedCrimsonStem(),
 			new CrimsonHyphae(),
 			new StrippedCrimsonHyphae(),
-			new CrimsonFenceGate(),
-			new CrimsonStairs(),
+			// 歪んだ木
 			new WarpedPlanks(),
 			new WarpedFence(),
+			new WarpedFenceGate(),
+			new WarpedStairs(),
 			new WarpedSlab(),
 			new WarpedDoubleSlab(),
-			new WarpedWartBlock(),
 			new WarpedStem(),
 			new StrippedWarpedStem(),
 			new WarpedHyphae(),
 			new StrippedWarpedHyphae(),
-			new WarpedFenceGate(),
-			new WarpedStairs(),
+
+			new WarpedWartBlock(),
 		];
 	}
 }
