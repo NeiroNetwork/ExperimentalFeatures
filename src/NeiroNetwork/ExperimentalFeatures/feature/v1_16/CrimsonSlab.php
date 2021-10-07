@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature\nether;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_16;
 
 use NeiroNetwork\ExperimentalFeatures\feature\base\SimpleWoodenSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;

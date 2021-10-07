@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;

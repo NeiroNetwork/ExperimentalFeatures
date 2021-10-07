@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
@@ -15,24 +16,24 @@ use pocketmine\block\Opaque;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\item\ToolTier;
 
-class AmethystBlock extends Feature implements IBlock, HasRecipe{
+class RawGoldBlock extends Feature implements IBlock, HasRecipe{
+
+	public function recipe() : array{
+		return [new ShapedRecipe(["AAA", "AAA", "AAA"], ["A" => ExperimentalItems::RAW_GOLD()], [ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()])];
+	}
 
 	public function networkId() : int{
-		return -327;
+		return -453;
 	}
 
 	public function name() : string{
-		return "amethyst_block";
+		return "raw_gold_block";
 	}
 
 	public function block() : Block{
 		return new Opaque(
-			$this->blockId(), "Amethyst Block",
-			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
+			$this->blockId(), "Raw Gold Block",
+			new BlockBreakInfo(5.0, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		);
-	}
-
-	public function recipe() : array{
-		return [new ShapedRecipe(["AA", "AA"], ["A" => ExperimentalItems::AMETHYST_SHARD()], [ExperimentalBlocks::AMETHYST_BLOCK()->asItem()])];
 	}
 }

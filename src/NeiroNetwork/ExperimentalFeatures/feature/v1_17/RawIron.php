@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable;
@@ -15,24 +16,24 @@ use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class RawGold extends Feature implements IItem, Smeltable, Smeltable2, HasRecipe{
+class RawIron extends Feature implements IItem, Smeltable, Smeltable2, HasRecipe{
 
 	public function recipe() : array{
 		return [
-			new FurnaceRecipe(VanillaItems::GOLD_INGOT(), ExperimentalItems::RAW_GOLD()),
-			new ShapelessRecipe([ExperimentalBlocks::RAW_GOLD_BLOCK()->asItem()], [ExperimentalItems::RAW_GOLD()->setCount(9)])
+			new FurnaceRecipe(VanillaItems::IRON_INGOT(), ExperimentalItems::RAW_IRON()),
+			new ShapelessRecipe([ExperimentalBlocks::RAW_IRON_BLOCK()->asItem()], [ExperimentalItems::RAW_IRON()->setCount(9)])
 		];
 	}
 
 	public function networkId() : int{
-		return 506;
+		return 505;
 	}
 
 	public function name() : string{
-		return "raw_gold";
+		return "raw_iron";
 	}
 
 	public function item() : Item{
-		return new Item($this->itemId(), "Raw Gold");
+		return new Item($this->itemId(), "Raw Iron");
 	}
 }
