@@ -8,10 +8,12 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
@@ -58,11 +60,13 @@ final class NewFeatures{
 			new CrimsonFence(),
 			new CrimsonSlab(),
 			new CrimsonDoubleSlab(),
+			new CrimsonStem(),
 			new WarpedPlanks(),
 			new WarpedFence(),
 			new WarpedSlab(),
 			new WarpedDoubleSlab(),
 			new WarpedWartBlock(),
+			new WarpedStem(),
 		];
 	}
 }
