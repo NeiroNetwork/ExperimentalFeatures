@@ -55,12 +55,12 @@ final class NewFeatures{
 			new AmethystCluster(),
 
 			new CrimsonPlanks(),
-			new WarpedPlanks(),
 			new CrimsonFence(),
-			new WarpedFence(),
 			new CrimsonSlab(),
-			new WarpedSlab(),
 			new CrimsonDoubleSlab(),
+			new WarpedPlanks(),
+			new WarpedFence(),
+			new WarpedSlab(),
 			new WarpedDoubleSlab(),
 			new WarpedWartBlock(),
 		];
