@@ -7,6 +7,11 @@ namespace NeiroNetwork\ExperimentalFeatures\registry;
 use pocketmine\item\Item;
 use pocketmine\utils\CloningRegistryTrait;
 
+/**
+ * @method static RAW_IRON()
+ * @method static RAW_GOLD()
+ * @method static AMETHYST_SHARD()
+ */
 class ExperimentalItems{
 	use CloningRegistryTrait;
 
