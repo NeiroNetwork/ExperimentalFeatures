@@ -10,6 +10,9 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\WoodenButton;
+use pocketmine\item\Item;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
 
 class WarpedButton extends Feature implements IBlock{
 
@@ -22,6 +25,10 @@ class WarpedButton extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new WoodenButton($this->blockId(), "Warped Button", new BlockBreakInfo(0.5, BlockToolType::AXE));
+		return new class($this->blockId(), "Warped Button", new BlockBreakInfo(0.5, BlockToolType::AXE)) extends WoodenButton{
+			public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
+				return true;
+			}
+		};
 	}
 }
