@@ -4,15 +4,16 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlockOnly;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable;
+use NeiroNetwork\ExperimentalFeatures\feature\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\hack\BlameChunkRequestTask;
 use NeiroNetwork\ExperimentalFeatures\hack\BlockMappingHack;
 use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
-use NeiroNetwork\ExperimentalFeatures\new\Feature;
-use NeiroNetwork\ExperimentalFeatures\new\interface\HasRecipe;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IBlock;
-use NeiroNetwork\ExperimentalFeatures\new\interface\IItem;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable;
-use NeiroNetwork\ExperimentalFeatures\new\interface\Smeltable2;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
@@ -54,7 +55,10 @@ class NewFeatureRegister{
 			ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->internalId(), 0), ExperimentalBlocks::fromString($feature->name())));
 			StringToItemParser::getInstance()->registerBlock($feature->name(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
 			$this->itemTranslatorHack->hack($feature->internalId(), $feature->networkId());
-			CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
+			if(!$feature instanceof IBlockOnly){
+				// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
+				CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->name())->asItem());
+			}
 		}
 
 		if($feature instanceof IItem){
@@ -69,7 +73,7 @@ class NewFeatureRegister{
 	/**
 	 * レシピ用 (アイテムやブロックを全て登録してから実行する必要がある)
 	 */
-	public function register2(Feature $feature) : void{
+	public function registerRecipe(Feature $feature) : void{
 		$craftingManager = Server::getInstance()->getCraftingManager();
 		if($feature instanceof HasRecipe){
 			foreach($feature->recipe() as $recipe){
@@ -84,6 +88,65 @@ class NewFeatureRegister{
 					if($feature instanceof Smeltable2){
 						$craftingManager->getFurnaceRecipeManager(FurnaceType::BLAST_FURNACE())->register($recipe);
 					}
+				}
+			}
+		}
+	}
+
+	/**
+	 * PocketMine-MPのレシピはネットワークIDが使われている (ブロックはレガシーID使ってるのに)
+	 * 見つけたらインターナルIDのレシピを追加する
+	 * TODO: 元のレシピを削除しなくても問題はなさそうだが、CraftingManagerにレシピを削除するメソッドがないのが辛い
+	 */
+	public function remapExistsRecipe(Feature $feature) : void{
+		if(!$feature instanceof IItem && !$feature instanceof IBlock) return;
+
+		$craftingManager = Server::getInstance()->getCraftingManager();
+		foreach($craftingManager->getShapelessRecipes() as $hash => $shapelessRecipes){
+			foreach($shapelessRecipes as $shapelessRecipe){
+				$recipeModified = false;
+				$newInputs = $shapelessRecipe->getIngredientList();
+				$newOutputs = $shapelessRecipe->getResults();
+				foreach($shapelessRecipe->getIngredientList() as $key => $input){
+					if($input->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newInputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $input->getMeta(), $input->getCount(), $input->getNamedTag());
+					}
+				}
+				foreach($shapelessRecipe->getResults() as $key => $output){
+					if($output->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newOutputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $output->getMeta(), $output->getCount(), $output->getNamedTag());
+					}
+				}
+				if($recipeModified){
+					$craftingManager->registerShapelessRecipe(new ShapelessRecipe($newInputs, $newOutputs));
+				}
+			}
+		}
+
+		foreach($craftingManager->getShapedRecipes() as $hash => $shapedRecipes){
+			foreach($shapedRecipes as $shapedRecipe){
+				$p = (new \ReflectionClass($shapedRecipe))->getProperty("ingredientList");
+				$p->setAccessible(true);
+
+				$recipeModified = false;
+				$newInputs = $p->getValue($shapedRecipe);
+				$newOutputs = $shapedRecipe->getResults();
+				foreach($p->getValue($shapedRecipe) as $stringKey => $input){
+					if($input->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newInputs[$stringKey] = ItemFactory::getInstance()->get($feature->internalId(), $input->getMeta(), $input->getCount(), $input->getNamedTag());
+					}
+				}
+				foreach($shapedRecipe->getResults() as $key => $output){
+					if($output->getId() === $feature->networkId()){
+						$recipeModified = true;
+						$newOutputs[$key] = ItemFactory::getInstance()->get($feature->internalId(), $output->getMeta(), $output->getCount(), $output->getNamedTag());
+					}
+				}
+				if($recipeModified){
+					$craftingManager->registerShapedRecipe(new ShapedRecipe($shapedRecipe->getShape(), $newInputs, $newOutputs));
 				}
 			}
 		}

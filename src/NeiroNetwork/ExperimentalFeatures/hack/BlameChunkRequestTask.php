@@ -22,8 +22,8 @@ class BlameChunkRequestTask{
 		$pool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $pool->getSize(); ++$i){
 			$pool->submitTaskToWorker(new class($this->queue) extends AsyncTask{
+				private $queue;
 				public function __construct(array $queue){
-					// private array $queue は使っちゃダメ
 					$this->queue = $queue;
 				}
 				public function onRun() : void{
