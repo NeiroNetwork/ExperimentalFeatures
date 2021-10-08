@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
@@ -17,11 +19,13 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
@@ -77,6 +81,8 @@ final class NewFeatures{
 			new CrimsonTrapdoor(),
 			new CrimsonSlab(),
 			new CrimsonDoubleSlab(),
+			new CrimsonButton(),
+			new CrimsonPressurePlate(),
 			new CrimsonStem(),
 			new StrippedCrimsonStem(),
 			new CrimsonHyphae(),
@@ -89,6 +95,8 @@ final class NewFeatures{
 			new WarpedTrapdoor(),
 			new WarpedSlab(),
 			new WarpedDoubleSlab(),
+			new WarpedButton(),
+			new WarpedPressurePlate(),
 			new WarpedStem(),
 			new StrippedWarpedStem(),
 			new WarpedHyphae(),
