@@ -67,11 +67,11 @@ final class NewFeatures{
 			new GlowInkSac(),
 			new AmethystBlock(),
 			new BuddingAmethyst(),
-			new AmethystShard(),
+			new AmethystCluster(),
 			new LargeAmethystBud(),
 			new MediumAmethystBud(),
 			new SmallAmethystBud(),
-			new AmethystCluster(),
+			new AmethystShard(),
 
 			// 真紅の木
 			new CrimsonPlanks(),
