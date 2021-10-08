@@ -12,7 +12,7 @@ use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
-abstract class AnyFacingBlock extends Block{
+class AnyFacingBlock extends Block{
 	use AnyFacingTrait;
 
 	protected function writeStateToMeta() : int{

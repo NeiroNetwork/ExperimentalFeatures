@@ -10,7 +10,7 @@ use pocketmine\block\BlockToolType;
 use pocketmine\item\ToolTier;
 use pocketmine\math\Facing;
 
-abstract class BaseAmethystCluster extends AnyFacingBlock{
+class BaseAmethystCluster extends AnyFacingBlock{
 
 	public function __construct(BlockIdentifier $idInfo, string $name){
 		parent::__construct($idInfo, $name, new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel()));
