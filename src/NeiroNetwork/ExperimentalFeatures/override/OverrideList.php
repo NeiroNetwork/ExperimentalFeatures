@@ -9,5 +9,6 @@ final class OverrideList{
 		new GoldOre();
 		new Signs();
 		new NetherWartBlock();
+		new SelfBreakableBlocks();
 	}
 }
