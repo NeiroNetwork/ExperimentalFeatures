@@ -17,6 +17,7 @@ use NeiroNetwork\ExperimentalFeatures\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
+use pocketmine\block\UnknownBlock;
 use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
@@ -96,13 +97,12 @@ class NewFeatureRegister{
 	/**
 	 * PocketMine-MPのレシピはネットワークIDが使われている (ブロックはレガシーID使ってるのに)
 	 * 見つけたらインターナルIDのレシピを追加する
-	 * TODO: 元のレシピを削除しなくても問題はなさそうだが、CraftingManagerにレシピを削除するメソッドがないのが辛い
 	 */
 	public function remapExistsRecipe(Feature $feature) : void{
 		if(!$feature instanceof IItem && !$feature instanceof IBlock) return;
 
 		$craftingManager = Server::getInstance()->getCraftingManager();
-		foreach($craftingManager->getShapelessRecipes() as $hash => $shapelessRecipes){
+		foreach($craftingManager->getShapelessRecipes() as $shapelessRecipes){
 			foreach($shapelessRecipes as $shapelessRecipe){
 				$recipeModified = false;
 				$newInputs = $shapelessRecipe->getIngredientList();
@@ -125,7 +125,7 @@ class NewFeatureRegister{
 			}
 		}
 
-		foreach($craftingManager->getShapedRecipes() as $hash => $shapedRecipes){
+		foreach($craftingManager->getShapedRecipes() as $shapedRecipes){
 			foreach($shapedRecipes as $shapedRecipe){
 				$p = (new \ReflectionClass($shapedRecipe))->getProperty("ingredientList");
 				$p->setAccessible(true);
@@ -150,5 +150,38 @@ class NewFeatureRegister{
 				}
 			}
 		}
+	}
+
+	/**
+	 * 追加されてないアイテムをクラフトできるバグを修正する
+	 */
+	public function fixPmmpRecipes() : void{
+		$craftingManager = Server::getInstance()->getCraftingManager();
+		$reflectedShapedRecipes = (new \ReflectionClass($craftingManager))->getProperty("shapedRecipes");
+		$reflectedShapedRecipes->setAccessible(true);
+		$reflectedShapelessRecipes = (new \ReflectionClass($craftingManager))->getProperty("shapelessRecipes");
+		$reflectedShapelessRecipes->setAccessible(true);
+
+		foreach($shapedRecipesValue = $craftingManager->getShapedRecipes() as $hash => $shapedRecipes){
+			foreach($shapedRecipes as $key => $shapedRecipe){
+				foreach($shapedRecipe->getResults() as $item){
+					if($item instanceof ItemBlock && $item->getBlock() instanceof UnknownBlock){
+						unset($shapedRecipesValue[$hash][$key]);
+					}
+				}
+			}
+		}
+		$reflectedShapedRecipes->setValue($craftingManager, $shapedRecipesValue);
+
+		foreach($shapelessRecipesValue = $craftingManager->getShapelessRecipes() as $hash => $shapelessRecipes){
+			foreach($shapelessRecipes as $key => $shapelessRecipe){
+				foreach($shapelessRecipe->getResults() as $item){
+					if($item instanceof ItemBlock && $item->getBlock() instanceof UnknownBlock){
+						unset($shapelessRecipesValue[$hash][$key]);
+					}
+				}
+			}
+		}
+		$reflectedShapelessRecipes->setValue($craftingManager, $shapelessRecipesValue);
 	}
 }
