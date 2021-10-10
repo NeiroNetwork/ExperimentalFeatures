@@ -8,6 +8,7 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\UnknownBlock;
+use pocketmine\block\Wall;
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use ReflectionClass;
@@ -44,6 +45,11 @@ class BlockMappingHack{
 		$map = RuntimeBlockMapping::getInstance();
 		foreach($this->idToStatesMap[$name] as $key => $staticRuntimeId){
 			$this->registerMapping->invoke($map, $staticRuntimeId, $block->getId(), $key);
+
+			if($block instanceof Wall){
+				// 石の壁はmetaが大きすぎてエラーが出る + PocketMine-MPは石の壁の接続に対応していない = スキップするしかない?
+				break;
+			}
 
 			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
 				$newBlock = new ($block::class)(
