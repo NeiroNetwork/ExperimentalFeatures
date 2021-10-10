@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -106,6 +107,7 @@ final class NewFeatures{
 			new WarpedWartBlock(),
 
 			new Blackstone(),
+			new BlackstoneWall(),
 		];
 	}
 }
