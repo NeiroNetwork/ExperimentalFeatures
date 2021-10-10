@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
@@ -108,6 +110,8 @@ final class NewFeatures{
 
 			new Blackstone(),
 			new BlackstoneWall(),
+			new BlackstoneSlab(),
+			new BlackstoneDoubleSlab(),
 		];
 	}
 }
