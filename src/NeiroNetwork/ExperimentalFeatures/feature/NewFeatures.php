@@ -39,7 +39,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
@@ -119,7 +118,6 @@ final class NewFeatures{
 			new TintedGlass(),
 
 			new Deepslate(),
-			new CobbledDeepslate(),
 		];
 	}
 }
