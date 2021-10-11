@@ -16,8 +16,10 @@ use pocketmine\utils\CloningRegistryTrait;
  * @method static Block WARPED_DOUBLE_SLAB()
  * @method static Block BLACKSTONE_SLAB()
  * @method static Block BLACKSTONE_DOUBLE_SLAB()
- * @method static TINTED_GLASS()
- * @method static AMETHYST_BLOCK()
+ * @method static Block TINTED_GLASS()
+ * @method static Block AMETHYST_BLOCK()
+ * @method static Block DEEPSLATE()
+ * @method static Block COBBLED_DEEPSLATE()
  */
 class ExperimentalBlocks{
 	use CloningRegistryTrait;
