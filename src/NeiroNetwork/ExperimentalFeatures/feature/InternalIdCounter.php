@@ -6,7 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 final class InternalIdCounter{
 
-	private static $count = 600;
+	private static int $count = 600;
 
 	public static function next() : int{
 		return self::$count++;
