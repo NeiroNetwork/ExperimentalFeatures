@@ -32,11 +32,9 @@ class Deepslate extends Feature implements IBlock, Smeltable, HasRecipe{
 			$this->blockId(), "Deepslate",
 			new BlockBreakInfo(5.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
 		) extends Opaque{
-
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem()];
 			}
-
 			public function isAffectedBySilkTouch() : bool{
 				return true;
 			}
@@ -44,8 +42,7 @@ class Deepslate extends Feature implements IBlock, Smeltable, HasRecipe{
 	}
 
 	public function recipe() : array{
-		return [new FurnaceRecipe(ExperimentalBlocks::Deepslate()->asItem(), ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem())];
-
+		return [new FurnaceRecipe(ExperimentalBlocks::DEEPSLATE()->asItem(), ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem())];
 	}
 
 }

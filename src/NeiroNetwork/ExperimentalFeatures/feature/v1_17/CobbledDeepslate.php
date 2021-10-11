@@ -34,8 +34,7 @@ class CobbledDeepslate extends Feature implements IBlock, Smeltable, HasRecipe{
 	}
 
 	public function recipe() : array{
-		return [new FurnaceRecipe(ExperimentalBlocks::Deepslate()->asItem(), ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem())];
-
+		return [new FurnaceRecipe(ExperimentalBlocks::DEEPSLATE()->asItem(), ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem())];
 	}
 
 }
