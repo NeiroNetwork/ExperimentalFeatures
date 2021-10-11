@@ -15,7 +15,7 @@ use pocketmine\block\Opaque;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\crafting\ShapedRecipe;
 
-class TintedGlass extends Feature implements IBlock,HasRecipe{
+class TintedGlass extends Feature implements IBlock, HasRecipe{
 
 	public function networkId() : int{
 		return -334;
@@ -26,13 +26,13 @@ class TintedGlass extends Feature implements IBlock,HasRecipe{
 	}
 
 	public function block() : Block{
-		return new Opaque($this->blockId(),"Tinted Glass", new BlockBreakInfo(0.3));
+		return new Opaque($this->blockId(), "Tinted Glass", new BlockBreakInfo(0.3));
 	}
 
 	public function recipe() : array{
 		return [
 			new ShapedRecipe(
-				[" A ", "ABA"," A "],
+				[" A ", "ABA", " A "],
 				[
 					"A" => ExperimentalItems::AMETHYST_SHARD(),
 					"B" => VanillaBlocks::GLASS()->asItem()
