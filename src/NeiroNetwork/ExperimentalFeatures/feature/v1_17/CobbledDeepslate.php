@@ -19,32 +19,23 @@ use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
 
-class Deepslate extends Feature implements IBlock, Smeltable, HasRecipe{
+class CobbledDeepslate extends Feature implements IBlock, Smeltable, HasRecipe{
 
 	public function networkId() : int{
-		return -378;
+		return -379;
 	}
 
 	public function name() : string{
-		return "deepslate";
+		return "cobbled_deepslate";
 	}
 
 	public function block() : Block{
 		return new class(
-			$this->blockId(), "Deepslate",
-			new BlockBreakInfo(5.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
+			$this->blockId(), "CobbledDeepslate",
+			new BlockBreakInfo(3.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
 		) extends Opaque{
-
-			public function getDropsForCompatibleTool(Item $item) : array{
-				return [ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem()];
-			}
-
-			public function isAffectedBySilkTouch() : bool{
-				return true;
-			}
 		};
 	}
-
 	public function recipe() : array{
 		return [new FurnaceRecipe(ExperimentalBlocks::Deepslate()->asItem(), ExperimentalBlocks::COBBLED_DEEPSLATE()->asItem())];
 
