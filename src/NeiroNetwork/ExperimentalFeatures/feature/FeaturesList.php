@@ -21,6 +21,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIronBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 
 final class FeaturesList{
 
@@ -43,6 +44,7 @@ final class FeaturesList{
 		RawIronBlock::class,
 		RawGold::class,
 		RawGoldBlock::class,
+		TintedGlass::class,
 	];
 
 	/** @var Feature[] */
