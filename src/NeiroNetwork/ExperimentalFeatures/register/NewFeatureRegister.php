@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
+use ArrayObject;
 use Closure;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
@@ -40,15 +41,15 @@ class NewFeatureRegister{
 
 			$hack1 = new BlockMappingHack();
 			$hack2 = new ItemTranslatorHack();
-			$creativeItems = [];
+			$creativeItems = new ArrayObject();
 			array_map(fn($feature) => self::register($feature, $hack1, $hack2, $creativeItems), FeaturesList::get());
-			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), $creativeItems);
+			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
 			array_map(fn($feature) => self::register2($feature), FeaturesList::get());
 			self::fixRecipes();
 		}
 	}
 
-	private static function register(Feature $feature, BlockMappingHack $hack1, ItemTranslatorHack $hack2, array &$creativeItems) : void{
+	private static function register(Feature $feature, BlockMappingHack $hack1, ItemTranslatorHack $hack2, ArrayObject $creativeItems) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
@@ -58,9 +59,9 @@ class NewFeatureRegister{
 			if(!$feature->isRegisteredPmmp()){
 				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
 				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
-				if($feature instanceof IBlockOnly){
+				if(!$feature instanceof IBlockOnly){
 					// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
-					$creativeItems[] = ExperimentalBlocks::fromString($feature->stringId())->asItem();
+					$creativeItems->append(ExperimentalBlocks::fromString($feature->stringId())->asItem());
 				}
 			}
 		}
@@ -71,7 +72,7 @@ class NewFeatureRegister{
 			StringToItemParser::getInstance()->register($feature->stringId(), Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			if(!$feature->isRegisteredPmmp()){
 				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
-				$creativeItems[] = ExperimentalItems::fromString($feature->stringId());
+				$creativeItems->append(ExperimentalItems::fromString($feature->stringId()));
 			}
 		}
 	}

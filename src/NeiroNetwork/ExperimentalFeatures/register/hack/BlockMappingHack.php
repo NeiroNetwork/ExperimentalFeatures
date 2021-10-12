@@ -16,6 +16,7 @@ use pocketmine\Server;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
+use Volatile;
 
 class BlockMappingHack{
 
@@ -77,7 +78,10 @@ class BlockMappingHack{
 		$asyncPool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $asyncPool->getSize(); ++$i){
 			$asyncPool->submitTaskToWorker(new class($this->modifiedMappingEntries) extends AsyncTask{
-				public function __construct(private array $entries){}
+				private Volatile $entries;
+				public function __construct($entries){
+					$this->entries = $entries;
+				}
 				public function onRun() : void{
 					$mapping = RuntimeBlockMapping::getInstance();
 					$method = (new \ReflectionClass($mapping))->getMethod("registerMapping");
