@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
+use NeiroNetwork\ExperimentalFeatures\feature\block\convert\SlabConverter;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\Transparent;
@@ -52,8 +53,7 @@ class Slab extends Transparent{
 				($blockReplace->top and ($clickVector->y <= 0.5 or $face === Facing::UP)) or
 				(!$blockReplace->top and ($clickVector->y >= 0.5 or $face === Facing::DOWN))
 			)){ //Clicked in empty half of existing slab
-			$id = str_replace("slab", "double_slab", LegacyBlockIdToStringIdMap::getInstance()->legacyToString($this->getId()));
-			$tx->addBlock($blockReplace->position, ExperimentalBlocks::fromString($id));
+			$tx->addBlock($blockReplace->position, SlabConverter::toDouble($this));
 			return true;
 		}
 
