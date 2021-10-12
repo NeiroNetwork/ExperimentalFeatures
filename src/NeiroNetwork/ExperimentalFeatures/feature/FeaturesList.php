@@ -4,15 +4,25 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
@@ -45,6 +55,15 @@ final class FeaturesList{
 		RawGold::class,
 		RawGoldBlock::class,
 		TintedGlass::class,
+		CrimsonButton::class,
+		CrimsonFence::class,
+		CrimsonFenceGate::class,
+		CrimsonHyphae::class,
+		CrimsonPressurePlate::class,
+		CrimsonStairs::class,
+		CrimsonTrapdoor::class,
+		StrippedCrimsonHyphae::class,
+		StrippedCrimsonStem::class,
 	];
 
 	/** @var Feature[] */
