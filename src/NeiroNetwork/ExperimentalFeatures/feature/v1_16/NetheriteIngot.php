@@ -15,7 +15,6 @@ class NetheriteIngot extends Feature implements IItem{
 	}
 
 	public function item() : Item{
-		// TODO: アイテムが燃えないようにする(?)
 		return new Item($this->itemId(), $this->displayName());
 	}
 }

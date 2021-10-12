@@ -9,7 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Planks;
+use pocketmine\block\Opaque;
 
 class CrimsonPlanks extends Feature implements IBlock{
 
@@ -18,7 +18,7 @@ class CrimsonPlanks extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Planks(
+		return new Opaque(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(2.0, BlockToolType::AXE, 0, 15.0)
