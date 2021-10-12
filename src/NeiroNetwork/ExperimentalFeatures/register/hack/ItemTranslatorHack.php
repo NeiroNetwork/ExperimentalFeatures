@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\hack;
+namespace NeiroNetwork\ExperimentalFeatures\register\hack;
 
 use pocketmine\network\mcpe\convert\ItemTranslator;
 use ReflectionClass;

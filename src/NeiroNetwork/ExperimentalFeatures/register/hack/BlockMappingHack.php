@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\hack;
+namespace NeiroNetwork\ExperimentalFeatures\register\hack;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
@@ -73,18 +73,18 @@ class BlockMappingHack{
 	}
 
 	public function __destruct(){
-		echo get_class($this) . "::__destruct()\n";//TODO:デバッグ用の出力を削除
 		// Hack for ChunkRequestTask
 		$asyncPool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $asyncPool->getSize(); ++$i){
 			$asyncPool->submitTaskToWorker(new class($this->modifiedMappingEntries) extends AsyncTask{
 				public function __construct(private array $entries){}
 				public function onRun() : void{
-					var_dump($this->entries);//TODO:デバッグ用の出力を削除
 					$mapping = RuntimeBlockMapping::getInstance();
 					$method = (new \ReflectionClass($mapping))->getMethod("registerMapping");
 					$method->setAccessible(true);
-					array_map(fn($entry) => $method->invoke($mapping, ...$entry), $this->entries);
+					foreach($this->entries as $entry){
+						$method->invoke($mapping, ...$entry);
+					}
 				}
 			}, $i);
 		}

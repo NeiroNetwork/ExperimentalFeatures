@@ -7,7 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\item\ItemIdentifier;
 
-abstract class Feature{
+abstract class OldFeature{
 
 	private int $internalId;
 

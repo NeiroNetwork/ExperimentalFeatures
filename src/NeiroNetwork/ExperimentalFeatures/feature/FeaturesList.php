@@ -4,11 +4,19 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+
 final class FeaturesList{
 
 	// 新しく作ったものは必ず一番下に追加する
 	public const IMPLEMENTED_FEATURES = [
-		"",
+		CrimsonPlanks::class,
+		NetheriteIngot::class,
+		AmethystBlock::class,
+		AmethystShard::class,
 	];
 
 	/** @var Feature[] */
