@@ -46,6 +46,9 @@ class ButtonsAndPressurePlates{
 				}
 				return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 			}
+			public function getFuelTime() : int{
+				return 100;
+			}
 		};
 	}
 
