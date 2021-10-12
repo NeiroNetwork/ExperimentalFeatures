@@ -10,7 +10,12 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 
 final class FeaturesList{
 
@@ -19,10 +24,15 @@ final class FeaturesList{
 		CrimsonPlanks::class,
 		NetheriteIngot::class,
 		AmethystBlock::class,
-		AmethystShard::class,
 		CrimsonStem::class,
 		CrimsonSlab::class,
 		CrimsonDoubleSlab::class,
+		BuddingAmethyst::class,
+		AmethystCluster::class,
+		LargeAmethystBud::class,
+		MediumAmethystBud::class,
+		SmallAmethystBud::class,
+		AmethystShard::class,
 	];
 
 	/** @var Feature[] */
