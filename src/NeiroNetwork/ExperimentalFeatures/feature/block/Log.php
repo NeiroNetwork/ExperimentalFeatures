@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
-trait WoodenBlockTrait{
+class Log extends Pillar{
 
 	public function getFuelTime() : int{
 		return 300;
