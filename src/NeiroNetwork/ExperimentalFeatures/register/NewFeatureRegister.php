@@ -18,6 +18,7 @@ use NeiroNetwork\ExperimentalFeatures\register\hack\ItemTranslatorHack;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
+use pocketmine\block\UnknownBlock;
 use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
@@ -39,6 +40,8 @@ class NewFeatureRegister{
 			$hack1 = new BlockMappingHack();
 			$hack2 = new ItemTranslatorHack();
 			array_map(fn($feature) => self::register($feature, $hack1, $hack2), FeaturesList::get());
+			array_map(fn($feature) => self::register2($feature), FeaturesList::get());
+			self::fixRecipes();
 		}
 	}
 
@@ -83,5 +86,38 @@ class NewFeatureRegister{
 				};
 			}
 		}
+	}
+
+	/**
+	 * 追加されてないアイテムをクラフトできるバグを修正する
+	 */
+	private static function fixRecipes() : void{
+		$craftingManager = Server::getInstance()->getCraftingManager();
+		$reflectedShapedRecipes = (new \ReflectionClass($craftingManager))->getProperty("shapedRecipes");
+		$reflectedShapedRecipes->setAccessible(true);
+		$reflectedShapelessRecipes = (new \ReflectionClass($craftingManager))->getProperty("shapelessRecipes");
+		$reflectedShapelessRecipes->setAccessible(true);
+
+		foreach($shapedRecipesValue = $craftingManager->getShapedRecipes() as $hash => $shapedRecipes){
+			foreach($shapedRecipes as $key => $shapedRecipe){
+				foreach($shapedRecipe->getResults() as $item){
+					if($item instanceof ItemBlock && $item->getBlock() instanceof UnknownBlock){
+						unset($shapedRecipesValue[$hash][$key]);
+					}
+				}
+			}
+		}
+		$reflectedShapedRecipes->setValue($craftingManager, $shapedRecipesValue);
+
+		foreach($shapelessRecipesValue = $craftingManager->getShapelessRecipes() as $hash => $shapelessRecipes){
+			foreach($shapelessRecipes as $key => $shapelessRecipe){
+				foreach($shapelessRecipe->getResults() as $item){
+					if($item instanceof ItemBlock && $item->getBlock() instanceof UnknownBlock){
+						unset($shapelessRecipesValue[$hash][$key]);
+					}
+				}
+			}
+		}
+		$reflectedShapelessRecipes->setValue($craftingManager, $shapelessRecipesValue);
 	}
 }
