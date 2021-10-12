@@ -23,6 +23,9 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
@@ -122,6 +125,9 @@ final class NewFeatures{
 			new BlackstoneDoubleSlab(),
 			new BlackstoneStairs(),
 			new PolishedBlackstone(),
+			new PolishedBlackstoneStairs(),
+			new PolishedBlackstoneSlab(),
+			new PolishedBlackstoneDoubleSlab(),
 
 			new TintedGlass(),
 
