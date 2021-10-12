@@ -11,12 +11,10 @@ final class FeaturesList{
 		"",
 	];
 
-	private static ?array $cache = null;
+	/** @var Feature[] */
+	private static array $cache;
 
 	public static function get() : array{
-		if(self::$cache === null){
-			self::$cache = array_map(fn(string $class) => new $class(), self::IMPLEMENTED_FEATURES);
-		}
-		return self::$cache;
+		return self::$cache ?? self::$cache = array_map(fn(string $class) => new $class(), self::IMPLEMENTED_FEATURES);
 	}
 }

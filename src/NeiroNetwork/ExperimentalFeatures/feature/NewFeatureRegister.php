@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\register;
+namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\interface\IBlockOnly;
