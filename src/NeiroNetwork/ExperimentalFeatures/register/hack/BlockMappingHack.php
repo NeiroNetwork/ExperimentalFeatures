@@ -11,28 +11,29 @@ use pocketmine\block\UnknownBlock;
 use pocketmine\block\Wall;
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
+use pocketmine\scheduler\AsyncTask;
+use pocketmine\Server;
 use ReflectionClass;
 use ReflectionMethod;
 use ReflectionProperty;
 
 class BlockMappingHack{
 
-	// RuntimeBlockMapping
-	private ReflectionMethod $registerMapping;
 	private array $idToStatesMap = [];
 
-	// LegacyBlockIdToStringIdMap
+	private ReflectionMethod $registerMapping;
 	private ReflectionProperty $legacyToString;
 	private ReflectionProperty $stringToLegacy;
 
-	public function __construct(){
-		$map = RuntimeBlockMapping::getInstance();
-		$this->registerMapping = (new ReflectionClass($map))->getMethod("registerMapping");
-		$this->registerMapping->setAccessible(true);
+	private array $modifiedMappingEntries = [];
 
-		foreach($map->getBedrockKnownStates() as $k => $state){
-			$this->idToStatesMap[$state->getString("name")][] = $k;
+	public function __construct(){
+		$mapping = RuntimeBlockMapping::getInstance();
+		foreach($mapping->getBedrockKnownStates() as $key => $state){
+			$this->idToStatesMap[$state->getString("name")][] = $key;
 		}
+		$this->registerMapping = (new ReflectionClass($mapping))->getMethod("registerMapping");
+		$this->registerMapping->setAccessible(true);
 
 		$parent = (new ReflectionClass(LegacyBlockIdToStringIdMap::getInstance()))->getParentClass();
 		$this->legacyToString = $parent->getProperty("legacyToString");
@@ -42,29 +43,50 @@ class BlockMappingHack{
 	}
 
 	public function hack(string $name, Block $block) : void{
-		$map = RuntimeBlockMapping::getInstance();
 		foreach($this->idToStatesMap[$name] as $key => $staticRuntimeId){
-			$this->registerMapping->invoke($map, $staticRuntimeId, $block->getId(), $key);
+			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
+			$this->modifiedMappingEntries[] = [$staticRuntimeId, $block->getId(), $key];
 
 			if($block instanceof Wall){
-				// 石の壁はmetaが大きすぎてエラーが出る + PocketMine-MPは石の壁の接続に対応していない = スキップするしかない?
+				// バニラの石の壁は種類がありすぎて登録できない, PocketMine-MPが石の壁に対応していない
 				break;
 			}
 
 			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
 				$newBlock = new ($block::class)(
 					new BlockIdentifier($block->getId(), $key, $block->getIdInfo()->getItemId(), $block->getIdInfo()->getTileClass()),
-					$block->getName(), $block->getBreakInfo());
+					$block->getName(),
+					$block->getBreakInfo()
+				);
 				BlockFactory::getInstance()->register($newBlock);
 			}
 		}
 
-		$map = LegacyBlockIdToStringIdMap::getInstance();
-		$value = $this->legacyToString->getValue($map);
-		$value[$block->getId()] = $name;
-		$this->legacyToString->setValue($map, $value);
-		$value = $this->stringToLegacy->getValue($map);
-		$value[$name] = $block->getId();
-		$this->stringToLegacy->setValue($map, $value);
+		$mapping = LegacyBlockIdToStringIdMap::getInstance();
+		$legacyToString = $this->legacyToString->getValue($mapping);
+		$legacyToString[$block->getId()] = $name;
+		$this->legacyToString->setValue($mapping, $legacyToString);
+
+		$stringToLegacy = $this->stringToLegacy->getValue($mapping);
+		$stringToLegacy[$name] = $block->getId();
+		$this->stringToLegacy->setValue($mapping, $stringToLegacy);
+	}
+
+	public function __destruct(){
+		echo get_class($this) . "::__destruct()\n";//TODO:デバッグ用の出力を削除
+		// Hack for ChunkRequestTask
+		$asyncPool = Server::getInstance()->getAsyncPool();
+		for($i = 0; $i < $asyncPool->getSize(); ++$i){
+			$asyncPool->submitTaskToWorker(new class($this->modifiedMappingEntries) extends AsyncTask{
+				public function __construct(private array $entries){}
+				public function onRun() : void{
+					var_dump($this->entries);//TODO:デバッグ用の出力を削除
+					$mapping = RuntimeBlockMapping::getInstance();
+					$method = (new \ReflectionClass($mapping))->getMethod("registerMapping");
+					$method->setAccessible(true);
+					array_map(fn($entry) => $method->invoke($mapping, ...$entry), $this->entries);
+				}
+			}, $i);
+		}
 	}
 }

@@ -8,9 +8,10 @@ use pocketmine\block\BlockIdentifier;
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
 use pocketmine\item\ItemIdentifier;
+use pocketmine\network\mcpe\convert\GlobalItemTypeDictionary;
 
 /**
- * 新しく実装するアイテムあるいはブロック
+ * 新しく実装するアイテムあるいはブロックを実装するためのクラス
  */
 abstract class Feature{
 
@@ -34,5 +35,9 @@ abstract class Feature{
 
 	public function itemId() : ItemIdentifier{
 		return new ItemIdentifier($this->internalItemId, 0);
+	}
+
+	public function runtimeId() : int{
+		return GlobalItemTypeDictionary::getInstance()->getDictionary()->fromStringId($this->stringId());
 	}
 }

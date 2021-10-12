@@ -5,15 +5,16 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\hack;
 
 use pocketmine\network\mcpe\convert\ItemTranslator;
+use ReflectionClass;
+use ReflectionProperty;
 
 class ItemTranslatorHack{
 
-	private \ReflectionProperty $coreToNet;
-	private \ReflectionProperty $netToCore;
+	private ReflectionProperty $coreToNet;
+	private ReflectionProperty $netToCore;
 
 	public function __construct(){
-		$translator = ItemTranslator::getInstance();
-		$reflection = new \ReflectionClass($translator);
+		$reflection = new ReflectionClass(ItemTranslator::getInstance());
 
 		$this->coreToNet = $reflection->getProperty("simpleCoreToNetMapping");
 		$this->coreToNet->setAccessible(true);
@@ -22,15 +23,15 @@ class ItemTranslatorHack{
 		$this->netToCore->setAccessible(true);
 	}
 
-	public function hack(int $internal, int $network) : void{
+	public function hack(int $internalItemId, int $runtimeId) : void{
 		$translator = ItemTranslator::getInstance();
 
-		$value = $this->coreToNet->getValue($translator);
-		$value[$internal] = $network;
-		$this->coreToNet->setValue($translator, $value);
+		$coreToNet = $this->coreToNet->getValue($translator);
+		$coreToNet[$internalItemId] = $runtimeId;
+		$this->coreToNet->setValue($translator, $coreToNet);
 
-		$value = $this->netToCore->getValue($translator);
-		$value[$network] = $internal;
-		$this->netToCore->setValue($translator, $value);
+		$netToCore = $this->netToCore->getValue($translator);
+		$netToCore[$runtimeId] = $internalItemId;
+		$this->netToCore->setValue($translator, $netToCore);
 	}
 }
