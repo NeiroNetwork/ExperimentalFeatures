@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
@@ -19,6 +20,7 @@ final class FeaturesList{
 		AmethystBlock::class,
 		AmethystShard::class,
 		CrimsonStem::class,
+		CrimsonSlab::class,
 	];
 
 	/** @var Feature[] */

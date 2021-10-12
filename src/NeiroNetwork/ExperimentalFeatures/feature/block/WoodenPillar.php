@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature\base;
+namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
-abstract class SimpleWoodenSlab extends SimpleSlab{
+class WoodenPillar extends Pillar{
 
 	public function getFuelTime() : int{
 		return 300;
@@ -15,6 +15,6 @@ abstract class SimpleWoodenSlab extends SimpleSlab{
 	}
 
 	public function getFlammability() : int{
-		return 20;
+		return 5;
 	}
 }
