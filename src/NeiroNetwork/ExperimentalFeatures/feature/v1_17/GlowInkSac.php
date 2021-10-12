@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\interface\IItem;
+use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
 use NeiroNetwork\ExperimentalFeatures\override\SignTile;
 use pocketmine\block\BaseSign;
 use pocketmine\block\Block;
@@ -16,11 +16,7 @@ use pocketmine\player\Player;
 
 class GlowInkSac extends Feature implements IItem{
 
-	public function networkId() : int{
-		return 503;
-	}
-
-	public function name() : string{
+	public function stringId() : string{
 		return "glow_ink_sac";
 	}
 

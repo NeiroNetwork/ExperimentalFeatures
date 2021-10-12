@@ -13,6 +13,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
@@ -33,6 +34,7 @@ final class FeaturesList{
 		MediumAmethystBud::class,
 		SmallAmethystBud::class,
 		AmethystShard::class,
+		GlowInkSac::class,
 	];
 
 	/** @var Feature[] */
