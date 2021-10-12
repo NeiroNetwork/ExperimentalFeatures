@@ -38,6 +38,10 @@ class BaseAmethystCluster extends Transparent{
 		return true;
 	}
 
+	protected function recalculateCollisionBoxes() : array{
+		return [];
+	}
+
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 		if(!$this->getSide(Facing::opposite($face))->isSolid()){
 			return false;
