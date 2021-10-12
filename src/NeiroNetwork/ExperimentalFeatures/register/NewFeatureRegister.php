@@ -24,6 +24,7 @@ use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\inventory\CreativeInventory;
+use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\StringToItemParser;
@@ -39,13 +40,15 @@ class NewFeatureRegister{
 
 			$hack1 = new BlockMappingHack();
 			$hack2 = new ItemTranslatorHack();
-			array_map(fn($feature) => self::register($feature, $hack1, $hack2), FeaturesList::get());
+			$creativeItems = [];
+			array_map(fn($feature) => self::register($feature, $hack1, $hack2, $creativeItems), FeaturesList::get());
+			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), $creativeItems);
 			array_map(fn($feature) => self::register2($feature), FeaturesList::get());
 			self::fixRecipes();
 		}
 	}
 
-	private static function register(Feature $feature, BlockMappingHack $hack1, ItemTranslatorHack $hack2) : void{
+	private static function register(Feature $feature, BlockMappingHack $hack1, ItemTranslatorHack $hack2, array &$creativeItems) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
@@ -57,7 +60,7 @@ class NewFeatureRegister{
 				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
 				if($feature instanceof IBlockOnly){
 					// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
-					CreativeInventory::getInstance()->add(ExperimentalBlocks::fromString($feature->stringId())->asItem());
+					$creativeItems[] = ExperimentalBlocks::fromString($feature->stringId())->asItem();
 				}
 			}
 		}
@@ -68,7 +71,7 @@ class NewFeatureRegister{
 			StringToItemParser::getInstance()->register($feature->stringId(), Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			if(!$feature->isRegisteredPmmp()){
 				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
-				CreativeInventory::getInstance()->add(ExperimentalItems::fromString($feature->stringId()));
+				$creativeItems[] = ExperimentalItems::fromString($feature->stringId());
 			}
 		}
 	}
