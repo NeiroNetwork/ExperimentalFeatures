@@ -12,6 +12,6 @@ class Main extends PluginBase{
 
 	protected function onEnable() : void{
 		NewFeatureRegister::registerAll();
-		//OverrideList::override();
+		OverrideList::override();
 	}
 }
