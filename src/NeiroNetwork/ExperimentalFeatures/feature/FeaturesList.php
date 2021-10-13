@@ -97,6 +97,14 @@ final class FeaturesList{
 	private static array $cache;
 
 	public static function get() : array{
-		return self::$cache ?? self::$cache = array_map(fn(string $class) => new $class(), self::IMPLEMENTED_FEATURES);
+		if(!isset(self::$cache)){
+			self::$cache = [];
+			foreach(self::IMPLEMENTED_FEATURES as $featureClass){
+				$feature = new $featureClass();
+				assert($feature instanceof Feature);
+				self::$cache[] = $feature;
+			}
+		}
+		return self::$cache;
 	}
 }
