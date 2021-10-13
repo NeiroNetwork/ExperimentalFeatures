@@ -14,8 +14,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
 use NeiroNetwork\ExperimentalFeatures\feature\recipe\BlastFurnaceRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\recipe\SmokerRecipe;
-use NeiroNetwork\ExperimentalFeatures\register\hack\BlockMappingHack;
-use NeiroNetwork\ExperimentalFeatures\register\hack\ItemTranslatorHack;
+use NeiroNetwork\ExperimentalFeatures\register\hack\PmmpHacks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
@@ -39,26 +38,27 @@ class NewFeatureRegister{
 		if(!self::$initialized){
 			self::$initialized = true;
 
-			$hack1 = new BlockMappingHack();
-			$hack2 = new ItemTranslatorHack();
+			$hacks = new PmmpHacks();
 			$creativeItems = new ArrayObject();
-			array_map(fn($feature) => self::register($feature, $hack1, $hack2, $creativeItems), FeaturesList::get());
+			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeaturesList::get());
 			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
 			array_map(fn($feature) => self::register2($feature), FeaturesList::get());
 			self::fixRecipes();
 		}
 	}
 
-	private static function register(Feature $feature, BlockMappingHack $hack1, ItemTranslatorHack $hack2, ArrayObject $creativeItems) : void{
+	private static function register(Feature $feature, PmmpHacks $hacks, ArrayObject $creativeItems) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
 			StringToItemParser::getInstance()->registerBlock($feature->stringId(), Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
-			$hack1->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
+			$hacks->runtimeBlockMapping->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
 
 			if(!$feature->isRegisteredPmmp()){
 				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
-				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
+				$hacks->legacyBlockIdToStringIdMap->hack($feature->fullStringId(), $feature->blockId()->getBlockId());
+				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
+				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
 				if(!$feature instanceof IBlockOnly){
 					// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
 					$creativeItems->append(ExperimentalBlocks::fromString($feature->stringId())->asItem());
@@ -71,7 +71,8 @@ class NewFeatureRegister{
 			ExperimentalItems::register($feature->stringId(), ItemFactory::getInstance()->get($feature->itemId()->getId()));
 			StringToItemParser::getInstance()->register($feature->stringId(), Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			if(!$feature->isRegisteredPmmp()){
-				$hack2->hack($feature->itemId()->getId(), $feature->runtimeId());
+				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
+				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
 				$creativeItems->append(ExperimentalItems::fromString($feature->stringId()));
 			}
 		}

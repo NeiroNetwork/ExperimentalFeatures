@@ -9,23 +9,15 @@ use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\UnknownBlock;
 use pocketmine\block\Wall;
-use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
-use pocketmine\scheduler\AsyncTask;
 use pocketmine\Server;
 use ReflectionClass;
 use ReflectionMethod;
-use ReflectionProperty;
-use Volatile;
 
-class BlockMappingHack{
+class RuntimeBlockMappingHack{
 
 	private array $idToStatesMap = [];
-
 	private ReflectionMethod $registerMapping;
-	private ReflectionProperty $legacyToString;
-	private ReflectionProperty $stringToLegacy;
-
 	private array $modifiedMappingEntries = [];
 
 	public function __construct(){
@@ -35,16 +27,10 @@ class BlockMappingHack{
 		}
 		$this->registerMapping = (new ReflectionClass($mapping))->getMethod("registerMapping");
 		$this->registerMapping->setAccessible(true);
-
-		$parent = (new ReflectionClass(LegacyBlockIdToStringIdMap::getInstance()))->getParentClass();
-		$this->legacyToString = $parent->getProperty("legacyToString");
-		$this->legacyToString->setAccessible(true);
-		$this->stringToLegacy = $parent->getProperty("stringToLegacy");
-		$this->stringToLegacy->setAccessible(true);
 	}
 
-	public function hack(string $name, Block $block) : void{
-		foreach($this->idToStatesMap[$name] as $key => $staticRuntimeId){
+	public function hack(string $fullStringId, Block $block) : void{
+		foreach($this->idToStatesMap[$fullStringId] as $key => $staticRuntimeId){
 			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
 			$this->modifiedMappingEntries[] = [$staticRuntimeId, $block->getId(), $key];
 
@@ -62,35 +48,13 @@ class BlockMappingHack{
 				BlockFactory::getInstance()->register($newBlock);
 			}
 		}
-
-		$mapping = LegacyBlockIdToStringIdMap::getInstance();
-		$legacyToString = $this->legacyToString->getValue($mapping);
-		$legacyToString[$block->getId()] = $name;
-		$this->legacyToString->setValue($mapping, $legacyToString);
-
-		$stringToLegacy = $this->stringToLegacy->getValue($mapping);
-		$stringToLegacy[$name] = $block->getId();
-		$this->stringToLegacy->setValue($mapping, $stringToLegacy);
 	}
 
 	public function __destruct(){
 		// Hack for ChunkRequestTask
 		$asyncPool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $asyncPool->getSize(); ++$i){
-			$asyncPool->submitTaskToWorker(new class($this->modifiedMappingEntries) extends AsyncTask{
-				private Volatile $entries;
-				public function __construct($entries){
-					$this->entries = $entries;
-				}
-				public function onRun() : void{
-					$mapping = RuntimeBlockMapping::getInstance();
-					$method = (new \ReflectionClass($mapping))->getMethod("registerMapping");
-					$method->setAccessible(true);
-					foreach($this->entries as $entry){
-						$method->invoke($mapping, ...$entry);
-					}
-				}
-			}, $i);
+			$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask($this->modifiedMappingEntries), $i);
 		}
 	}
 }
