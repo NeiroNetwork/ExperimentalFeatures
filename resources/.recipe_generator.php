@@ -112,11 +112,18 @@ foreach($iterator as $info){
 		foreach($data as $key => $value){
 			match ($key) {
 				"format_version" => null,
-				"minecraft:recipe_shaped" => array_push($shapedRecipes, ShapedRecipe::from($value)),
-				"minecraft:recipe_shapeless" => array_push($shapelessRecipes, CraftingRecipe::from($value)),
-				"minecraft:recipe_furnace" => array_push($smeltingRecipes, SmeltingRecipe::from($value)),
+				"minecraft:recipe_shaped" => $shapedRecipes = array_merge($shapedRecipes, ShapedRecipe::from($value)),
+				"minecraft:recipe_shapeless" => $shapelessRecipes = array_merge($shapelessRecipes, CraftingRecipe::from($value)),
+				"minecraft:recipe_furnace" => $smeltingRecipes = array_merge($smeltingRecipes, SmeltingRecipe::from($value)),
 				default => message("notice", "Unknown key \"$key\" was found"),
 			};
 		}
 	}
 }
+
+file_put_contents("recipes.json", json_encode([
+	"shaped" => $shapedRecipes,
+	"shapeless" => $shapelessRecipes,
+	"smelting" => $smeltingRecipes,
+]));
+message("info", "Exported file as \"recipes.json\"");
