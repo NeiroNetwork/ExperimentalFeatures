@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
@@ -19,6 +20,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CryingObsidian;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
@@ -40,6 +42,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
@@ -99,6 +103,11 @@ final class FeaturesList{
 		BlackstoneWall::class,
 		BlackstoneSlab::class,
 		BlackstoneDoubleSlab::class,
+		CryingObsidian::class,
+		AncientDebris::class,
+		Deepslate::class,
+		CobbledDeepslate::class,
+
 	];
 
 	/** @var Feature[] */
