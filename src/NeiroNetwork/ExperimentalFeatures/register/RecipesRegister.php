@@ -41,20 +41,26 @@ class RecipesRegister{
 			if($recipe["block"] !== "crafting_table"){ //TODO: filter others out for now to avoid breaking economics
 				continue;
 			}
-			$result->registerShapelessRecipe(new ShapelessRecipe(
-				array_map($itemDeserializerFunc, $recipe["input"]),
-				array_map($itemDeserializerFunc, $recipe["output"])
-			));
+			try{
+				$result->registerShapelessRecipe(new ShapelessRecipe(
+					array_map($itemDeserializerFunc, $recipe["input"]),
+					array_map($itemDeserializerFunc, $recipe["output"])
+				));
+			}catch(ItemNotFoundException){
+			}
 		}
 		foreach($recipes["shaped"] as $recipe){
 			if($recipe["block"] !== "crafting_table"){ //TODO: filter others out for now to avoid breaking economics
 				continue;
 			}
-			$result->registerShapedRecipe(new ShapedRecipe(
-				$recipe["shape"],
-				array_map($itemDeserializerFunc, $recipe["input"]),
-				array_map($itemDeserializerFunc, $recipe["output"])
-			));
+			try{
+				$result->registerShapedRecipe(new ShapedRecipe(
+					$recipe["shape"],
+					array_map($itemDeserializerFunc, $recipe["input"]),
+					array_map($itemDeserializerFunc, $recipe["output"])
+				));
+			}catch(ItemNotFoundException){
+			}
 		}
 		foreach($recipes["smelting"] as $recipe){
 			$furnaceType = match ($recipe["block"]){
@@ -67,15 +73,24 @@ class RecipesRegister{
 			if($furnaceType === null){
 				continue;
 			}
-			$result->getFurnaceRecipeManager($furnaceType)->register(new FurnaceRecipe(
-				$itemDeserializerFunc($recipe["output"]),
-				$itemDeserializerFunc($recipe["input"])
-			));
+			try{
+				$result->getFurnaceRecipeManager($furnaceType)->register(new FurnaceRecipe(
+					$itemDeserializerFunc($recipe["output"]),
+					$itemDeserializerFunc($recipe["input"])
+				));
+			}catch(ItemNotFoundException){
+			}
 		}
 	}
 
+	/**
+	 * @throws ItemNotFoundException
+	 */
 	private static function itemJsonDeserialize(array $data) : Item{
 		$data["id"] = LegacyItemIdToStringIdMap::getInstance()->stringToLegacy($data["id"]);
+		if($data["id"] === null){
+			throw new ItemNotFoundException();
+		}
 		return Item::jsonDeserialize($data);
 	}
 
