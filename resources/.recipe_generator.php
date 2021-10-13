@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 set_error_handler(fn(int $severity, string $message, string $file, int $line) => throw new ErrorException($message, 0, $severity, $file, $line));
 
-function message(string $type, string $message) : void{
-	$type = strtoupper($type);
-	echo "[$type] $message" . PHP_EOL;
+function message(string $prefix, string $message) : void{
+	$prefix = strtoupper($prefix);
+	echo "[$prefix] $message" . PHP_EOL;
 }
 
 abstract class Recipe implements JsonSerializable{
@@ -87,6 +87,9 @@ class ShapedRecipe extends CraftingRecipe{
 
 class SmeltingRecipe extends Recipe{
 	protected function __construct(array $rawRecipe, string $block){
+		$this->block = $block;
+		$this->input = $this->toItem(is_array($rawRecipe["input"]) ? $rawRecipe["input"] : ["item" => $rawRecipe["input"]]);
+		$this->output = $this->toItem(is_array($rawRecipe["output"]) ? $rawRecipe["output"] : ["item" => $rawRecipe["output"]]);
 	}
 }
 
@@ -111,7 +114,7 @@ foreach($iterator as $info){
 				"format_version" => null,
 				"minecraft:recipe_shaped" => array_push($shapedRecipes, ShapedRecipe::from($value)),
 				"minecraft:recipe_shapeless" => array_push($shapelessRecipes, CraftingRecipe::from($value)),
-				"minecraft:recipe_furnace" => null,	//TODO
+				"minecraft:recipe_furnace" => array_push($smeltingRecipes, SmeltingRecipe::from($value)),
 				default => message("notice", "Unknown key \"$key\" was found"),
 			};
 		}
