@@ -15,7 +15,7 @@ use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
 
-class Deepslate extends Feature implements IBlock, HasRecipe{
+class Deepslate extends Feature implements IBlock{
 
 	public function stringId() : string{
 		return "deepslate";
@@ -35,10 +35,5 @@ class Deepslate extends Feature implements IBlock, HasRecipe{
 				return true;
 			}
 		};
-	}
-
-	public function recipe() : array{
-		// TODO: レシピを追加する
-		return [];
 	}
 }
