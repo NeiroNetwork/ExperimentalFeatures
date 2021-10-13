@@ -8,21 +8,14 @@ use ArrayObject;
 use Closure;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
-use NeiroNetwork\ExperimentalFeatures\feature\interfaces\HasRecipe;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
-use NeiroNetwork\ExperimentalFeatures\feature\recipe\BlastFurnaceRecipe;
-use NeiroNetwork\ExperimentalFeatures\feature\recipe\SmokerRecipe;
 use NeiroNetwork\ExperimentalFeatures\register\hack\PmmpHacks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\UnknownBlock;
-use pocketmine\crafting\FurnaceRecipe;
-use pocketmine\crafting\FurnaceType;
-use pocketmine\crafting\ShapedRecipe;
-use pocketmine\crafting\ShapelessRecipe;
 use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
@@ -42,7 +35,6 @@ class NewFeatureRegister{
 			$creativeItems = new ArrayObject();
 			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeaturesList::get());
 			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
-			array_map(fn($feature) => self::register2($feature), FeaturesList::get());
 			self::fixRecipes();
 		}
 	}
@@ -74,21 +66,6 @@ class NewFeatureRegister{
 				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
 				$creativeItems->append(ExperimentalItems::fromString($feature->stringId()));
-			}
-		}
-	}
-
-	private static function register2(Feature $feature) : void{
-		$craftingManager = Server::getInstance()->getCraftingManager();
-		if($feature instanceof HasRecipe){
-			foreach($feature->recipe() as $recipe){
-				match(true){
-					$recipe instanceof ShapedRecipe => $craftingManager->registerShapedRecipe($recipe),
-					$recipe instanceof ShapelessRecipe => $craftingManager->registerShapelessRecipe($recipe),
-					$recipe instanceof FurnaceRecipe => $craftingManager->getFurnaceRecipeManager(FurnaceType::FURNACE())->register($recipe),
-					$recipe instanceof BlastFurnaceRecipe => $craftingManager->getFurnaceRecipeManager(FurnaceType::BLAST_FURNACE())->register($recipe),
-					$recipe instanceof SmokerRecipe => $craftingManager->getFurnaceRecipeManager(FurnaceType::SMOKER())->register($recipe),
-				};
 			}
 		}
 	}
