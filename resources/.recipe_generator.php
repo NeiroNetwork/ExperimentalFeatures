@@ -71,7 +71,13 @@ class ShapedRecipe extends CraftingRecipe{
 
 	protected function __construct(array $rawRecipe, string $block){
 		parent::__construct($rawRecipe, $block);
-		$this->shape = $rawRecipe["pattern"];
+		$length = 1;
+		foreach($rawRecipe["pattern"] as $row){
+			if(strlen($row) > $length){
+				$length = strlen($row);
+			}
+		}
+		$this->shape = array_map(fn(string $row) => str_pad($row, $length), $rawRecipe["pattern"]);
 	}
 
 	public function jsonSerialize() : array{
