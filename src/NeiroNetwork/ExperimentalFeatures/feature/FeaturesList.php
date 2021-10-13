@@ -4,10 +4,6 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -19,6 +15,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
@@ -39,7 +36,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
@@ -50,74 +46,65 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIronBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 
-final class NewFeatures{
+final class FeaturesList{
+
+	// 新しく作ったものは必ず一番下に追加する
+	public const IMPLEMENTED_FEATURES = [
+		CrimsonPlanks::class,
+		NetheriteIngot::class,
+		AmethystBlock::class,
+		CrimsonStem::class,
+		CrimsonSlab::class,
+		CrimsonDoubleSlab::class,
+		BuddingAmethyst::class,
+		AmethystCluster::class,
+		LargeAmethystBud::class,
+		MediumAmethystBud::class,
+		SmallAmethystBud::class,
+		AmethystShard::class,
+		GlowInkSac::class,
+		RawIron::class,
+		RawIronBlock::class,
+		RawGold::class,
+		RawGoldBlock::class,
+		TintedGlass::class,
+		CrimsonButton::class,
+		CrimsonFence::class,
+		CrimsonFenceGate::class,
+		CrimsonHyphae::class,
+		CrimsonPressurePlate::class,
+		CrimsonStairs::class,
+		CrimsonTrapdoor::class,
+		StrippedCrimsonHyphae::class,
+		StrippedCrimsonStem::class,
+		WarpedWartBlock::class,
+		StrippedWarpedHyphae::class,
+		StrippedWarpedStem::class,
+		WarpedHyphae::class,
+		WarpedStem::class,
+		WarpedButton::class,
+		WarpedDoubleSlab::class,
+		WarpedSlab::class,
+		WarpedFence::class,
+		WarpedFenceGate::class,
+		WarpedPlanks::class,
+		WarpedPressurePlate::class,
+		WarpedStairs::class,
+		WarpedTrapdoor::class,
+	];
 
 	/** @var Feature[] */
-	private static array $featureCache;
+	private static array $cache;
 
 	public static function get() : array{
-		if(!isset(self::$featureCache)){
-			self::generate();
+		if(!isset(self::$cache)){
+			self::$cache = [];
+			foreach(self::IMPLEMENTED_FEATURES as $featureClass){
+				$feature = new $featureClass();
+				assert($feature instanceof Feature);
+				self::$cache[] = $feature;
+			}
 		}
-		return self::$featureCache;
-	}
-
-	public static function generate() : void{
-		// 要素の順番で内部IDが決定するので並び変えてはいけない
-		self::$featureCache = [
-			// 1.17~
-			new RawIron(),
-			new RawGold(),
-			new RawIronBlock(),
-			new RawGoldBlock(),
-			new GlowInkSac(),
-			new AmethystBlock(),
-			new BuddingAmethyst(),
-			new AmethystCluster(),
-			new LargeAmethystBud(),
-			new MediumAmethystBud(),
-			new SmallAmethystBud(),
-			new AmethystShard(),
-
-			// 真紅の木
-			new CrimsonPlanks(),
-			new CrimsonFence(),
-			new CrimsonFenceGate(),
-			new CrimsonStairs(),
-			new CrimsonTrapdoor(),
-			new CrimsonSlab(),
-			new CrimsonDoubleSlab(),
-			new CrimsonButton(),
-			new CrimsonPressurePlate(),
-			new CrimsonStem(),
-			new StrippedCrimsonStem(),
-			new CrimsonHyphae(),
-			new StrippedCrimsonHyphae(),
-			// 歪んだ木
-			new WarpedPlanks(),
-			new WarpedFence(),
-			new WarpedFenceGate(),
-			new WarpedStairs(),
-			new WarpedTrapdoor(),
-			new WarpedSlab(),
-			new WarpedDoubleSlab(),
-			new WarpedButton(),
-			new WarpedPressurePlate(),
-			new WarpedStem(),
-			new StrippedWarpedStem(),
-			new WarpedHyphae(),
-			new StrippedWarpedHyphae(),
-
-			new WarpedWartBlock(),
-
-			new Blackstone(),
-			new BlackstoneWall(),
-			new BlackstoneSlab(),
-			new BlackstoneDoubleSlab(),
-
-			new TintedGlass(),
-
-			new Deepslate(),
-		];
+		return self::$cache;
 	}
 }

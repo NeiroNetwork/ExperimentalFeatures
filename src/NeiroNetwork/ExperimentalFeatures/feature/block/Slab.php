@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature\base;
+namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
+use NeiroNetwork\ExperimentalFeatures\feature\block\convert\SlabConverter;
 use pocketmine\block\Block;
-use pocketmine\block\Slab;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
@@ -16,9 +16,9 @@ use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
 /**
- * @see Slab
+ * @see \pocketmine\block\Slab
  */
-abstract class SimpleSlab extends Transparent{
+class Slab extends Transparent{
 
 	protected bool $top = false;
 
@@ -35,7 +35,7 @@ abstract class SimpleSlab extends Transparent{
 			return true;
 		}
 
-		if($blockReplace instanceof SimpleSlab and $blockReplace->isSameType($this)){
+		if($blockReplace instanceof Slab and $blockReplace->isSameType($this)){
 			if($blockReplace->top){ //Trying to combine with top slab
 				return $clickVector->y <= 0.5 or (!$isClickedBlock and $face === Facing::UP);
 			}else{
@@ -47,11 +47,11 @@ abstract class SimpleSlab extends Transparent{
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		if($blockReplace instanceof SimpleSlab and $blockReplace->isSameType($this) and (
+		if($blockReplace instanceof Slab and $blockReplace->isSameType($this) and (
 				($blockReplace->top and ($clickVector->y <= 0.5 or $face === Facing::UP)) or
 				(!$blockReplace->top and ($clickVector->y >= 0.5 or $face === Facing::DOWN))
 			)){ //Clicked in empty half of existing slab
-			$tx->addBlock($blockReplace->position, $this->getDoubleSlab());
+			$tx->addBlock($blockReplace->position, SlabConverter::toDouble($this));
 			return true;
 		}
 
@@ -74,6 +74,4 @@ abstract class SimpleSlab extends Transparent{
 	public function isSameType(Block $other) : bool{
 		return $this->idInfo->getBlockId() === $other->idInfo->getBlockId();
 	}
-
-	abstract public function getDoubleSlab() : Block;
 }

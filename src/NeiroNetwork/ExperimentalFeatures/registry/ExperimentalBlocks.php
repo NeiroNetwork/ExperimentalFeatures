@@ -7,18 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\registry;
 use pocketmine\block\Block;
 use pocketmine\utils\CloningRegistryTrait;
 
-/**
- * @method static Block RAW_IRON_BLOCK()
- * @method static Block RAW_GOLD_BLOCK()
- * @method static Block CRIMSON_SLAB()
- * @method static Block CRIMSON_DOUBLE_SLAB()
- * @method static Block WARPED_SLAB()
- * @method static Block WARPED_DOUBLE_SLAB()
- * @method static Block BLACKSTONE_SLAB()
- * @method static Block BLACKSTONE_DOUBLE_SLAB()
- * @method static TINTED_GLASS()
- * @method static AMETHYST_BLOCK()
- */
 class ExperimentalBlocks{
 	use CloningRegistryTrait;
 
