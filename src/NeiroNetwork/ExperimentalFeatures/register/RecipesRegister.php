@@ -37,7 +37,7 @@ class RecipesRegister{
 		$itemDeserializerFunc = \Closure::fromCallable([self::class, "itemJsonDeserialize"]);
 
 		foreach($recipes["shapeless"] as $recipe){
-			if($recipe["block"] !== "crafting_table"){ //TODO: filter others out for now to avoid breaking economics
+			if($recipe["block"] !== "crafting_table"){
 				continue;
 			}
 			try{
@@ -49,7 +49,7 @@ class RecipesRegister{
 			}
 		}
 		foreach($recipes["shaped"] as $recipe){
-			if($recipe["block"] !== "crafting_table"){ //TODO: filter others out for now to avoid breaking economics
+			if($recipe["block"] !== "crafting_table"){
 				continue;
 			}
 			try{
@@ -66,7 +66,6 @@ class RecipesRegister{
 				"furnace" => FurnaceType::FURNACE(),
 				"blast_furnace" => FurnaceType::BLAST_FURNACE(),
 				"smoker" => FurnaceType::SMOKER(),
-				//TODO: campfire
 				default => null
 			};
 			if($furnaceType === null){
