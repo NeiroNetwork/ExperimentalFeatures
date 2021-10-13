@@ -18,6 +18,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
@@ -65,6 +67,8 @@ final class FeaturesList{
 		StrippedCrimsonHyphae::class,
 		StrippedCrimsonStem::class,
 		WarpedWartBlock::class,
+		StrippedWarpedHyphae::class,
+		StrippedWarpedStem::class,
 	];
 
 	/** @var Feature[] */
