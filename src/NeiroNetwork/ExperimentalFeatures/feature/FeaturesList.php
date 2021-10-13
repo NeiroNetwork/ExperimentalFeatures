@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
@@ -20,6 +21,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBasalt;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
@@ -99,6 +102,9 @@ final class FeaturesList{
 		BlackstoneWall::class,
 		BlackstoneSlab::class,
 		BlackstoneDoubleSlab::class,
+		Basalt::class,
+		PolishedBasalt::class,
+		SmoothBasalt::class,
 	];
 
 	/** @var Feature[] */
