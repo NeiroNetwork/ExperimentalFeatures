@@ -41,8 +41,20 @@ abstract class Recipe implements JsonSerializable{
 	}
 }
 
-abstract class CraftingRecipe extends Recipe{
+class CraftingRecipe extends Recipe{
 	protected int $priority;
+
+	protected function __construct(array $rawRecipe, string $block){
+		$this->block = $block;
+		foreach($rawRecipe["key"] ?? $rawRecipe["ingredients"] as $keyString => $itemArray){
+			$this->input[$keyString] = $this->toItem($itemArray);
+		}
+		$this->output = isset($rawRecipe["result"]["item"]) ? [$this->toItem($rawRecipe["result"])] : array_map([$this, "toItem"], $rawRecipe["result"]);
+		if(!isset($rawRecipe["priority"])){
+			message("debug", "Couldn't find \"priority\" at \"{$rawRecipe["description"]["identifier"]}\", set \"priority\" to 0");
+		}
+		$this->priority = $rawRecipe["priority"] ?? 0;
+	}
 
 	public function jsonSerialize() : array{
 		return [
@@ -57,16 +69,8 @@ abstract class CraftingRecipe extends Recipe{
 class ShapedRecipe extends CraftingRecipe{
 	protected array $shape = [];
 
-	public function __construct(array $rawRecipe, string $block){
-		$this->block = $block;
-		foreach($rawRecipe["key"] as $keyString => $itemArray){
-			$this->input[$keyString] = $this->toItem($itemArray);
-		}
-		$this->output = isset($rawRecipe["result"]["item"]) ? [$this->toItem($rawRecipe["result"])] : array_map([$this, "toItem"], $rawRecipe["result"]);	#BlameMojang
-		if(!isset($rawRecipe["priority"])){
-			message("debug", "Couldn't find \"priority\" at \"{$rawRecipe["description"]["identifier"]}\", set \"priority\" to 0");
-		}
-		$this->priority = $rawRecipe["priority"] ?? 0;
+	protected function __construct(array $rawRecipe, string $block){
+		parent::__construct($rawRecipe, $block);
 		$this->shape = $rawRecipe["pattern"];
 	}
 
@@ -81,22 +85,8 @@ class ShapedRecipe extends CraftingRecipe{
 	}
 }
 
-class ShapelessRecipe extends CraftingRecipe{
-	public function __construct(array $rawRecipe, string $block){
-		$this->block = $block;
-		foreach($rawRecipe["key"] as $keyString => $itemArray){
-			$this->input[$keyString] = $this->toItem($itemArray);
-		}
-		$this->output = isset($rawRecipe["result"]["item"]) ? [$this->toItem($rawRecipe["result"])] : array_map([$this, "toItem"], $rawRecipe["result"]);	#BlameMojang
-		if(!isset($rawRecipe["priority"])){
-			message("debug", "Couldn't find \"priority\" at \"{$rawRecipe["description"]["identifier"]}\", set \"priority\" to 0");
-		}
-		$this->priority = $rawRecipe["priority"] ?? 0;
-	}
-}
-
 class SmeltingRecipe extends Recipe{
-	public function __construct(array $rawRecipe, string $block){
+	protected function __construct(array $rawRecipe, string $block){
 	}
 }
 
@@ -120,7 +110,7 @@ foreach($iterator as $info){
 			match ($key) {
 				"format_version" => null,
 				"minecraft:recipe_shaped" => array_push($shapedRecipes, ShapedRecipe::from($value)),
-				"minecraft:recipe_shapeless" => array_push($shapelessRecipes, ShapelessRecipe::from($value)),
+				"minecraft:recipe_shapeless" => array_push($shapelessRecipes, CraftingRecipe::from($value)),
 				"minecraft:recipe_furnace" => null,	//TODO
 				default => message("notice", "Unknown key \"$key\" was found"),
 			};
