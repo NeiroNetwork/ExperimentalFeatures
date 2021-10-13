@@ -17,6 +17,7 @@ class BlackstoneDoubleSlab extends Feature implements IBlockOnly{
 	public function stringId() : string{
 		return "blackstone_double_slab";
 	}
+
 	public function block() : Block{
 		return new DoubleSlab(
 			$this->blockId(),

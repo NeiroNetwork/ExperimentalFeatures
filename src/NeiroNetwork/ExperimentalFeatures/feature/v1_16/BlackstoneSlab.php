@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_16;
 
-use NeiroNetwork\ExperimentalFeatures\feature\block\DoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\block\Slab;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
@@ -17,8 +17,9 @@ class BlackstoneSlab extends Feature implements IBlock{
 	public function stringId() : string{
 		return "blackstone_slab";
 	}
+
 	public function block() : Block{
-		return new DoubleSlab(
+		return new Slab(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
