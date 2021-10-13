@@ -18,7 +18,7 @@ class Button extends \pocketmine\block\Button{
 	}
 
 	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		return true;
+		return false;
 	}
 
 	public function onNearbyBlockChange() : void{
