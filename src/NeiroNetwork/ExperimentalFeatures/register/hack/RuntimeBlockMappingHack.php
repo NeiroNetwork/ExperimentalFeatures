@@ -10,6 +10,7 @@ use pocketmine\block\BlockIdentifier;
 use pocketmine\block\UnknownBlock;
 use pocketmine\block\Wall;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
+use pocketmine\scheduler\ClosureTask;
 use pocketmine\Server;
 use ReflectionClass;
 use ReflectionMethod;
@@ -52,9 +53,23 @@ class RuntimeBlockMappingHack{
 
 	public function __destruct(){
 		// Hack for ChunkRequestTask
+		HackRuntimeBlockMappingTask::setMappingEntries($this->modifiedMappingEntries);
 		$asyncPool = Server::getInstance()->getAsyncPool();
 		for($i = 0; $i < $asyncPool->getSize(); ++$i){
-			$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask($this->modifiedMappingEntries), $i);
+			$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask(), $i);
 		}
+
+		//TODO
+		/*
+		$config = Server::getInstance()->getConfigGroup();
+		$garbageCollectionPeriod = $config->getPropertyInt("memory.garbage-collection.period", 36000);
+		$garbageCollectionAsync = $config->getPropertyBool("memory.garbage-collection.collect-async-worker", true);
+		if($garbageCollectionPeriod > 0 && $garbageCollectionAsync){
+			Server::getInstance()->getPluginManager()->getPlugin("ExperimentalFeatures")->getScheduler()->scheduleRepeatingTask(
+				new ClosureTask(function() : void{
+					echo "running\n";
+				}), $garbageCollectionPeriod);
+		}
+		*/
 	}
 }
