@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
 use NeiroNetwork\ExperimentalFeatures\feature\block\convert\SlabConverter;
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\Transparent;
-use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\math\AxisAlignedBB;

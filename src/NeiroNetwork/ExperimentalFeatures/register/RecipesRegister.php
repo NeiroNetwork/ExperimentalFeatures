@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
-use Closure;
 use pocketmine\block\UnknownBlock;
 use pocketmine\crafting\CraftingManagerFromDataHelper;
 use pocketmine\crafting\FurnaceRecipe;
@@ -35,7 +34,7 @@ class RecipesRegister{
 		$recipes = json_decode(stream_get_contents($resource), true);
 		fclose($resource);
 		$result = Server::getInstance()->getCraftingManager();
-		$itemDeserializerFunc = Closure::fromCallable([self::class, "itemJsonDeserialize"]);
+		$itemDeserializerFunc = \Closure::fromCallable([self::class, "itemJsonDeserialize"]);
 
 		foreach($recipes["shapeless"] as $recipe){
 			if($recipe["block"] !== "crafting_table"){ //TODO: filter others out for now to avoid breaking economics
@@ -46,7 +45,7 @@ class RecipesRegister{
 					array_map($itemDeserializerFunc, $recipe["input"]),
 					array_map($itemDeserializerFunc, $recipe["output"])
 				));
-			}catch(ItemNotFoundException){
+			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
 			}
 		}
 		foreach($recipes["shaped"] as $recipe){
@@ -59,7 +58,7 @@ class RecipesRegister{
 					array_map($itemDeserializerFunc, $recipe["input"]),
 					array_map($itemDeserializerFunc, $recipe["output"])
 				));
-			}catch(ItemNotFoundException){
+			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
 			}
 		}
 		foreach($recipes["smelting"] as $recipe){
@@ -78,7 +77,7 @@ class RecipesRegister{
 					$itemDeserializerFunc($recipe["output"]),
 					$itemDeserializerFunc($recipe["input"])
 				));
-			}catch(ItemNotFoundException){
+			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
 			}
 		}
 	}

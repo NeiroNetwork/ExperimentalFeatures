@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
-use ArrayObject;
-use Closure;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
@@ -30,17 +28,17 @@ class NewFeatureRegister{
 			self::$initialized = true;
 
 			$hacks = new PmmpHacks();
-			$creativeItems = new ArrayObject();
+			$creativeItems = new \ArrayObject();
 			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeaturesList::get());
 			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
 		}
 	}
 
-	private static function register(Feature $feature, PmmpHacks $hacks, ArrayObject $creativeItems) : void{
+	private static function register(Feature $feature, PmmpHacks $hacks, \ArrayObject $creativeItems) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
-			StringToItemParser::getInstance()->registerBlock($feature->stringId(), Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
+			StringToItemParser::getInstance()->registerBlock($feature->stringId(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
 			$hacks->runtimeBlockMapping->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
 
 			if(!$feature->isRegisteredPmmp()){
@@ -58,7 +56,7 @@ class NewFeatureRegister{
 		if($feature instanceof IItem){
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->stringId(), ItemFactory::getInstance()->get($feature->itemId()->getId()));
-			StringToItemParser::getInstance()->register($feature->stringId(), Closure::fromCallable([ExperimentalItems::class, "fromString"]));
+			StringToItemParser::getInstance()->register($feature->stringId(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
 			if(!$feature->isRegisteredPmmp()){
 				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
