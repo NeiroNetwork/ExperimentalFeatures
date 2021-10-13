@@ -93,8 +93,11 @@ class SmeltingRecipe extends Recipe{
 	}
 }
 
+/** @var ShapedRecipe[] $shapedRecipes */
 $shapedRecipes = [];
+/** @var CraftingRecipe[] $shapelessRecipes */
 $shapelessRecipes = [];
+/** @var SmeltingRecipe[] $smeltingRecipes */
 $smeltingRecipes = [];
 
 $iterator = new DirectoryIterator(dirname(__FILE__) . DIRECTORY_SEPARATOR . "recipes");
