@@ -14,13 +14,11 @@ use pocketmine\event\server\LowMemoryEvent;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\Server;
-use ReflectionClass;
-use ReflectionMethod;
 
 class RuntimeBlockMappingHack{
 
 	private array $idToStatesMap = [];
-	private ReflectionMethod $registerMapping;
+	private \ReflectionMethod $registerMapping;
 	private array $modifiedMappingEntries = [];
 
 	public function __construct(){
@@ -28,7 +26,7 @@ class RuntimeBlockMappingHack{
 		foreach($mapping->getBedrockKnownStates() as $key => $state){
 			$this->idToStatesMap[$state->getString("name")][] = $key;
 		}
-		$this->registerMapping = (new ReflectionClass($mapping))->getMethod("registerMapping");
+		$this->registerMapping = (new \ReflectionClass($mapping))->getMethod("registerMapping");
 		$this->registerMapping->setAccessible(true);
 	}
 
