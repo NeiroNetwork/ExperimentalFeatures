@@ -66,19 +66,20 @@ class RuntimeBlockMappingHack{
 
 		$pluginManager = Server::getInstance()->getPluginManager();
 		$plugin = $pluginManager->getPlugin("ExperimentalFeatures");
+		$scheduler = $plugin->getScheduler();
 
 		// MemoryManagerのGCのタイミングで再度hackしなおす
 		$config = Server::getInstance()->getConfigGroup();
 		$garbageCollectionPeriod = $config->getPropertyInt("memory.garbage-collection.period", 36000);
 		$garbageCollectionAsync = $config->getPropertyBool("memory.garbage-collection.collect-async-worker", true);
 		if($garbageCollectionPeriod > 0 && $garbageCollectionAsync){
-			$plugin->getScheduler()->scheduleDelayedRepeatingTask(new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
+			$scheduler->scheduleDelayedRepeatingTask(new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
 		}
 
 		// LowMemoryEvent をリッスンする
 		$pluginManager->registerEvent(
 			LowMemoryEvent::class,
-			fn(LowMemoryEvent $e) => $runtimeBlockMappingAsyncHack(),
+			fn(LowMemoryEvent $e) => $scheduler->scheduleDelayedTask(new ClosureTask($runtimeBlockMappingAsyncHack), 1),
 			EventPriority::NORMAL,
 			$plugin
 		);
