@@ -9,6 +9,8 @@ use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\UnknownBlock;
 use pocketmine\block\Wall;
+use pocketmine\event\EventPriority;
+use pocketmine\event\server\LowMemoryEvent;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use pocketmine\scheduler\ClosureTask;
 use pocketmine\Server;
@@ -62,12 +64,23 @@ class RuntimeBlockMappingHack{
 		};
 		$runtimeBlockMappingAsyncHack();
 
+		$pluginManager = Server::getInstance()->getPluginManager();
+		$plugin = $pluginManager->getPlugin("ExperimentalFeatures");
+
+		// MemoryManagerのGCのタイミングで再度hackしなおす
 		$config = Server::getInstance()->getConfigGroup();
 		$garbageCollectionPeriod = $config->getPropertyInt("memory.garbage-collection.period", 36000);
 		$garbageCollectionAsync = $config->getPropertyBool("memory.garbage-collection.collect-async-worker", true);
 		if($garbageCollectionPeriod > 0 && $garbageCollectionAsync){
-			Server::getInstance()->getPluginManager()->getPlugin("ExperimentalFeatures")->getScheduler()->scheduleDelayedRepeatingTask(
-				new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
+			$plugin->getScheduler()->scheduleDelayedRepeatingTask(new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
 		}
+
+		// LowMemoryEvent をリッスンする
+		$pluginManager->registerEvent(
+			LowMemoryEvent::class,
+			fn(LowMemoryEvent $e) => $runtimeBlockMappingAsyncHack(),
+			EventPriority::NORMAL,
+			$plugin
+		);
 	}
 }
