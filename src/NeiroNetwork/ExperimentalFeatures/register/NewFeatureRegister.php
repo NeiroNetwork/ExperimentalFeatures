@@ -17,6 +17,7 @@ use pocketmine\inventory\CreativeInventory;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
+use pocketmine\item\LegacyStringToItemParser;
 use pocketmine\item\StringToItemParser;
 
 class NewFeatureRegister{
@@ -39,6 +40,8 @@ class NewFeatureRegister{
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
 			StringToItemParser::getInstance()->registerBlock($feature->stringId(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
+			LegacyStringToItemParser::getInstance()->addMapping($feature->stringId(), $feature->itemId()->getId());
+			LegacyStringToItemParser::getInstance()->addMapping((string) $feature->itemId()->getId(), $feature->itemId()->getId());
 			$hacks->runtimeBlockMapping->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
 
 			if(!$feature->isRegisteredPmmp()){
@@ -57,6 +60,8 @@ class NewFeatureRegister{
 			ItemFactory::getInstance()->register($feature->item());
 			ExperimentalItems::register($feature->stringId(), ItemFactory::getInstance()->get($feature->itemId()->getId()));
 			StringToItemParser::getInstance()->register($feature->stringId(), \Closure::fromCallable([ExperimentalItems::class, "fromString"]));
+			LegacyStringToItemParser::getInstance()->addMapping($feature->stringId(), $feature->itemId()->getId());
+			LegacyStringToItemParser::getInstance()->addMapping((string) $feature->itemId()->getId(), $feature->itemId()->getId());
 			if(!$feature->isRegisteredPmmp()){
 				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
