@@ -54,22 +54,20 @@ class RuntimeBlockMappingHack{
 	public function __destruct(){
 		// Hack for ChunkRequestTask
 		HackRuntimeBlockMappingTask::setMappingEntries($this->modifiedMappingEntries);
-		$asyncPool = Server::getInstance()->getAsyncPool();
-		for($i = 0; $i < $asyncPool->getSize(); ++$i){
-			$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask(), $i);
-		}
+		$runtimeBlockMappingAsyncHack = function() : void{
+			$asyncPool = Server::getInstance()->getAsyncPool();
+			for($i = 0; $i < $asyncPool->getSize(); ++$i){
+				$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask(), $i);
+			}
+		};
+		$runtimeBlockMappingAsyncHack();
 
-		//TODO
-		/*
 		$config = Server::getInstance()->getConfigGroup();
 		$garbageCollectionPeriod = $config->getPropertyInt("memory.garbage-collection.period", 36000);
 		$garbageCollectionAsync = $config->getPropertyBool("memory.garbage-collection.collect-async-worker", true);
 		if($garbageCollectionPeriod > 0 && $garbageCollectionAsync){
-			Server::getInstance()->getPluginManager()->getPlugin("ExperimentalFeatures")->getScheduler()->scheduleRepeatingTask(
-				new ClosureTask(function() : void{
-					echo "running\n";
-				}), $garbageCollectionPeriod);
+			Server::getInstance()->getPluginManager()->getPlugin("ExperimentalFeatures")->getScheduler()->scheduleDelayedRepeatingTask(
+				new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
 		}
-		*/
 	}
 }
