@@ -7,12 +7,12 @@ namespace NeiroNetwork\ExperimentalFeatures\register\hack;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
 use pocketmine\scheduler\AsyncTask;
 
-class HackRuntimeBlockMappingTask extends AsyncTask{
+class RuntimeBlockMappingHackTask extends AsyncTask{
 
-	private static array $mappingEntries;
+	private static array $mappingEntries = [];
 
-	public static function setMappingEntries(array $entries) : void{
-		self::$mappingEntries = $entries;
+	public static function addHackArgs(array $args) : void{
+		self::$mappingEntries[] = $args;
 	}
 
 	private /** @noinspection PhpMissingFieldTypeInspection */ $entries;
@@ -25,8 +25,8 @@ class HackRuntimeBlockMappingTask extends AsyncTask{
 		$mapping = RuntimeBlockMapping::getInstance();
 		$method = (new \ReflectionClass($mapping))->getMethod("registerMapping");
 		$method->setAccessible(true);
-		foreach($this->entries as $entry){
-			$method->invoke($mapping, ...$entry);
+		foreach($this->entries as $args){
+			$method->invoke($mapping, ...$args);
 		}
 	}
 }

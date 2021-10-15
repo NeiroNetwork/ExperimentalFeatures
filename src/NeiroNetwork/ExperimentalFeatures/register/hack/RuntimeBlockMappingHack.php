@@ -19,7 +19,6 @@ class RuntimeBlockMappingHack{
 
 	private array $idToStatesMap = [];
 	private \ReflectionMethod $registerMapping;
-	private array $modifiedMappingEntries = [];
 
 	public function __construct(){
 		$mapping = RuntimeBlockMapping::getInstance();
@@ -33,7 +32,7 @@ class RuntimeBlockMappingHack{
 	public function hack(string $fullStringId, Block $block) : void{
 		foreach($this->idToStatesMap[$fullStringId] as $key => $staticRuntimeId){
 			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
-			$this->modifiedMappingEntries[] = [$staticRuntimeId, $block->getId(), $key];
+			RuntimeBlockMappingHackTask::addHackArgs([$staticRuntimeId, $block->getId(), $key]);
 
 			if($block instanceof Wall){
 				// バニラの石の壁は種類がありすぎて登録できない, PocketMine-MPが石の壁に対応していない
@@ -53,11 +52,10 @@ class RuntimeBlockMappingHack{
 
 	public function __destruct(){
 		// Hack for ChunkRequestTask
-		HackRuntimeBlockMappingTask::setMappingEntries($this->modifiedMappingEntries);
 		$runtimeBlockMappingAsyncHack = function() : void{
 			$asyncPool = Server::getInstance()->getAsyncPool();
 			for($i = 0; $i < $asyncPool->getSize(); ++$i){
-				$asyncPool->submitTaskToWorker(new HackRuntimeBlockMappingTask(), $i);
+				$asyncPool->submitTaskToWorker(new RuntimeBlockMappingHackTask(), $i);
 			}
 		};
 		$runtimeBlockMappingAsyncHack();
