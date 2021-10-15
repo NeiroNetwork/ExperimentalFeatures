@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
@@ -30,7 +29,7 @@ class NewFeatureRegister{
 
 			$hacks = new PmmpHacks();
 			$creativeItems = new \ArrayObject();
-			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeaturesList::get());
+			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeatureLoadHelper::getList());
 			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
 		}
 	}
