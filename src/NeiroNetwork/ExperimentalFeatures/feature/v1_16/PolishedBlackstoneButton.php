@@ -9,6 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
+use pocketmine\block\BlockToolType;
 
 class PolishedBlackstoneButton extends Feature implements IBlock{
 
@@ -20,7 +21,7 @@ class PolishedBlackstoneButton extends Feature implements IBlock{
 		return new Button(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(0.5,)
+			new BlockBreakInfo(0.5, BlockToolType::PICKAXE)
 		);
 	}
 }

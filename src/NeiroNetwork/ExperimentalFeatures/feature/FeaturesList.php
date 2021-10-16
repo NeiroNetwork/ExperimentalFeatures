@@ -23,8 +23,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneButton;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneDoudleSlab;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePuressurePlate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
@@ -110,11 +110,11 @@ final class FeaturesList{
 		BlackstoneDoubleSlab::class,
 		PolishedBlackstone::class,
 		PolishedBlackstoneSlab::class,
-		PolishedBlackstoneDoudleSlab::class,
+		PolishedBlackstoneDoubleSlab::class,
 		PolishedBlackstoneWall::class,
 		PolishedBlackstoneStairs::class,
 		PolishedBlackstoneButton::class,
-		PolishedBlackstonePuressurePlate::class,
+		PolishedBlackstonePressurePlate::class,
 	];
 
 	/** @var Feature[] */
