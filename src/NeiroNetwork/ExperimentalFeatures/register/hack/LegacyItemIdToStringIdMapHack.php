@@ -5,16 +5,14 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\register\hack;
 
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
-use ReflectionClass;
-use ReflectionProperty;
 
 class LegacyItemIdToStringIdMapHack{
 
-	private ReflectionProperty $legacyToString;
-	private ReflectionProperty $stringToLegacy;
+	private \ReflectionProperty $legacyToString;
+	private \ReflectionProperty $stringToLegacy;
 
 	public function __construct(){
-		$parent = (new ReflectionClass(LegacyItemIdToStringIdMap::getInstance()))->getParentClass();
+		$parent = (new \ReflectionClass(LegacyItemIdToStringIdMap::getInstance()))->getParentClass();
 		$this->legacyToString = $parent->getProperty("legacyToString");
 		$this->legacyToString->setAccessible(true);
 		$this->stringToLegacy = $parent->getProperty("stringToLegacy");
