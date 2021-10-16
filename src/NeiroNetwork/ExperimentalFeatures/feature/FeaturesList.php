@@ -7,6 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
@@ -20,6 +21,13 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneButton;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePlate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
@@ -97,8 +105,16 @@ final class FeaturesList{
 		WarpedTrapdoor::class,
 		Blackstone::class,
 		BlackstoneWall::class,
+		BlackstoneStairs::class,
 		BlackstoneSlab::class,
 		BlackstoneDoubleSlab::class,
+		PolishedBlackstone::class,
+		PolishedBlackstoneSlab::class,
+		PolishedBlackstoneDoubleSlab::class,
+		PolishedBlackstoneWall::class,
+		PolishedBlackstoneStairs::class,
+		PolishedBlackstoneButton::class,
+		PolishedBlackstonePressurePlate::class,
 	];
 
 	/** @var Feature[] */
