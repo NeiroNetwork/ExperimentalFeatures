@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
@@ -26,8 +27,7 @@ class Deepslate extends Feature implements IBlock{
 			new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
 		) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
-				// TODO: 深層岩の丸石 を追加する
-				return [];
+				return [ExperimentalBlocks::fromString("cobbled_deepslate")->asItem()];
 			}
 			public function isAffectedBySilkTouch() : bool{
 				return true;
