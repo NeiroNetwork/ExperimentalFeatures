@@ -22,8 +22,7 @@ class CryingObsidian extends Feature implements IBlock{
 		return new Opaque(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(60.0, BlockToolType::PICKAXE, ToolTier::DIAMOND()->getHarvestLevel(), 6000.0)
+			new BlockBreakInfo(35.0, BlockToolType::PICKAXE, ToolTier::DIAMOND()->getHarvestLevel(), 6000.0)
 		);
 	}
 }
-

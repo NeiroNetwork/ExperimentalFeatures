@@ -107,7 +107,6 @@ final class FeaturesList{
 		AncientDebris::class,
 		Deepslate::class,
 		CobbledDeepslate::class,
-
 	];
 
 	/** @var Feature[] */

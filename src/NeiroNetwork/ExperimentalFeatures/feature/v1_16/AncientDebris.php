@@ -26,4 +26,3 @@ class AncientDebris extends Feature implements IBlock{
 		);
 	}
 }
-
