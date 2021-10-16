@@ -19,10 +19,14 @@ class CryingObsidian extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new class(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(35.0, BlockToolType::PICKAXE, ToolTier::DIAMOND()->getHarvestLevel(), 6000.0)
-		);
+		) extends Opaque{
+			public function getLightLevel() : int{
+				return 9;
+			}
+		};
 	}
 }
