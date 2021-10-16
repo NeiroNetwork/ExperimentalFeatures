@@ -10,5 +10,6 @@ final class OverrideList{
 		new Signs();
 		new NetherWartBlock();
 		new ButtonsAndPressurePlates();
+		new ItemFrameBlock();
 	}
 }
