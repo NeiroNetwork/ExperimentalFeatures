@@ -88,6 +88,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIronBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
 
 final class FeaturesList{
 
@@ -177,6 +179,8 @@ final class FeaturesList{
 		ChiseledDeepslate::class,
 		PolishedDeepslate::class,
 		InfestedDeepslate::class,
+		Calcite::class,
+		Tuff::class,
 	];
 
 	/** @var Feature[] */
