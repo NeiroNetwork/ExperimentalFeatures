@@ -54,11 +54,34 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTiles;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGold;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
@@ -131,6 +154,29 @@ final class FeaturesList{
 		Deepslate::class,
 		CobbledDeepslate::class,
 		NetheriteScrap::class,
+		CobbledDeepslateWall::class,
+		DeepslateTileWall::class,
+		PolishedDeepslateWall::class,
+		DeepslateBrickWall::class,
+		CobbledDeepslateStairs::class,
+		DeepslateTileStairs::class,
+		PolishedDeepslateStairs::class,
+		DeepslateBrickStairs::class,
+		CobbledDeepslateSlab::class,
+		CobbledDeepslateDoubleSlab::class,
+		PolishedDeepslateSlab::class,
+		PolishedDeepslateDoubleSlab::class,
+		DeepslateTileSlab::class,
+		DeepslateTileDoubleSlab::class,
+		DeepslateBrickSlab::class,
+		DeepslateBrickDoubleSlab::class,
+		DeepslateTiles::class,
+		CrackedDeepslateTiles::class,
+		DeepslateBricks::class,
+		CrackedDeepslateBricks::class,
+		ChiseledDeepslate::class,
+		PolishedDeepslate::class,
+		InfestedDeepslate::class,
 	];
 
 	/** @var Feature[] */
