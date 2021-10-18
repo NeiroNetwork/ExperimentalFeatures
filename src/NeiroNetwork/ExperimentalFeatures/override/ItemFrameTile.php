@@ -19,6 +19,10 @@ class ItemFrameTile extends ItemFrame{
 	}
 
 	private function itemNbtSerialize(Item $item) : CompoundTag{
+		if($item->isNull()){
+			return $item->nbtSerialize();
+		}
+
 		$result = CompoundTag::create()
 			->setString("Name", LegacyItemIdToStringIdMap::getInstance()->legacyToString($item->getId()) ?? "minecraft:info_update")
 			->setByte("Count", Binary::signByte($item->getCount()))
