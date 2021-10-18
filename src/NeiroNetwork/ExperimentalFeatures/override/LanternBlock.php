@@ -7,7 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\override;
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\Lantern;
-use pocketmine\block\VanillaBlocks;
 
 /**
  * ランタンを設置しやすくする (完璧ではない)
@@ -15,12 +14,15 @@ use pocketmine\block\VanillaBlocks;
 class LanternBlock{
 
 	public function __construct(){
-		$lantern = VanillaBlocks::LANTERN();
-		$newLantern = new class($lantern->getIdInfo(), $lantern->getName(), $lantern->getBreakInfo()) extends Lantern{
-			protected function canAttachTo(Block $b) : bool{
-				return $b->isSolid();
+		foreach(BlockFactory::getInstance()->getAllKnownStates() as $block){
+			if($block instanceof Lantern){
+				$newLantern = new class($block->getIdInfo(), $block->getName(), $block->getBreakInfo()) extends Lantern{
+					protected function canAttachTo(Block $b) : bool{
+						return $b->isSolid();
+					}
+				};
+				BlockFactory::getInstance()->register($newLantern, true);
 			}
-		};
-		BlockFactory::getInstance()->register($newLantern, true);
+		}
 	}
 }
