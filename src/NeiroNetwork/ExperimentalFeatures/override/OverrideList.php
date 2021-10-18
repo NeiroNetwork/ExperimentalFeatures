@@ -11,5 +11,6 @@ final class OverrideList{
 		new NetherWartBlock();
 		new ButtonsAndPressurePlates();
 		new ItemFrameBlock();
+		new LanternBlock();
 	}
 }
