@@ -51,7 +51,7 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
     - [ ] 銅のハーフブロック
 
 ### [ネザーアップデート (1.16)](https://minecraft.fandom.com/wiki/Nether_Update)
-- [ ] 魂の炎
+- [x] 魂の炎
 - [ ] 魂の松明
 - [ ] 魂のランタン
 - [ ] 魂の焚き火
