@@ -35,6 +35,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulTorch;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
@@ -179,6 +180,7 @@ final class FeaturesList{
 		PolishedDeepslate::class,
 		InfestedDeepslate::class,
 		SoulFire::class,
+		SoulTorch::class,
 	];
 
 	/** @var Feature[] */
