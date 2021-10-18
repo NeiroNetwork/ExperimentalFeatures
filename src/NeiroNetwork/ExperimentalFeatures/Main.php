@@ -15,5 +15,7 @@ class Main extends PluginBase{
 		NewFeatureRegister::registerAll();
 		RecipesRegister::registerAll($this);
 		OverrideList::override();
+
+		$this->getServer()->getPluginManager()->registerEvents(new EventListener(), $this);
 	}
 }
