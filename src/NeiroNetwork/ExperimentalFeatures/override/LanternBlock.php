@@ -6,7 +6,6 @@ namespace NeiroNetwork\ExperimentalFeatures\override;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
-use pocketmine\block\Flowable;
 use pocketmine\block\Lantern;
 use pocketmine\block\VanillaBlocks;
 
@@ -17,11 +16,11 @@ class LanternBlock{
 
 	public function __construct(){
 		$lantern = VanillaBlocks::LANTERN();
-		$lantern = new class($lantern->getIdInfo(), $lantern->getName(), $lantern->getBreakInfo()) extends Lantern{
+		$newLantern = new class($lantern->getIdInfo(), $lantern->getName(), $lantern->getBreakInfo()) extends Lantern{
 			protected function canAttachTo(Block $b) : bool{
-				return !empty($b->recalculateCollisionBoxes()) && !($b instanceof Flowable);
+				return $b->isSolid();
 			}
 		};
-		BlockFactory::getInstance()->register($lantern, true);
+		BlockFactory::getInstance()->register($newLantern, true);
 	}
 }
