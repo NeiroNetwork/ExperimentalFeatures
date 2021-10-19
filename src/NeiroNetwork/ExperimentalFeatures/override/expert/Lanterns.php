@@ -11,17 +11,10 @@ use pocketmine\block\VanillaBlocks;
 
 class Lanterns extends BlockOverrideExpert{
 
-	protected function getOverrides() : array{
-		return [
-			$this->lantern(),
-			$this->soul_lantern(),
-		];
-	}
-
 	/**
 	 * ランタンを設置しやすくする
 	 */
-	private function lantern() : Block{
+	protected function lantern() : Block{
 		$b = VanillaBlocks::LANTERN();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Lantern{
 			protected function canAttachTo(Block $b) : bool{
@@ -34,7 +27,7 @@ class Lanterns extends BlockOverrideExpert{
 	 * 魂のランタンを設置しやすくする
 	 * FIXME: SoulLantern と全く同じ定義を繰り返している
 	 */
-	private function soul_lantern() : Block{
+	protected function soul_lantern() : Block{
 		$b = ExperimentalBlocks::SOUL_LANTERN();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Lantern{
 			protected function canAttachTo(Block $b) : bool{

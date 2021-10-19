@@ -12,16 +12,10 @@ use pocketmine\block\VanillaBlocks;
 
 class AnotherBlocks extends BlockOverrideExpert{
 
-	protected function getOverrides() : array{
-		return [
-			$this->nether_wart_block(),
-		];
-	}
-
 	/**
 	 * ネザーウォートブロックに適性ツールを追加
 	 */
-	private function nether_wart_block() : Block{
+	protected function nether_wart_block() : Block{
 		$b = VanillaBlocks::NETHER_WART_BLOCK();
 		return new Opaque($b->getIdInfo(), $b->getName(), new BlockBreakInfo(3.0, BlockToolType::HOE));
 	}

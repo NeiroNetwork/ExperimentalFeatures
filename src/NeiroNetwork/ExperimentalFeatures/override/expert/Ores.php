@@ -14,18 +14,10 @@ use pocketmine\player\Player;
 
 class Ores extends BlockOverrideExpert{
 
-	protected function getOverrides() : array{
-		return [
-			$this->gold_ore(),
-			$this->iron_ore(),
-			$this->redstone_ore(),
-		];
-	}
-
 	/**
 	 * 金鉱石を破壊したときのドロップを金の原石に変更
 	 */
-	private function gold_ore() : Block{
+	protected function gold_ore() : Block{
 		$b = VanillaBlocks::GOLD_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
@@ -41,7 +33,7 @@ class Ores extends BlockOverrideExpert{
 	/**
 	 * 鉄鉱石を破壊したときのドロップを鉄の原石に変更
 	 */
-	private function iron_ore() : Block{
+	protected function iron_ore() : Block{
 		$b = VanillaBlocks::GOLD_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
@@ -57,7 +49,7 @@ class Ores extends BlockOverrideExpert{
 	/**
 	 * レッドストーン鉱石を光らないように変更
 	 */
-	private function redstone_ore() : Block{
+	protected function redstone_ore() : Block{
 		$b = VanillaBlocks::REDSTONE_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
