@@ -11,6 +11,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Chain;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -187,6 +188,7 @@ final class FeaturesList{
 		SoulLantern::class,
 		Calcite::class,
 		Tuff::class,
+		Chain::class,
 	];
 
 	/** @var Feature[] */
