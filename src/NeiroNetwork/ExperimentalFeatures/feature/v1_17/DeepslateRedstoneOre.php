@@ -29,13 +29,6 @@ class DeepslateRedstoneOre extends Feature implements IBlock{
 			$this->displayName(),
 			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		) extends Opaque{
-			public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-				$this->position->getWorld()->setBlock($this->position, ExperimentalBlocks::fromString("lit_deepslate_redstone_ore"));
-				return false;
-			}
-			public function onNearbyBlockChange() : void{
-				$this->position->getWorld()->setBlock($this->position, ExperimentalBlocks::fromString("lit_deepslate_redstone_ore"));
-			}
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [VanillaItems::REDSTONE_DUST()->setCount(mt_rand(4, 5))];
 			}
