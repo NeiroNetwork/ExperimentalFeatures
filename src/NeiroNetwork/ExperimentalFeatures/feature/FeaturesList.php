@@ -87,6 +87,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
@@ -203,6 +204,7 @@ final class FeaturesList{
 		DeepslateEmeraldOre::class,
 		DeepslateDiamondOre::class,
 		DeepslateCoalOre::class,
+		LitDeepslateRedstoneOre::class,
 	];
 
 	/** @var Feature[] */
