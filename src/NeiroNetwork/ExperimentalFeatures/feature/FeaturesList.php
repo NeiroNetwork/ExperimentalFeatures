@@ -107,6 +107,11 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
 
 final class FeaturesList{
 
@@ -215,6 +220,11 @@ final class FeaturesList{
 		ExposedCutCopperSlab::class,
 		ExposedDoubleCutCopperSlab::class,
 		ExposedCutCopperStairs::class,
+		WeatheredCopper::class,
+		WeatheredCutCopper::class,
+		WeatheredCutCopperSlab::class,
+		WeatheredCutCopperDoubleSlab::class,
+		WeatheredCutCopperStairs::class,
 	];
 
 	/** @var Feature[] */
