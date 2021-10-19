@@ -85,6 +85,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGold;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
@@ -187,6 +188,7 @@ final class FeaturesList{
 		SoulLantern::class,
 		Calcite::class,
 		Tuff::class,
+		RawCopper::class,
 	];
 
 	/** @var Feature[] */
