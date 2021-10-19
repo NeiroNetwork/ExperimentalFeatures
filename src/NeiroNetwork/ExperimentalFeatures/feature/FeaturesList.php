@@ -70,7 +70,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
@@ -205,7 +205,7 @@ final class FeaturesList{
 		CopperBlock::class,
 		CutCopper::class,
 		CutCopperSlab::class,
-		CutCopperDoubleSlab::class,
+		DoubleCutCopperSlab::class,
 		CutCopperStairs::class,
 	];
 
