@@ -12,9 +12,12 @@ abstract class BlockOverrideExpert implements Expert{
 	public function doOverride() : void{
 		$reflection = new \ReflectionClass($this);
 		foreach($reflection->getMethods(\ReflectionMethod::IS_PROTECTED) as $method){
-			if((string) $method->getReturnType() === Block::class){
-				BlockFactory::getInstance()->register(($method->getClosure($this))(), true);
-			}
+			$array = match((string) $method->getReturnType()){
+				"array" => ($method->getClosure($this))(),
+				Block::class => [($method->getClosure($this))()],
+				default => [],
+			};
+			array_map(fn($any) => $any instanceof Block && BlockFactory::getInstance()->register($any, true), $array);
 		}
 	}
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\assets;
 
 use pocketmine\block\tile\ItemFrame;
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\utils\Binary;
 
-class ItemFrameTile extends ItemFrame{
+class TileItemFrame extends ItemFrame{
 
 	protected function addAdditionalSpawnData(CompoundTag $nbt) : void{
 		$nbt->setFloat(self::TAG_ITEM_DROP_CHANCE, $this->getItemDropChance());
