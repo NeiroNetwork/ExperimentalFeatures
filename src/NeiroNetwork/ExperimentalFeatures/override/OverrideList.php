@@ -16,5 +16,6 @@ final class OverrideList{
 		new ButtonsAndPressurePlates();
 		new ItemFrameBlock();
 		new LanternBlock();
+		new RedstoneOre();
 	}
 }
