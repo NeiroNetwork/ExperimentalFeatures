@@ -63,10 +63,15 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
@@ -195,6 +200,11 @@ final class FeaturesList{
 		CopperIngot::class,
 		RawCopperBlock::class,
 		CopperOre::class,
+		CopperBlock::class,
+		CutCopper::class,
+		CutCopperSlab::class,
+		CutCopperDoubleSlab::class,
+		CutCopperStairs::class,
 	];
 
 	/** @var Feature[] */
