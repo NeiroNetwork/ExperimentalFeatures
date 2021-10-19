@@ -64,6 +64,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
@@ -193,6 +194,7 @@ final class FeaturesList{
 		RawCopper::class,
 		CopperIngot::class,
 		RawCopperBlock::class,
+		CopperOre::class,
 	];
 
 	/** @var Feature[] */
