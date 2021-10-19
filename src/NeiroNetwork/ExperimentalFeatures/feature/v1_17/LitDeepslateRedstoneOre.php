@@ -15,6 +15,7 @@ use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
 use pocketmine\item\VanillaItems;
 
+// FIXME: IBlockだけどクリエイティブインベントリに追加されない
 class LitDeepslateRedstoneOre extends Feature implements IBlock{
 
 	function stringId() : string{
