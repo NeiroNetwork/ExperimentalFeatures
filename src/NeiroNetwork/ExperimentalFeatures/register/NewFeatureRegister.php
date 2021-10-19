@@ -54,6 +54,10 @@ class NewFeatureRegister{
 					$creativeItems->append(ExperimentalBlocks::fromString($feature->stringId())->asItem());
 				}
 			}
+
+			if(ItemFactory::getInstance()->get($feature->itemId()->getId(), $feature->itemId()->getMeta())->getName() === "Unknown"){
+				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
+			}
 		}
 
 		if($feature instanceof IItem){
