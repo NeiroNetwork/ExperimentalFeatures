@@ -11,6 +11,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Chain;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -63,8 +64,15 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
@@ -84,6 +92,11 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedDoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
@@ -94,6 +107,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopperBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGold;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
@@ -102,6 +117,11 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
 
 final class FeaturesList{
 
@@ -196,6 +216,26 @@ final class FeaturesList{
 		SoulLantern::class,
 		Calcite::class,
 		Tuff::class,
+		Chain::class,
+		RawCopper::class,
+		CopperIngot::class,
+		RawCopperBlock::class,
+		CopperOre::class,
+		CopperBlock::class,
+		CutCopper::class,
+		CutCopperSlab::class,
+		DoubleCutCopperSlab::class,
+		CutCopperStairs::class,
+		ExposedCopper::class,
+		ExposedCutCopper::class,
+		ExposedCutCopperSlab::class,
+		ExposedDoubleCutCopperSlab::class,
+		ExposedCutCopperStairs::class,
+		WeatheredCopper::class,
+		WeatheredCutCopper::class,
+		WeatheredCutCopperSlab::class,
+		WeatheredDoubleCutCopperSlab::class,
+		WeatheredCutCopperStairs::class,
 		DeepslateLapisOre::class,
 		DeepslateRedstoneOre::class,
 		DeepslateCopperOre::class,
