@@ -11,12 +11,9 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
-use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
 use pocketmine\item\VanillaItems;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
 class LitDeepslateRedstoneOre extends Feature implements IBlockOnly{
 

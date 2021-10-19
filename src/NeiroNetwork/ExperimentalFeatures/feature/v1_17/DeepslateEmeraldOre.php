@@ -9,10 +9,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
-use pocketmine\item\Item;
+use pocketmine\block\EmeraldOre;
 use pocketmine\item\ToolTier;
-use pocketmine\item\VanillaItems;
 
 class DeepslateEmeraldOre extends Feature implements IBlock{
 
@@ -21,19 +19,10 @@ class DeepslateEmeraldOre extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new class(
+		return new EmeraldOre(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
-		) extends Opaque{
-
-			public function getDropsForCompatibleTool(Item $item) : array{
-				return [VanillaItems::fromString("emerald")];
-			}
-
-			public function isAffectedBySilkTouch() : bool{
-				return true;
-			}
-		};
+		);
 	}
 }
