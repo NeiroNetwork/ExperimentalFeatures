@@ -27,6 +27,9 @@ class LitDeepslateRedstoneOre extends Feature implements IBlockOnly{
 			$this->displayName(),
 			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		) extends Opaque{
+			public function getLightLevel() : int{
+				return 9;
+			}
 			public function ticksRandomly() : bool{
 				return true;
 			}
