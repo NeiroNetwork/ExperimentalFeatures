@@ -12,7 +12,7 @@ use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\item\ToolTier;
 
-class WeatheredCutCopperDoubleSlab extends Feature implements IBlockOnly{
+class WeatheredDoubleCutCopperSlab extends Feature implements IBlockOnly{
 
 	public function stringId() : string{
 		return "weathered_double_cut_copper_slab";

@@ -109,7 +109,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
 
@@ -223,7 +223,7 @@ final class FeaturesList{
 		WeatheredCopper::class,
 		WeatheredCutCopper::class,
 		WeatheredCutCopperSlab::class,
-		WeatheredCutCopperDoubleSlab::class,
+		WeatheredDoubleCutCopperSlab::class,
 		WeatheredCutCopperStairs::class,
 	];
 
