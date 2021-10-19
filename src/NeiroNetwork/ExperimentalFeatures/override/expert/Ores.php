@@ -34,7 +34,7 @@ class Ores extends BlockOverrideExpert{
 	 * 鉄鉱石を破壊したときのドロップを鉄の原石に変更
 	 */
 	protected function iron_ore() : Block{
-		$b = VanillaBlocks::GOLD_ORE();
+		$b = VanillaBlocks::IRON_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [ExperimentalItems::RAW_IRON()];
