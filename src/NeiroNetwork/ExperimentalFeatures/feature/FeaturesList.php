@@ -71,6 +71,14 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateCoalOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateCopperOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateDiamondOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateEmeraldOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateGoldOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateIronOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateLapisOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
@@ -187,6 +195,14 @@ final class FeaturesList{
 		SoulLantern::class,
 		Calcite::class,
 		Tuff::class,
+		DeepslateLapisOre::class,
+		DeepslateRedstoneOre::class,
+		DeepslateCopperOre::class,
+		DeepslateIronOre::class,
+		DeepslateGoldOre::class,
+		DeepslateEmeraldOre::class,
+		DeepslateDiamondOre::class,
+		DeepslateCoalOre::class,
 	];
 
 	/** @var Feature[] */
