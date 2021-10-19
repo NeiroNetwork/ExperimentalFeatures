@@ -10,6 +10,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\Transparent;
+use pocketmine\math\Axis;
+use pocketmine\math\AxisAlignedBB;
 
 class Chain extends Feature implements IBlock{
 
@@ -24,7 +26,15 @@ class Chain extends Feature implements IBlock{
 			BlockBreakInfo::instant()
 		) extends Transparent{
 			use SimplePillarTrait;
-			// TODO: recalculateCollisionBoxes
+			protected function recalculateCollisionBoxes() : array{
+				$inset = 7 / 16;
+				$bb = match($this->axis){
+					Axis::X => AxisAlignedBB::one()->contract(0, $inset, $inset),
+					Axis::Y => AxisAlignedBB::one()->contract($inset, 0, $inset),
+					Axis::Z => AxisAlignedBB::one()->contract($inset, $inset, 0),
+				};
+				return [$bb];
+			}
 		};
 	}
 }
