@@ -9,10 +9,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
-use pocketmine\item\Item;
+use pocketmine\block\LapisOre;
 use pocketmine\item\ToolTier;
-use pocketmine\item\VanillaItems;
 
 class DeepslateLapisOre extends Feature implements IBlock{
 
@@ -21,19 +19,10 @@ class DeepslateLapisOre extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new class(
+		return new LapisOre(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
-		) extends Opaque{
-
-			public function getDropsForCompatibleTool(Item $item) : array{
-				return [VanillaItems::fromString("lapis_lazuli")->setCount(mt_rand(4, 8))];
-			}
-
-			public function isAffectedBySilkTouch() : bool{
-				return true;
-			}
-		};
+		);
 	}
 }
