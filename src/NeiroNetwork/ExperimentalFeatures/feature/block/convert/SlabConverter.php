@@ -10,15 +10,35 @@ use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 
 class SlabConverter{
 
+	private static array $cache = [];
+
 	public static function toSlab(Block $from) : Block{
-		$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
-		$id = str_replace(["minecraft:", "double_slab"], ["", "slab"], $string);
-		return ExperimentalBlocks::fromString($id);
+		if(!isset(self::$cache[$from->getId()])){
+			$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
+			self::$cache[$from->getId()] = str_replace("minecraft:", "", self::internalToSlab($string));
+		}
+		return ExperimentalBlocks::fromString(self::$cache[$from->getId()]);
 	}
 
 	public static function toDouble(Block $from) : Block{
-		$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
-		$id = str_replace(["minecraft:", "slab"], ["", "double_slab"], $string);
-		return ExperimentalBlocks::fromString($id);
+		if(!isset(self::$cache[$from->getId()])){
+			$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
+			self::$cache[$from->getId()] = str_replace("minecraft:", "", self::internalToDouble($string));
+		}
+		return ExperimentalBlocks::fromString(self::$cache[$from->getId()]);
+	}
+
+	private static function internalToSlab(string $fullId) : string{
+		return match(true){
+			str_contains($fullId, "cut_copper_slab") => str_replace("double_cut_copper_slab", "cut_copper_slab", $fullId),
+			default => str_replace("double_slab", "slab", $fullId),
+		};
+	}
+
+	private static function internalToDouble(string $fullId) : string{
+		return match(true){
+			str_contains($fullId, "cut_copper_slab") => str_replace("cut_copper_slab", "double_cut_copper_slab", $fullId),
+			default => str_replace("slab", "double_slab", $fullId),
+		};
 	}
 }
