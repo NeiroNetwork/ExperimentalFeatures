@@ -64,8 +64,15 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperIngot;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
@@ -86,6 +93,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopperBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGold;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
@@ -189,6 +198,15 @@ final class FeaturesList{
 		Calcite::class,
 		Tuff::class,
 		Chain::class,
+		RawCopper::class,
+		CopperIngot::class,
+		RawCopperBlock::class,
+		CopperOre::class,
+		CopperBlock::class,
+		CutCopper::class,
+		CutCopperSlab::class,
+		CutCopperDoubleSlab::class,
+		CutCopperStairs::class,
 	];
 
 	/** @var Feature[] */
