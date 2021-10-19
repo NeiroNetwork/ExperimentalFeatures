@@ -83,6 +83,11 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedDoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
@@ -205,6 +210,11 @@ final class FeaturesList{
 		CutCopperSlab::class,
 		CutCopperDoubleSlab::class,
 		CutCopperStairs::class,
+		ExposedCopper::class,
+		ExposedCutCopper::class,
+		ExposedCutCopperSlab::class,
+		ExposedDoubleCutCopperSlab::class,
+		ExposedCutCopperStairs::class,
 	];
 
 	/** @var Feature[] */
