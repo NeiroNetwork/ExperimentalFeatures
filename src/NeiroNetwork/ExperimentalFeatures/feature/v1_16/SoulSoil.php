@@ -22,7 +22,7 @@ class SoulSoil extends Feature implements IBlock{
 		return new Opaque(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(0.5, BlockToolType::SHOVEL)
+			new BlockBreakInfo(1.0, BlockToolType::SHOVEL)
 		);
 	}
 }
