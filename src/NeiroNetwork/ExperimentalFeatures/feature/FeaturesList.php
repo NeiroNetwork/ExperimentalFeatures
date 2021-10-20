@@ -38,6 +38,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\QuartzBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulLantern;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulSoil;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulTorch;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
@@ -249,6 +250,7 @@ final class FeaturesList{
 		LitDeepslateRedstoneOre::class,
 		Target::class,
 		QuartzBricks::class,
+		SoulSoil::class,
 	];
 
 	/** @var Feature[] */
