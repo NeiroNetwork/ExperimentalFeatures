@@ -56,7 +56,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\block\OxidizedCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
@@ -232,9 +232,9 @@ final class FeaturesList{
 		WeatheredCutCopperStairs::class,
 		OxidizedCopper::class,
 		OxidizedCutCopper::class,
-		OxidizedCutCopperSlab::class,
 		OxidizedDoubleCutCopperSlab::class,
 		OxidizedCutCopperStairs::class,
+		OxidizedCutCopperSlab::class,
 	];
 
 	/** @var Feature[] */
