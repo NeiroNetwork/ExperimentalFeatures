@@ -9,6 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\Opaque;
+use pocketmine\block\Rail;
 
 class CrimsonFungus extends Feature implements IBlock{
 
@@ -17,7 +18,7 @@ class CrimsonFungus extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new Rail(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(0)
