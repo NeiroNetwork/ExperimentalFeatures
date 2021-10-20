@@ -18,10 +18,14 @@ class SoulSoil extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new class(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(1.0, BlockToolType::SHOVEL)
-		);
+		) extends Opaque{
+			public function burnsForever() : bool{
+				return true;
+			}
+		};
 	}
 }
