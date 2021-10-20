@@ -42,6 +42,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Target;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
@@ -245,6 +246,7 @@ final class FeaturesList{
 		DeepslateDiamondOre::class,
 		DeepslateCoalOre::class,
 		LitDeepslateRedstoneOre::class,
+		Target::class,
 	];
 
 	/** @var Feature[] */
