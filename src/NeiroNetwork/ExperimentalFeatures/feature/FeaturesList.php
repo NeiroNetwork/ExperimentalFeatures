@@ -34,6 +34,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePl
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\QuartzBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulLantern;
@@ -247,6 +248,7 @@ final class FeaturesList{
 		DeepslateCoalOre::class,
 		LitDeepslateRedstoneOre::class,
 		Target::class,
+		QuartzBricks::class,
 	];
 
 	/** @var Feature[] */
