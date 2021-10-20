@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
@@ -36,6 +37,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\QuartzBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulCampfire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulLantern;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulSoil;
@@ -251,6 +253,8 @@ final class FeaturesList{
 		Target::class,
 		QuartzBricks::class,
 		SoulSoil::class,
+		Campfire::class,
+		SoulCampfire::class,
 	];
 
 	/** @var Feature[] */
