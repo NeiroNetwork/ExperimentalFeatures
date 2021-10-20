@@ -13,7 +13,7 @@ use pocketmine\block\Opaque;
 
 class CrimsonPlanks extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "crimson_planks";
 	}
 

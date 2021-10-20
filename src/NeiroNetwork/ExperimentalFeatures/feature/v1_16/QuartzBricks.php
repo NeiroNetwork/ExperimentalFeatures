@@ -14,7 +14,7 @@ use pocketmine\item\ToolTier;
 
 class QuartzBricks extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "quartz_bricks";
 	}
 

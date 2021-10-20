@@ -32,7 +32,7 @@ abstract class Feature{
 		}
 	}
 
-	abstract function stringId() : string;
+	abstract public function stringId() : string;
 
 	public function fullStringId() : string{
 		return "minecraft:" . $this->stringId();

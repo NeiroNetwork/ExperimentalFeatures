@@ -10,11 +10,10 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
-use pocketmine\item\ToolTier;
 
 class SoulSoil extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "soul_soil";
 	}
 

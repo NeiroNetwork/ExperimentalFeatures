@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 
 class NetheriteScrap extends Feature implements IItem{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "netherite_scrap";
 	}
 
