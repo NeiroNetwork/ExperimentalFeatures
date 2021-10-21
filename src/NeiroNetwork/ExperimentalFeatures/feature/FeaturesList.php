@@ -47,6 +47,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Target;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\TwistingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
@@ -134,6 +135,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
+use Symfony\Component\Translation\Writer\TranslationWriterInterface;
 
 final class FeaturesList{
 
@@ -269,6 +271,7 @@ final class FeaturesList{
 		WarpedFungus::class,
 		Lodestone::class,
 		WeepingVines::class,
+		TwistingVines::class,
 	];
 
 	/** @var Feature[] */
