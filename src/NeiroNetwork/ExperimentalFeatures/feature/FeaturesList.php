@@ -25,6 +25,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CryingObsidian;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Lodestone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteScrap;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBasalt;
@@ -265,6 +266,7 @@ final class FeaturesList{
 		OxidizedCutCopperSlab::class,
 		CrimsonFungus::class,
 		WarpedFungus::class,
+		Lodestone::class,
 	];
 
 	/** @var Feature[] */
