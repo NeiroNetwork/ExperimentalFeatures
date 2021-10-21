@@ -9,7 +9,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Transparent;
 use pocketmine\item\ToolTier;
 
 class Campfire extends Feature implements IBlock{
@@ -19,7 +18,7 @@ class Campfire extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Transparent(
+		return new BaseCampfire(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(2.0, BlockToolType::AXE, ToolTier::WOOD()->getHarvestLevel())
