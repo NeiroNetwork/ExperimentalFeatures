@@ -10,6 +10,7 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Flowable;
+use pocketmine\entity\Entity;
 use pocketmine\item\Item;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
@@ -46,6 +47,23 @@ class TwistingVines extends Feature implements IBlock{
 					return parent::getDropsForCompatibleTool($item);
 				}
 				return [];
+			}
+
+			public function hasEntityCollision() : bool{
+				return true;
+			}
+
+			public function canClimb() : bool{
+				return true;
+			}
+
+			public function canBeReplaced() : bool{
+				return true;
+			}
+
+			public function onEntityInside(Entity $entity) : bool{
+				$entity->resetFallDistance();
+				return true;
 			}
 		};
 	}
