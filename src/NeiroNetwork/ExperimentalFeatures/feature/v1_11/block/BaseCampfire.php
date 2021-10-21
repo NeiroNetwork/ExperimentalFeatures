@@ -8,6 +8,10 @@ use pocketmine\block\Transparent;
 use pocketmine\block\utils\BlockDataSerializer;
 use pocketmine\block\utils\FacesOppositePlacingPlayerTrait;
 use pocketmine\block\utils\NormalHorizontalFacingInMetadataTrait;
+use pocketmine\entity\Entity;
+use pocketmine\event\entity\EntityCombustByBlockEvent;
+use pocketmine\event\entity\EntityDamageByBlockEvent;
+use pocketmine\event\entity\EntityDamageEvent;
 use pocketmine\item\Item;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
@@ -37,5 +41,25 @@ class BaseCampfire extends Transparent{
 
 	protected function recalculateCollisionBoxes() : array{
 		return [AxisAlignedBB::one()->trim(Facing::UP, 9 / 16)];
+	}
+
+	public function getLightLevel() : int{
+		return 15;
+	}
+
+	public function hasEntityCollision() : bool{
+		return true;
+	}
+
+	public function onEntityInside(Entity $entity) : bool{
+		$ev = new EntityDamageByBlockEvent($this, $entity, EntityDamageEvent::CAUSE_FIRE, 1);
+		$entity->attack($ev);
+
+		$ev = new EntityCombustByBlockEvent($this, $entity, 8);
+		$ev->call();
+		if(!$ev->isCancelled()){
+			$entity->setOnFire($ev->getDuration());
+		}
+		return true;
 	}
 }
