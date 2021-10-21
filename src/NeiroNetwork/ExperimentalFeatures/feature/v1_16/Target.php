@@ -13,7 +13,7 @@ use pocketmine\block\Opaque;
 
 class Target extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "target";
 	}
 

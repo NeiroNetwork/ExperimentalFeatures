@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 
 class CopperIngot extends Feature implements IItem{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "copper_ingot";
 	}
 

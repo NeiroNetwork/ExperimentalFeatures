@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 
 class NetheriteIngot extends Feature implements IItem{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "netherite_ingot";
 	}
 

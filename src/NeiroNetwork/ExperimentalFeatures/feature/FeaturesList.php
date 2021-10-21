@@ -16,6 +16,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
@@ -50,6 +51,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPressurePlate;
@@ -61,6 +63,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
@@ -106,6 +109,10 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
@@ -252,6 +259,13 @@ final class FeaturesList{
 		Target::class,
 		QuartzBricks::class,
 		SoulSoil::class,
+		OxidizedCopper::class,
+		OxidizedCutCopper::class,
+		OxidizedDoubleCutCopperSlab::class,
+		OxidizedCutCopperStairs::class,
+		OxidizedCutCopperSlab::class,
+		CrimsonFungus::class,
+		WarpedFungus::class,
 		Lodestone::class,
 	];
 

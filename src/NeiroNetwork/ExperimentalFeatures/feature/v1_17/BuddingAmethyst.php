@@ -15,7 +15,7 @@ use pocketmine\item\ToolTier;
 
 class BuddingAmethyst extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "budding_amethyst";
 	}
 

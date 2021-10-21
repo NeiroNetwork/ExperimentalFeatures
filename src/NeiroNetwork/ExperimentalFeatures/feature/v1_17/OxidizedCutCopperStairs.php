@@ -9,20 +9,20 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
+use pocketmine\block\Stair;
 use pocketmine\item\ToolTier;
 
-class AmethystBlock extends Feature implements IBlock{
+class OxidizedCutCopperStairs extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "amethyst_block";
+		return "oxidized_cut_copper_stairs";
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new Stair(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
+			new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
 		);
 	}
 }

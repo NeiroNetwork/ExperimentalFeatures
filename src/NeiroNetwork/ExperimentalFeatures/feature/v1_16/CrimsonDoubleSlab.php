@@ -13,7 +13,7 @@ use pocketmine\block\BlockToolType;
 
 class CrimsonDoubleSlab extends Feature implements IBlockOnly{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "crimson_double_slab";
 	}
 
