@@ -60,6 +60,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WeepingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
@@ -267,6 +268,7 @@ final class FeaturesList{
 		CrimsonFungus::class,
 		WarpedFungus::class,
 		Lodestone::class,
+		WeepingVines::class,
 	];
 
 	/** @var Feature[] */
