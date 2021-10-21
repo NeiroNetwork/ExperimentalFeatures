@@ -52,13 +52,15 @@ class BaseCampfire extends Transparent{
 	}
 
 	public function onEntityInside(Entity $entity) : bool{
-		$ev = new EntityDamageByBlockEvent($this, $entity, EntityDamageEvent::CAUSE_FIRE, 1);
-		$entity->attack($ev);
+		if(!$this->extinguished){
+			$ev = new EntityDamageByBlockEvent($this, $entity, EntityDamageEvent::CAUSE_FIRE, 1);
+			$entity->attack($ev);
 
-		$ev = new EntityCombustByBlockEvent($this, $entity, 8);
-		$ev->call();
-		if(!$ev->isCancelled()){
-			$entity->setOnFire($ev->getDuration());
+			$ev = new EntityCombustByBlockEvent($this, $entity, 8);
+			$ev->call();
+			if(!$ev->isCancelled()){
+				$entity->setOnFire($ev->getDuration());
+			}
 		}
 		return true;
 	}
