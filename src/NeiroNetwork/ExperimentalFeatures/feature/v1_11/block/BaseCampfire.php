@@ -9,6 +9,8 @@ use pocketmine\block\utils\BlockDataSerializer;
 use pocketmine\block\utils\FacesOppositePlacingPlayerTrait;
 use pocketmine\block\utils\NormalHorizontalFacingInMetadataTrait;
 use pocketmine\item\Item;
+use pocketmine\math\AxisAlignedBB;
+use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 
@@ -31,5 +33,9 @@ class BaseCampfire extends Transparent{
 		$this->extinguished = !$this->extinguished;
 		$this->position->getWorld()->setBlock($this->position, $this);
 		return true;
+	}
+
+	protected function recalculateCollisionBoxes() : array{
+		return [AxisAlignedBB::one()->trim(Facing::UP, 9 / 16)];
 	}
 }
