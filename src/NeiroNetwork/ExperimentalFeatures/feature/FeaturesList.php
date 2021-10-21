@@ -55,6 +55,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedNylium;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
@@ -274,6 +275,7 @@ final class FeaturesList{
 		WeepingVines::class,
 		TwistingVines::class,
 		CrimsonNylium::class,
+		WarpedNylium::class,
 	];
 
 	/** @var Feature[] */
