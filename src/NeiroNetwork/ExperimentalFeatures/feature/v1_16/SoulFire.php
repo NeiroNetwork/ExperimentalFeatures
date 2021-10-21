@@ -12,7 +12,7 @@ use pocketmine\block\Fire;
 
 class SoulFire extends Feature implements IBlockOnly{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "soul_fire";
 	}
 

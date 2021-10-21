@@ -11,6 +11,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Chain;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -33,14 +34,17 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePl
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\QuartzBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulLantern;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulSoil;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulTorch;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Target;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
@@ -70,7 +74,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CopperOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperDoubleSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
@@ -79,6 +83,14 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateCoalOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateCopperOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateDiamondOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateEmeraldOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateGoldOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateIronOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateLapisOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
@@ -92,6 +104,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopper;
@@ -211,6 +224,7 @@ final class FeaturesList{
 		SoulLantern::class,
 		Calcite::class,
 		Tuff::class,
+		Chain::class,
 		RawCopper::class,
 		CopperIngot::class,
 		RawCopperBlock::class,
@@ -218,7 +232,7 @@ final class FeaturesList{
 		CopperBlock::class,
 		CutCopper::class,
 		CutCopperSlab::class,
-		CutCopperDoubleSlab::class,
+		DoubleCutCopperSlab::class,
 		CutCopperStairs::class,
 		ExposedCopper::class,
 		ExposedCutCopper::class,
@@ -230,6 +244,18 @@ final class FeaturesList{
 		WeatheredCutCopperSlab::class,
 		WeatheredDoubleCutCopperSlab::class,
 		WeatheredCutCopperStairs::class,
+		DeepslateLapisOre::class,
+		DeepslateRedstoneOre::class,
+		DeepslateCopperOre::class,
+		DeepslateIronOre::class,
+		DeepslateGoldOre::class,
+		DeepslateEmeraldOre::class,
+		DeepslateDiamondOre::class,
+		DeepslateCoalOre::class,
+		LitDeepslateRedstoneOre::class,
+		Target::class,
+		QuartzBricks::class,
+		SoulSoil::class,
 		OxidizedCopper::class,
 		OxidizedCutCopper::class,
 		OxidizedDoubleCutCopperSlab::class,

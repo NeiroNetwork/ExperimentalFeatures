@@ -13,7 +13,7 @@ use pocketmine\block\BlockToolType;
 
 class CrimsonSlab extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "crimson_slab";
 	}
 

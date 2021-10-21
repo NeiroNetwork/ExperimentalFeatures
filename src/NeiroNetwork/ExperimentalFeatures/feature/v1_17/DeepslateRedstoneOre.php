@@ -12,21 +12,28 @@ use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
+use pocketmine\item\VanillaItems;
 
-class BuddingAmethyst extends Feature implements IBlock{
+class DeepslateRedstoneOre extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "budding_amethyst";
+		return "deepslate_redstone_ore";
 	}
 
 	public function block() : Block{
 		return new class(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
+			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		) extends Opaque{
-			public function getDrops(Item $item) : array{
-				return [];
+			public function getDropsForCompatibleTool(Item $item) : array{
+				return [VanillaItems::REDSTONE_DUST()->setCount(mt_rand(4, 5))];
+			}
+			public function isAffectedBySilkTouch() : bool{
+				return true;
+			}
+			protected function getXpDropAmount() : int{
+				return mt_rand(1, 5);
 			}
 		};
 	}

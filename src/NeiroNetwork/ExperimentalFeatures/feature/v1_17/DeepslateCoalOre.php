@@ -9,20 +9,20 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
+use pocketmine\block\CoalOre;
 use pocketmine\item\ToolTier;
 
-class AmethystBlock extends Feature implements IBlock{
+class DeepslateCoalOre extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "amethyst_block";
+		return "deepslate_coal_ore";
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new CoalOre(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(1.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel())
+			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::WOOD()->getHarvestLevel(), 30.0)
 		);
 	}
 }

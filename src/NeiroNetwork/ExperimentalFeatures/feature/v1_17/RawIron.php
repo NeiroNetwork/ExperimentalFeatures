@@ -10,7 +10,7 @@ use pocketmine\item\Item;
 
 class RawIron extends Feature implements IItem{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "raw_iron";
 	}
 

@@ -4,25 +4,25 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
-use NeiroNetwork\ExperimentalFeatures\feature\block\DoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
+use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
+use pocketmine\block\EmeraldOre;
 use pocketmine\item\ToolTier;
 
-class CutCopperDoubleSlab extends Feature implements IBlockOnly{
+class DeepslateEmeraldOre extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "double_cut_copper_slab";
+		return "deepslate_emerald_ore";
 	}
 
 	public function block() : Block{
-		return new DoubleSlab(
+		return new EmeraldOre(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(3.0, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
+			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::IRON()->getHarvestLevel(), 30.0)
 		);
 	}
 }
