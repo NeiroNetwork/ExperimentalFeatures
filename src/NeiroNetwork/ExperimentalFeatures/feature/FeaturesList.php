@@ -18,6 +18,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonNylium;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
@@ -272,6 +273,7 @@ final class FeaturesList{
 		Lodestone::class,
 		WeepingVines::class,
 		TwistingVines::class,
+		CrimsonNylium::class,
 	];
 
 	/** @var Feature[] */
