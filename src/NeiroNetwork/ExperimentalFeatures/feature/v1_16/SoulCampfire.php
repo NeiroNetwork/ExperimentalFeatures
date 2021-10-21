@@ -6,10 +6,10 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_16;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_11\block\BaseCampfire;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Transparent;
 use pocketmine\item\ToolTier;
 
 class SoulCampfire extends Feature implements IBlock{
@@ -19,10 +19,14 @@ class SoulCampfire extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Transparent(
+		return new class(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(2.0, BlockToolType::AXE, ToolTier::WOOD()->getHarvestLevel())
-		);
+		) extends BaseCampfire{
+			public function getLightLevel() : int{
+				return 10;
+			}
+		};
 	}
 }
