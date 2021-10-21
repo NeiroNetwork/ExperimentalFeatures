@@ -16,6 +16,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
@@ -49,6 +50,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPressurePlate;
@@ -261,6 +263,8 @@ final class FeaturesList{
 		OxidizedDoubleCutCopperSlab::class,
 		OxidizedCutCopperStairs::class,
 		OxidizedCutCopperSlab::class,
+		CrimsonFungus::class,
+		WarpedFungus::class,
 	];
 
 	/** @var Feature[] */
