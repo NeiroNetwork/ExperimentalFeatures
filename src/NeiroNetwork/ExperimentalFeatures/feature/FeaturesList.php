@@ -45,6 +45,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Target;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\TwistingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
@@ -57,6 +58,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WeepingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
@@ -261,6 +263,8 @@ final class FeaturesList{
 		OxidizedDoubleCutCopperSlab::class,
 		OxidizedCutCopperStairs::class,
 		OxidizedCutCopperSlab::class,
+		WeepingVines::class,
+		TwistingVines::class,
 	];
 
 	/** @var Feature[] */
