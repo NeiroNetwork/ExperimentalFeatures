@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature\v1_11;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_11\block;
 
 use pocketmine\block\Transparent;
 use pocketmine\block\utils\BlockDataSerializer;
