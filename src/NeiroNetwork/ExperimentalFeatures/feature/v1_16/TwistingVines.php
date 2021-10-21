@@ -30,14 +30,14 @@ class TwistingVines extends Feature implements IBlock{
 			BlockBreakInfo::instant()
 		) extends Flowable{
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-				if($blockReplace->getSide(Facing::DOWN)->getId() !== BlockLegacyIds::AIR){
+				if(!$blockReplace->getSide(Facing::DOWN)->isTransparent()){
 					return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 				}
 				return false;
 			}
 
 			public function onNearbyBlockChange() : void{
-				if($this->getSide(Facing::DOWN)->getId() === BlockLegacyIds::AIR){
+				if($this->getSide(Facing::DOWN)->isTransparent()){
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
