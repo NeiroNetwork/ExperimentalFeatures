@@ -22,7 +22,13 @@ class ItemFlintSteel extends ItemOverrideExpert{
 		$i = VanillaItems::FLINT_AND_STEEL();
 		return new class($this->toIdentifier($i), $i->getName()) extends FlintSteel{
 			public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
+				// 着火できるブロックを制限する
 				$down = $blockReplace->getSide(Facing::DOWN);
+				if(!$blockClicked->isFlammable() && !$blockClicked->isFullCube() && !$down->isFlammable() && !$down->isFullCube()){
+					return ItemUseResult::NONE();
+				}
+
+				// ソウルサンド|ソウルソイル に着火した場合は魂の炎を設置する
 				if($down->getId() === BlockLegacyIds::SOUL_SAND || $down->getName() === "Soul Soil"){
 					$world = $player->getWorld();
 					$world->setBlock($blockReplace->getPosition(), ExperimentalBlocks::fromString("soul_fire"));
@@ -32,6 +38,7 @@ class ItemFlintSteel extends ItemOverrideExpert{
 
 					return ItemUseResult::SUCCESS();
 				}
+
 				return parent::onInteractBlock($player, $blockReplace, $blockClicked, $face, $clickVector);
 			}
 		};
