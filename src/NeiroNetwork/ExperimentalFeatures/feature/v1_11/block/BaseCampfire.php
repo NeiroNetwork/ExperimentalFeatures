@@ -22,7 +22,7 @@ class BaseCampfire extends Transparent{
 	use FacesOppositePlacingPlayerTrait;
 	use NormalHorizontalFacingInMetadataTrait;
 
-	protected bool $extinguished = true;
+	protected bool $extinguished = false;
 
 	protected function writeStateToMeta() : int{
 		return BlockDataSerializer::writeLegacyHorizontalFacing($this->facing) | ($this->extinguished ? 0b100 : 0);
