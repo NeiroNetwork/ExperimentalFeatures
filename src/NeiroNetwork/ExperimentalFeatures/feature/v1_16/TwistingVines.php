@@ -57,10 +57,6 @@ class TwistingVines extends Feature implements IBlock{
 				return true;
 			}
 
-			public function canBeReplaced() : bool{
-				return true;
-			}
-
 			public function onEntityInside(Entity $entity) : bool{
 				$entity->resetFallDistance();
 				return true;
