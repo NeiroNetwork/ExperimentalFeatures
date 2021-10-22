@@ -2,10 +2,8 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override\expert;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
-use NeiroNetwork\ExperimentalFeatures\override\expert\assets\TileItemFrame;
-use NeiroNetwork\ExperimentalFeatures\override\expert\assets\TileSign;
 use pocketmine\block\BaseSign;
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;

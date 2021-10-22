@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override\expert\assets;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
 use pocketmine\block\tile\ItemFrame;
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;

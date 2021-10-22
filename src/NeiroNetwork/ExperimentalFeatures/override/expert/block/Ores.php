@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override\expert;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;

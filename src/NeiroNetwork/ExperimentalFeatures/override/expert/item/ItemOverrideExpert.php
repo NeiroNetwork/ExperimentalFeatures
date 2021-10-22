@@ -2,8 +2,9 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override\expert;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\item;
 
+use NeiroNetwork\ExperimentalFeatures\override\expert\Expert;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ItemIdentifier;
