@@ -12,11 +12,17 @@ use pocketmine\entity\Entity;
 use pocketmine\event\entity\EntityCombustByBlockEvent;
 use pocketmine\event\entity\EntityDamageByBlockEvent;
 use pocketmine\event\entity\EntityDamageEvent;
+use pocketmine\item\Durable;
+use pocketmine\item\enchantment\VanillaEnchantments;
+use pocketmine\item\FlintSteel;
 use pocketmine\item\Item;
+use pocketmine\item\Shovel;
 use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
+use pocketmine\world\sound\FireExtinguishSound;
+use pocketmine\world\sound\FlintSteelSound;
 
 class BaseCampfire extends Transparent{
 	use FacesOppositePlacingPlayerTrait;
@@ -34,9 +40,22 @@ class BaseCampfire extends Transparent{
 	}
 
 	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		$this->extinguished = !$this->extinguished;
-		$this->position->getWorld()->setBlock($this->position, $this);
-		return true;
+		if(!$this->extinguished && $item instanceof Shovel){
+			$item->applyDamage(1);
+			$this->extinguished = true;
+			$this->position->world->setBlock($this->position, $this);
+			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FireExtinguishSound());
+			return true;
+		}elseif($this->extinguished && ($item instanceof FlintSteel || $item->hasEnchantment(VanillaEnchantments::FIRE_ASPECT()))){
+			if($item instanceof Durable){
+				$item->applyDamage(1);
+			}
+			$this->extinguished = false;
+			$this->position->world->setBlock($this->position, $this);
+			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FlintSteelSound());
+			return true;
+		}
+		return false;
 	}
 
 	protected function recalculateCollisionBoxes() : array{
