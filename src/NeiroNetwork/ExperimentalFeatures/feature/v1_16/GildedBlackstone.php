@@ -28,11 +28,9 @@ class GildedBlackstone extends Feature implements IBlock{
 		) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
 				if(mt_rand(1, 10) === 1){
-					return
-						[VanillaItems::GOLD_NUGGET()->setCount(mt_rand(2, 5))];
-				}else{
-					return [];
+					return [VanillaItems::GOLD_NUGGET()->setCount(mt_rand(2, 5))];
 				}
+				return [];
 			}
 
 			public function isAffectedBySilkTouch() : bool{
