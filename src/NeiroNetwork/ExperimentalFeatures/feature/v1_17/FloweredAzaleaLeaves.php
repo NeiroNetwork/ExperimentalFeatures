@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
@@ -26,10 +27,14 @@ class FloweredAzaleaLeaves extends Feature implements IBlock{
 			new BlockBreakInfo(0.2, BlockToolType::HOE)
 		) extends Transparent{
 			public function getDropsForCompatibleTool(Item $item) : array{
+				$drops = [];
 				if(mt_rand(1, 20) === 1){
-					return [VanillaItems::GOLD_NUGGET()];
+					$drops [] = ExperimentalBlocks::fromString("azalea_leaves_flowered")->asItem();
 				}
-				return [];
+				if(mt_rand(1, 50) === 1){
+					$drops [] = VanillaItems::STICK();
+				}
+				return $drops;
 			}
 		};
 	}

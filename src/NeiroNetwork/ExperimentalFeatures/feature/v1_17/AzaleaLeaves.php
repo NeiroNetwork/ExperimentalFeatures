@@ -6,12 +6,12 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
-use pocketmine\item\VanillaItems;
 
 class AzaleaLeaves extends Feature implements IBlock{
 
@@ -27,7 +27,7 @@ class AzaleaLeaves extends Feature implements IBlock{
 		) extends Transparent{
 			public function getDropsForCompatibleTool(Item $item) : array{
 				if(mt_rand(1, 20) === 1){
-					return [VanillaItems::GOLD_NUGGET()];
+					return [ExperimentalBlocks::fromString("azalea_leaves")->asItem()];
 				}
 				return [];
 			}
