@@ -69,6 +69,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WeepingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\FloweredAzaleaLeaves;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
@@ -280,6 +281,7 @@ final class FeaturesList{
 		WarpedNylium::class,
 		Campfire::class,
 		SoulCampfire::class,
+		FloweredAzaleaLeaves::class,
 	];
 
 	/** @var Feature[] */
