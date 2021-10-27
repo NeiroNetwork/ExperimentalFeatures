@@ -12,10 +12,10 @@ use pocketmine\block\Transparent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class FloweringAzalea extends Feature implements IBlock{
+class Azalea extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "flowering_azalea";
+		return "azalea";
 	}
 
 	public function block() : Block{

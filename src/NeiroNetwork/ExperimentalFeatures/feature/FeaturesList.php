@@ -69,6 +69,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WeepingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Azalea;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeaves;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\FloweredAzaleaLeaves;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\FloweringAzalea;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
@@ -284,6 +286,8 @@ final class FeaturesList{
 		SoulCampfire::class,
 		FloweredAzaleaLeaves::class,
 		FloweringAzalea::class,
+		Azalea::class,
+		AzaleaLeaves::class,
 	];
 
 	/** @var Feature[] */
