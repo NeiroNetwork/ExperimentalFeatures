@@ -6,7 +6,6 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockLegacyIds;
@@ -37,11 +36,13 @@ class Azalea extends Feature implements IBlock{
 
 				return false;
 			}
+
 			public function onNearbyBlockChange() : void{
 				if($this->getSide(Facing::DOWN)->isTransparent()){
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function getFuelTime() : int{
 				return 100;
 			}
