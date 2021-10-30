@@ -27,7 +27,7 @@ class FloweringAzalea extends Feature implements IBlock{
 		return new class(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(0)
+			BlockBreakInfo::instant()
 		) extends Transparent{
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				$down = $this->getSide(Facing::DOWN);
