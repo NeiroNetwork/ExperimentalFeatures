@@ -7,9 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\registry;
 use pocketmine\item\Item;
 use pocketmine\utils\CloningRegistryTrait;
 
-/**
- * @method static FLOWERING_AZALEA()
- */
 class ExperimentalItems{
 	use CloningRegistryTrait;
 

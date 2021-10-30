@@ -9,8 +9,13 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
+use pocketmine\block\BlockLegacyIds;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
+use pocketmine\math\Facing;
+use pocketmine\math\Vector3;
+use pocketmine\player\Player;
+use pocketmine\world\BlockTransaction;
 
 class FloweringAzalea extends Feature implements IBlock{
 
@@ -22,13 +27,23 @@ class FloweringAzalea extends Feature implements IBlock{
 		return new class(
 			$this->blockId(),
 			$this->displayName(),
-			BlockBreakInfo::instant()
+			new BlockBreakInfo(0)
 		) extends Transparent{
-			public function getDropsForCompatibleTool(Item $item) : array{
-				if(mt_rand(1, 20) === 1){
-					return [ExperimentalBlocks::fromString("flowering_azalea")->asItem()];
+			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
+				$down = $this->getSide(Facing::DOWN);
+				if($down->getId() === BlockLegacyIds::GRASS or $down->getId() === BlockLegacyIds::DIRT or $down->getId() === BlockLegacyIds::FARMLAND){
+					return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 				}
-				return [];
+
+				return false;
+			}
+			public function onNearbyBlockChange() : void{
+				if($this->getSide(Facing::DOWN)->isTransparent()){
+					$this->position->getWorld()->useBreakOn($this->position);
+				}
+			}
+			public function getFuelTime() : int{
+				return 100;
 			}
 		};
 	}

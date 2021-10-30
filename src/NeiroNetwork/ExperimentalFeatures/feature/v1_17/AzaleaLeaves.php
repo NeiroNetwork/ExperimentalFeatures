@@ -39,6 +39,19 @@ class AzaleaLeaves extends Feature implements IBlock{
 				}
 				return $drops;
 			}
+			public function blocksDirectSkyLight() : bool{
+				return true;
+			}
+			public function isAffectedBySilkTouch() : bool{
+				return true;
+			}
+			public function getFlameEncouragement() : int{
+				return 30;
+			}
+
+			public function getFlammability() : int{
+				return 60;
+			}
 		};
 	}
 }
