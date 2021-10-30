@@ -12,6 +12,7 @@ use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 
 class AzaleaLeaves extends Feature implements IBlock{
 
@@ -26,10 +27,17 @@ class AzaleaLeaves extends Feature implements IBlock{
 			new BlockBreakInfo(0.2, BlockToolType::HOE)
 		) extends Transparent{
 			public function getDropsForCompatibleTool(Item $item) : array{
-				if(mt_rand(1, 20) === 1){
-					return [ExperimentalBlocks::fromString("azalea_leaves")->asItem()];
+				if(($item->getBlockToolType() & BlockToolType::SHEARS) !== 0){
+					return parent::getDropsForCompatibleTool($item);
 				}
-				return [];
+				$drops = [];
+				if(mt_rand(1, 20) === 1){
+					$drops [] = ExperimentalBlocks::fromString("azalea")->asItem();
+				}
+				if(mt_rand(1, 50) === 1){
+					$drops [] = VanillaItems::STICK();
+				}
+				return $drops;
 			}
 		};
 	}

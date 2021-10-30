@@ -22,7 +22,7 @@ class FloweringAzalea extends Feature implements IBlock{
 		return new class(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(0)
+			BlockBreakInfo::instant()
 		) extends Transparent{
 			public function getDropsForCompatibleTool(Item $item) : array{
 				if(mt_rand(1, 20) === 1){

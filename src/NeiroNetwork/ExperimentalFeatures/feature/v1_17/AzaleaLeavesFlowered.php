@@ -14,7 +14,7 @@ use pocketmine\block\Transparent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class FloweredAzaleaLeaves extends Feature implements IBlock{
+class AzaleaLeavesFlowered extends Feature implements IBlock{
 
 	public function stringId() : string{
 		return "azalea_leaves_flowered";
@@ -27,9 +27,12 @@ class FloweredAzaleaLeaves extends Feature implements IBlock{
 			new BlockBreakInfo(0.2, BlockToolType::HOE)
 		) extends Transparent{
 			public function getDropsForCompatibleTool(Item $item) : array{
+				if(($item->getBlockToolType() & BlockToolType::SHEARS) !== 0){
+					return parent::getDropsForCompatibleTool($item);
+				}
 				$drops = [];
 				if(mt_rand(1, 20) === 1){
-					$drops [] = ExperimentalBlocks::fromString("azalea_leaves_flowered")->asItem();
+					$drops [] = ExperimentalBlocks::fromString("flowering_azalea")->asItem();
 				}
 				if(mt_rand(1, 50) === 1){
 					$drops [] = VanillaItems::STICK();
