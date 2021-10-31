@@ -8,6 +8,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Beehive;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\BeeNest;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBottle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Honeycomb;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneycombBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
@@ -297,6 +298,7 @@ final class FeaturesList{
 		Honeycomb::class,
 		BeeNest::class,
 		Beehive::class,
+		HoneyBottle::class,
 	];
 
 	/** @var Feature[] */
