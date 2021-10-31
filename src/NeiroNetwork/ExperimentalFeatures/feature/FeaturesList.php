@@ -13,6 +13,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\BlackstoneWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Chain;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\ChiseledPolishedBlackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrackedPolishedBlackstoneBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
@@ -27,11 +29,15 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CryingObsidian;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\GildedBlackstone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Lodestone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteScrap;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBasalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneBricks;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneBrickStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneBrickWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePlate;
@@ -288,6 +294,12 @@ final class FeaturesList{
 		Azalea::class,
 		AzaleaLeaves::class,
 		AzaleaLeavesFlowered::class,
+    GildedBlackstone::class,
+		CrackedPolishedBlackstoneBricks::class,
+		ChiseledPolishedBlackstone::class,
+		PolishedBlackstoneBricks::class,
+		PolishedBlackstoneBrickStairs::class,
+		PolishedBlackstoneBrickWall::class,
 	];
 
 	/** @var Feature[] */
