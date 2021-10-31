@@ -39,7 +39,7 @@ class RuntimeBlockMappingHack{
 				break;
 			}
 
-			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
+			if($key < 16 && BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
 				$newBlock = new ($block::class)(
 					new BlockIdentifier($block->getId(), $key, $block->getIdInfo()->getItemId(), $block->getIdInfo()->getTileClass()),
 					$block->getName(),

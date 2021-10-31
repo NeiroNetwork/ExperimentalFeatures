@@ -1,14 +1,14 @@
-<?php
+<?php /** @noinspection PhpDeprecationInspection */
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
 use pocketmine\block\tile\Sign;
 use pocketmine\nbt\tag\ByteTag;
 use pocketmine\nbt\tag\CompoundTag;
 
-class SignTile extends Sign{
+class TileSign extends Sign{
 
 	public const TAG_TEXT_GLOWING = "TextIgnoreLegacyBugResolved";
 	// public const TAG_UNKNOWN = "IgnoreLighting";

@@ -14,7 +14,7 @@ use pocketmine\item\ToolTier;
 
 class SoulLantern extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "soul_lantern";
 	}
 

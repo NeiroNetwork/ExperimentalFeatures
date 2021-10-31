@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
@@ -18,11 +18,12 @@ use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
-class ButtonsAndPressurePlates{
+class ButtonsAndPressurePlates extends BlockOverrideExpert{
 
-	public function __construct(){
+	protected function all() : array{
+		$result = [];
 		foreach(BlockFactory::getInstance()->getAllKnownStates() as $block){
-			$new = match(true){
+			$new = match (true) {
 				$block instanceof WoodenButton => $this->woodenButton($block),
 				$block instanceof StoneButton => $this->stoneButton($block),
 				$block instanceof WoodenPressurePlate => $this->woodenPressurePlate($block),
@@ -32,9 +33,10 @@ class ButtonsAndPressurePlates{
 				default => null,
 			};
 			if($new !== null){
-				BlockFactory::getInstance()->register($new, true);
+				$result[] = $new;
 			}
 		}
+		return $result;
 	}
 
 	private function woodenButton(WoodenButton $block) : WoodenButton{
@@ -44,12 +46,14 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::opposite($face))->isFullCube()){
 					return false;
 				}
 				return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 			}
+
 			public function getFuelTime() : int{
 				return 100;
 			}
@@ -63,6 +67,7 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::opposite($face))->isFullCube()){
 					return false;
@@ -80,6 +85,7 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::DOWN)->isFullCube()){
 					return false;
@@ -97,6 +103,7 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::DOWN)->isFullCube()){
 					return false;
@@ -114,6 +121,7 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::DOWN)->isFullCube()){
 					return false;
@@ -131,6 +139,7 @@ class ButtonsAndPressurePlates{
 					$this->position->getWorld()->useBreakOn($this->position);
 				}
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if(!$this->getSide(Facing::DOWN)->isFullCube()){
 					return false;

@@ -12,7 +12,7 @@ use pocketmine\block\Torch;
 
 class SoulTorch extends Feature implements IBlock{
 
-	function stringId() : string{
+	public function stringId() : string{
 		return "soul_torch";
 	}
 

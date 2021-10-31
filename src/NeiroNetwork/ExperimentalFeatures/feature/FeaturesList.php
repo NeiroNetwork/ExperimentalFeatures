@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
+use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
@@ -18,7 +19,9 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonNylium;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonSlab;
@@ -27,6 +30,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CrimsonTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\CryingObsidian;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\GildedBlackstone;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Lodestone;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteIngot;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\NetheriteScrap;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBasalt;
@@ -40,19 +44,26 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstonePressurePl
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\PolishedBlackstoneWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\QuartzBricks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SmoothBasalt;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulCampfire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulFire;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulLantern;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulSoil;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\SoulTorch;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedCrimsonStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedHyphae;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\StrippedWarpedStem;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Target;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\TwistingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedButton;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFence;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFenceGate;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedFungus;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedHyphae;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedNylium;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPlanks;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedPressurePlate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedSlab;
@@ -60,9 +71,15 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedStem;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedTrapdoor;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WarpedWartBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_16\WeepingVines;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystCluster;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Azalea;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeaves;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeavesFlowered;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\FloweringAzalea;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
@@ -108,6 +125,10 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopper;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
@@ -128,6 +149,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
+use Symfony\Component\Translation\Writer\TranslationWriterInterface;
 
 final class FeaturesList{
 
@@ -251,7 +273,28 @@ final class FeaturesList{
 		DeepslateDiamondOre::class,
 		DeepslateCoalOre::class,
 		LitDeepslateRedstoneOre::class,
-		GildedBlackstone::class,
+		Target::class,
+		QuartzBricks::class,
+		SoulSoil::class,
+		OxidizedCopper::class,
+		OxidizedCutCopper::class,
+		OxidizedDoubleCutCopperSlab::class,
+		OxidizedCutCopperStairs::class,
+		OxidizedCutCopperSlab::class,
+		CrimsonFungus::class,
+		WarpedFungus::class,
+		Lodestone::class,
+		WeepingVines::class,
+		TwistingVines::class,
+		CrimsonNylium::class,
+		WarpedNylium::class,
+		Campfire::class,
+		SoulCampfire::class,
+		FloweringAzalea::class,
+		Azalea::class,
+		AzaleaLeaves::class,
+		AzaleaLeavesFlowered::class,
+    GildedBlackstone::class,
 		CrackedPolishedBlackstoneBricks::class,
 		ChiseledPolishedBlackstone::class,
 		PolishedBlackstoneBricks::class,
