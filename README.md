@@ -133,7 +133,9 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 - [ ] ネザライトの防具
 - [ ] ネザライトの道具
 
-### [バジーミツバチ (1.14)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.14.0)
+### [バジーミツバチ (1.14)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.14.0
+
+- [x]
 
 ### [ヴィレッジアンドピレッジアプデート (1.11)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.11.0)
 - [x] 焚き火

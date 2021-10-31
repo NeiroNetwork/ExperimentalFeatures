@@ -5,7 +5,10 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Beehive;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\BeeNest;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Honeycomb;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneycombBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
@@ -291,6 +294,9 @@ final class FeaturesList{
 		AzaleaLeavesFlowered::class,
 		HoneyBlock::class,
 		HoneycombBlock::class,
+		Honeycomb::class,
+		BeeNest::class,
+		Beehive::class,
 	];
 
 	/** @var Feature[] */
