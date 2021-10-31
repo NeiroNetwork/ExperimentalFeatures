@@ -9,7 +9,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
 use pocketmine\block\Stair;
 use pocketmine\item\ToolTier;
 
