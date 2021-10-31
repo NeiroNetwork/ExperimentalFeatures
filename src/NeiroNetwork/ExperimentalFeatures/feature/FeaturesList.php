@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneycombBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
@@ -143,7 +145,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
-use Symfony\Component\Translation\Writer\TranslationWriterInterface;
 
 final class FeaturesList{
 
@@ -288,6 +289,8 @@ final class FeaturesList{
 		Azalea::class,
 		AzaleaLeaves::class,
 		AzaleaLeavesFlowered::class,
+		HoneyBlock::class,
+		HoneycombBlock::class,
 	];
 
 	/** @var Feature[] */
