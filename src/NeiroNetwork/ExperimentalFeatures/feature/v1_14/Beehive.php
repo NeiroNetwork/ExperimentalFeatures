@@ -10,6 +10,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_11\block\BaseCampfire;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
+use pocketmine\block\Opaque;
 use pocketmine\item\ToolTier;
 
 class Beehive extends Feature implements IBlock{

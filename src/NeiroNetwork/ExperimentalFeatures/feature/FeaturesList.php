@@ -293,12 +293,12 @@ final class FeaturesList{
 		Azalea::class,
 		AzaleaLeaves::class,
 		AzaleaLeavesFlowered::class,
-		HoneyBlock::class,
 		HoneycombBlock::class,
 		Honeycomb::class,
 		BeeNest::class,
 		Beehive::class,
 		HoneyBottle::class,
+		HoneyBlock::class,
 	];
 
 	/** @var Feature[] */
