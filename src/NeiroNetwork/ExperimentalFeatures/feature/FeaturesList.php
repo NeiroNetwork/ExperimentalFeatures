@@ -80,6 +80,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeaves;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeavesFlowered;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Candle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ChiseledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CobbledDeepslateDoubleSlab;
@@ -299,6 +300,7 @@ final class FeaturesList{
 		PolishedBlackstoneBricks::class,
 		PolishedBlackstoneBrickStairs::class,
 		PolishedBlackstoneBrickWall::class,
+		Candle::class,
 	];
 
 	/** @var Feature[] */
