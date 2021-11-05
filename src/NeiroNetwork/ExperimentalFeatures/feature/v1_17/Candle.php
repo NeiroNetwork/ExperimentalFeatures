@@ -8,8 +8,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
-use pocketmine\block\BlockLegacyIds;
-use pocketmine\block\BlockLegacyMetadata;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
 use pocketmine\math\AxisAlignedBB;
@@ -97,8 +95,8 @@ class Candle extends Feature implements IBlock{
 				if($blockReplace instanceof self and $blockReplace->count < 4){
 					$this->count = $blockReplace->count + 1;
 				}
-				$this -> lighting = true;
-				
+				$this->lighting = true;
+
 
 				return parent::place($tx, $item, $blockReplace, $blockClicked, $face, $clickVector, $player);
 			}
