@@ -10,8 +10,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_11\block\BaseCampfire;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
-use pocketmine\item\ToolTier;
 
 class Beehive extends Feature implements IBlock{
 
@@ -23,7 +21,7 @@ class Beehive extends Feature implements IBlock{
 		return new BaseCampfire(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(0.6, BlockToolType::AXE, ToolTier::WOOD()->getHarvestLevel())
+			new BlockBreakInfo(0.6, BlockToolType::AXE)
 		);
 	}
 }
