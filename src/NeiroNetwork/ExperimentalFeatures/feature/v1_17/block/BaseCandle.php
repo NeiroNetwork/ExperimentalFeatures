@@ -22,12 +22,12 @@ class BaseCandle extends Transparent{
 	protected bool $lighting = false;
 
 	public function readStateFromData(int $id, int $stateMeta) : void{
-		$this->count = ($stateMeta & 0x03) + 1;
-		$this->lighting = ($stateMeta & 4) !== 0;
+		$this->count = ($stateMeta & 0b11) + 1;
+		$this->lighting = ($stateMeta & 0b100) !== 0;
 	}
 
 	protected function writeStateToMeta() : int{
-		return ($this->count - 1) | ($this->lighting ? 4 : 0);
+		return ($this->count - 1) | ($this->lighting ? 0b100 : 0);
 	}
 
 	public function getStateBitmask() : int{
@@ -60,7 +60,7 @@ class BaseCandle extends Transparent{
 	}
 
 	public function getLightLevel() : int{
-		return $this->lighting ? ($this->count + 1) * 3 : 0;
+		return $this->lighting ? $this->count * 3 : 0;
 	}
 
 	protected function recalculateCollisionBoxes() : array{
