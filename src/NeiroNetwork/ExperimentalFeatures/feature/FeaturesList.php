@@ -78,6 +78,9 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AmethystShard;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Azalea;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeaves;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\AzaleaLeavesFlowered;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BlackCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BlueCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BrownCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\BuddingAmethyst;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Calcite;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Candle;
@@ -95,6 +98,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CrackedDeepslateTiles;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CutCopperStairs;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\CyanCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Deepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBrickDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateBricks;
@@ -122,26 +126,36 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedDoubleCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\FloweringAzalea;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GlowInkSac;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GrayCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\GreenCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\InfestedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LargeAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LightBlueCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LightGrayCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LimeCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MagentaCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OrangeCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedDoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PinkCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslate;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateDoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PolishedDeepslateWall;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\PurpleCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawCopperBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGold;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawGoldBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIronBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RedCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
@@ -150,6 +164,8 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCutCopperStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredDoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WhiteCandle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\YellowCandle;
 
 final class FeaturesList{
 
@@ -301,6 +317,22 @@ final class FeaturesList{
 		PolishedBlackstoneBrickStairs::class,
 		PolishedBlackstoneBrickWall::class,
 		Candle::class,
+		WhiteCandle::class,
+		OrangeCandle::class,
+		MagentaCandle::class,
+		LightBlueCandle::class,
+		YellowCandle::class,
+		LimeCandle::class,
+		PinkCandle::class,
+		GrayCandle::class,
+		LightGrayCandle::class,
+		CyanCandle::class,
+		PurpleCandle::class,
+		BlackCandle::class,
+		BlueCandle::class,
+		BrownCandle::class,
+		GreenCandle::class,
+		RedCandle::class,
 	];
 
 	/** @var Feature[] */
