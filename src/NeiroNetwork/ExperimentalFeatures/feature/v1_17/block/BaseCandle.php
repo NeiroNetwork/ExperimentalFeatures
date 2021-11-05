@@ -6,12 +6,15 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17\block;
 
 use pocketmine\block\Block;
 use pocketmine\block\Transparent;
+use pocketmine\item\Durable;
+use pocketmine\item\enchantment\VanillaEnchantments;
+use pocketmine\item\FlintSteel;
 use pocketmine\item\Item;
-use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
+use pocketmine\world\sound\FlintSteelSound;
 
 class BaseCandle extends Transparent{
 
@@ -35,7 +38,6 @@ class BaseCandle extends Transparent{
 		return $this->count;
 	}
 
-	/** @return $this */
 	public function setCount(int $count) : self{
 		if($count < 1 || $count > 4){
 			throw new \InvalidArgumentException("Count must be in range 1-4");
@@ -48,7 +50,6 @@ class BaseCandle extends Transparent{
 		return $this->lighting;
 	}
 
-	/** @return $this */
 	public function setUnderwater(bool $lighting) : self{
 		$this->lighting = $lighting;
 		return $this;
@@ -62,15 +63,11 @@ class BaseCandle extends Transparent{
 		return $this->lighting ? ($this->count + 1) * 3 : 0;
 	}
 
-	/**
-	 * @return AxisAlignedBB[]
-	 */
 	protected function recalculateCollisionBoxes() : array{
 		return [];
 	}
 
 	public function canBePlacedAt(Block $blockReplace, Vector3 $clickVector, int $face, bool $isClickedBlock) : bool{
-		//TODO: proper placement logic (needs a supporting face below)
 		return ($blockReplace instanceof self and $blockReplace->count < 4) or parent::canBePlacedAt($blockReplace, $clickVector, $face, $isClickedBlock);
 	}
 
@@ -87,8 +84,16 @@ class BaseCandle extends Transparent{
 	}
 
 	public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-		//TODO: bonemeal logic (requires coral)
-		return parent::onInteract($item, $face, $clickVector, $player);
+		if(!$this->lighting && ($item instanceof FlintSteel || $item->hasEnchantment(VanillaEnchantments::FIRE_ASPECT()))){
+			if($item instanceof Durable){
+				$item->applyDamage(1);
+			}
+			$this->lighting = true;
+			$this->position->world->setBlock($this->position, $this);
+			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FlintSteelSound());
+			return true;
+		}
+		return false;
 	}
 
 	public function getDropsForCompatibleTool(Item $item) : array{
