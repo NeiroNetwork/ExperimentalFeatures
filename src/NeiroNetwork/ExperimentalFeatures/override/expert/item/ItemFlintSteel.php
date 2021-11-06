@@ -24,7 +24,8 @@ class ItemFlintSteel extends ItemOverrideExpert{
 			public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
 				// 着火できるブロックを制限する
 				$down = $blockReplace->getSide(Facing::DOWN);
-				if(!$blockClicked->isFlammable() && !$blockClicked->isFullCube() && !$down->isFlammable() && !$down->isFullCube()){
+				if(!$blockClicked->isFlammable() && !($blockClicked->isFullCube() && !$blockClicked->isTransparent())
+					&& !$down->isFlammable() && !($down->isFullCube() && !$down->isTransparent())){
 					return ItemUseResult::NONE();
 				}
 

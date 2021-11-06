@@ -6,7 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
-use NeiroNetwork\ExperimentalFeatures\override\SignTile;
+use NeiroNetwork\ExperimentalFeatures\override\expert\block\TileSign;
 use pocketmine\block\BaseSign;
 use pocketmine\block\Block;
 use pocketmine\item\Item;
@@ -26,7 +26,7 @@ class GlowInkSac extends Feature implements IItem{
 			public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
 				if(!$player->isSneaking() && !$player->isAdventure() && $blockClicked instanceof BaseSign){
 					$tile = $player->getWorld()->getTile($blockClicked->getPosition());
-					if($tile instanceof SignTile && !$tile->isGlowing()){
+					if($tile instanceof TileSign && !$tile->isGlowing()){
 						$tile->setGlowing(true);
 						$player->getWorld()->setBlock($blockClicked->getPosition(), $blockClicked);
 						if($player->hasFiniteResources()){

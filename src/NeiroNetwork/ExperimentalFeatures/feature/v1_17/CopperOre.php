@@ -7,7 +7,6 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 use NeiroNetwork\ExperimentalFeatures\feature\block\Pillar;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
