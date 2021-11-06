@@ -5,6 +5,12 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature;
 
 use NeiroNetwork\ExperimentalFeatures\feature\v1_11\Campfire;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Beehive;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\BeeNest;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneyBottle;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\Honeycomb;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_14\HoneycombBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\AncientDebris;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Basalt;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_16\Blackstone;
@@ -299,6 +305,12 @@ final class FeaturesList{
 		PolishedBlackstoneBricks::class,
 		PolishedBlackstoneBrickStairs::class,
 		PolishedBlackstoneBrickWall::class,
+		HoneycombBlock::class,
+		Honeycomb::class,
+		BeeNest::class,
+		Beehive::class,
+		HoneyBottle::class,
+		HoneyBlock::class,
 	];
 
 	/** @var Feature[] */
