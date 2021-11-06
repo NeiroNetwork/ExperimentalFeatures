@@ -33,6 +33,10 @@ class HoneyBottle extends Feature implements IItem{
 			public function getMaxStackSize() : int{
 				return 16;
 			}
+
+			public function requiresHunger() : bool{
+				return false;
+			}
 		};
 	}
 }
