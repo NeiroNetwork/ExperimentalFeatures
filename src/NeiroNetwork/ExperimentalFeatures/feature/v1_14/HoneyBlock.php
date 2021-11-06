@@ -6,7 +6,6 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_14;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_11\block\BaseCampfire;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\Transparent;
@@ -33,10 +32,12 @@ class HoneyBlock extends Feature implements IBlock{
 						->squash(Axis::Z, 1 / 16)
 				];
 			}
+
 			public function onEntityInside(Entity $entity) : bool{
 				$entity->resetFallDistance();
 				return true;
 			}
+
 			public function hasEntityCollision() : bool{
 				return true;
 			}
