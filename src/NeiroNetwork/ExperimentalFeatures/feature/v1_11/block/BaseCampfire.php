@@ -44,7 +44,7 @@ class BaseCampfire extends Transparent{
 			$item->applyDamage(1);
 			$this->extinguished = true;
 			$this->position->world->setBlock($this->position, $this);
-			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FireExtinguishSound());
+			$this->position->world->addSound($this->position->add(0.5, 0.5, 0.5), new FireExtinguishSound());
 			return true;
 		}elseif($this->extinguished && ($item instanceof FlintSteel || $item->hasEnchantment(VanillaEnchantments::FIRE_ASPECT()))){
 			if($item instanceof Durable){
@@ -52,7 +52,7 @@ class BaseCampfire extends Transparent{
 			}
 			$this->extinguished = false;
 			$this->position->world->setBlock($this->position, $this);
-			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FlintSteelSound());
+			$this->position->world->addSound($this->position->add(0.5, 0.5, 0.5), new FlintSteelSound());
 			return true;
 		}
 		return false;
