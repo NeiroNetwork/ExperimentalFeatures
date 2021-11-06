@@ -22,7 +22,7 @@ class SoulCampfire extends Feature implements IBlock{
 		return new class(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(2.0, BlockToolType::AXE, ToolTier::WOOD()->getHarvestLevel())
+			new BlockBreakInfo(5.0, BlockToolType::AXE, ToolTier::WOOD()->getHarvestLevel())
 		) extends BaseCampfire{
 			public function getLightLevel() : int{
 				return 10;
