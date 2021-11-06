@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_14;
 
-use NeiroNetwork\ExperimentalFeatures\feature\block\Pillar;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
-use NeiroNetwork\ExperimentalFeatures\feature\v1_11\block\BaseCampfire;
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
+use pocketmine\block\Opaque;
+use pocketmine\block\utils\BlockDataSerializer;
+use pocketmine\block\utils\FacesOppositePlacingPlayerTrait;
+use pocketmine\block\utils\NormalHorizontalFacingInMetadataTrait;
 use pocketmine\item\Item;
-use pocketmine\item\ToolTier;
 
 class BeeNest extends Feature implements IBlock{
 
@@ -26,10 +26,22 @@ class BeeNest extends Feature implements IBlock{
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(0.3, BlockToolType::AXE)
-		) extends BaseCampfire{
+		) extends Opaque{
+			use FacesOppositePlacingPlayerTrait;
+			use NormalHorizontalFacingInMetadataTrait;
+
+			protected function writeStateToMeta() : int{
+				return BlockDataSerializer::writeLegacyHorizontalFacing($this->facing);
+			}
+
+			public function readStateFromData(int $id, int $stateMeta) : void{
+				$this->facing = BlockDataSerializer::readLegacyHorizontalFacing($stateMeta & 0b011);
+			}
+
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [];
 			}
+
 			public function isAffectedBySilkTouch() : bool{
 				return true;
 			}
