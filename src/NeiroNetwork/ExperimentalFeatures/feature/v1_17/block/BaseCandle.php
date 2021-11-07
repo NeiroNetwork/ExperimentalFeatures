@@ -90,7 +90,7 @@ class BaseCandle extends Transparent{
 			}
 			$this->lighting = true;
 			$this->position->world->setBlock($this->position, $this);
-			$this->position->world->addSound($this->getPosition()->add(0.5, 0.5, 0.5), new FlintSteelSound());
+			$this->position->world->addSound($this->position->add(0.5, 0.5, 0.5), new FlintSteelSound());
 			return true;
 		}
 		return false;
@@ -102,7 +102,7 @@ class BaseCandle extends Transparent{
 
 	public function onNearbyBlockChange() : void{
 		if($this->getSide(Facing::DOWN)->isTransparent()){
-			$this->position->getWorld()->useBreakOn($this->position);
+			$this->position->world->useBreakOn($this->position);
 		}
 	}
 }
