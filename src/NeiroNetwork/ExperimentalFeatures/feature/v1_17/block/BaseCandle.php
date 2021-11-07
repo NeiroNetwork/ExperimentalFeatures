@@ -10,6 +10,8 @@ use pocketmine\item\Durable;
 use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\item\FlintSteel;
 use pocketmine\item\Item;
+use pocketmine\math\Axis;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
@@ -64,11 +66,16 @@ class BaseCandle extends Transparent{
 	}
 
 	protected function recalculateCollisionBoxes() : array{
-		return [];
+		return [
+			AxisAlignedBB::one()
+				->trim(Facing::UP, 10 / 16)
+				->squash(Axis::X, 3 / 16)
+				->squash(Axis::Z, 3 / 16)
+		];
 	}
 
 	public function canBePlacedAt(Block $blockReplace, Vector3 $clickVector, int $face, bool $isClickedBlock) : bool{
-		return $blockReplace instanceof self;
+		return $blockReplace instanceof self || parent::canBePlacedAt($blockReplace, $clickVector, $face, $isClickedBlock);
 	}
 
 	public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
