@@ -20,7 +20,7 @@ class BlueCandle extends Feature implements IBlock{
 		return new BaseCandle(
 			$this->blockId(),
 			$this->displayName(),
-			BlockBreakInfo::instant()
+			new BlockBreakInfo(0.1)
 		);
 	}
 }
