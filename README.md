@@ -156,5 +156,13 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
   - [x] 赤色のロウソク
   - [x] 黒色のロウソク
 
+### [バジーミツバチ (1.14)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.14.)
+- [x] ハチミツブロック
+- [x] ハニカムブロック
+- [x] ミツバチの巣
+- [x] 養蜂箱
+- [x] ハニカム
+- [x] ハチミツ入りの瓶
+
 ### [ヴィレッジアンドピレッジアプデート (1.11)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.11.0)
 - [x] 焚き火
