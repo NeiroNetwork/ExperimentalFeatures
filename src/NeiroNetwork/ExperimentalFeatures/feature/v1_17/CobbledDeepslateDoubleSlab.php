@@ -6,13 +6,13 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\block\DoubleSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
+use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\item\ToolTier;
 
-class CobbledDeepslateDoubleSlab extends Feature implements IBlockOnly{
+class CobbledDeepslateDoubleSlab extends Feature implements IBlock{
 
 	public function stringId() : string{
 		return "cobbled_deepslate_double_slab";
