@@ -4,22 +4,31 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
-use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\Main;
 use pocketmine\inventory\CreativeInventory;
+use pocketmine\item\Item;
+use pocketmine\item\StringToItemParser;
+use pocketmine\plugin\PluginBase;
 
 class CreativeContentsRegister{
 
-	/**
-	 * @param Feature[] $additionalFeatures
-	 */
-	public static function register(array $additionalFeatures) : void{
-		$resource = Main::getInstance()->getResource("creative_contents.json");
-		$vanilla = json_decode(stream_get_contents($resource), true);
+	public static function reRegister(PluginBase $plugin) : void{
+		$resource = $plugin->getResource("creative_contents.json");
+		$creativeItems = json_decode(stream_get_contents($resource), true);
 		fclose($resource);
-		$creative = CreativeInventory::getInstance()->getAll();
 
-		foreach($additionalFeatures as $feature){
+		$contents = [];
+		foreach($creativeItems as $data){
+			$item = is_array($data) ? Item::jsonDeserialize($data) :
+				StringToItemParser::getInstance()->parse(str_replace("minecraft:", "", $data));
+			if($item === null || $item->getName() === "Unknown"){
+				continue;
+			}
+			$contents[] = $item;
 		}
+
+		$inventory = CreativeInventory::getInstance();
+		$creative = (new \ReflectionClass($inventory))->getProperty("creative");
+		$creative->setAccessible(true);
+		$creative->setValue($inventory, $contents);
 	}
 }
