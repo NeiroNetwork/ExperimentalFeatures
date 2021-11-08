@@ -83,7 +83,10 @@ class BaseCandle extends Transparent{
 			return false;
 		}
 
-		if($blockReplace instanceof self and $blockReplace->count < 4){
+		if($blockReplace instanceof self){
+			if($blockReplace->count >= 4){
+				return false;
+			}
 			$this->count = $blockReplace->count + 1;
 		}
 
