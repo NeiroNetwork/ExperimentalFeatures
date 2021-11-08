@@ -11,7 +11,15 @@ use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase{
 
+	private static self $instance;
+
+	public static function getInstance() : self{
+		return self::$instance;
+	}
+
 	protected function onEnable() : void{
+		self::$instance = $this;
+
 		NewFeatureRegister::registerAll();
 		RecipesRegister::registerAll($this);
 		OverrideMan::callExperts();
