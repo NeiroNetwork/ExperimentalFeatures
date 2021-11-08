@@ -19,15 +19,9 @@ use pocketmine\item\StringToItemParser;
 
 class NewFeatureRegister{
 
-	private static bool $initialized = false;
-
 	public static function registerAll() : void{
-		if(!self::$initialized){
-			self::$initialized = true;
-
-			$hacks = new PmmpHacks();
-			array_map(fn($feature) => self::register($feature, $hacks), FeaturesList::get());
-		}
+		$hacks = new PmmpHacks();
+		array_map(fn($feature) => self::register($feature, $hacks), FeaturesList::get());
 	}
 
 	private static function register(Feature $feature, PmmpHacks $hacks) : void{
