@@ -29,13 +29,13 @@ class NewFeatureRegister{
 			self::$initialized = true;
 
 			$hacks = new PmmpHacks();
-			$creativeItems = new \ArrayObject();
-			array_map(fn($feature) => self::register($feature, $hacks, $creativeItems), FeaturesList::get());
-			array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
+			$creativeFeatures = new \ArrayObject();
+			array_map(fn($feature) => self::register($feature, $hacks, $creativeFeatures), FeaturesList::get());
+			//array_map(fn(Item $item) => CreativeInventory::getInstance()->add($item), (array) $creativeItems);
 		}
 	}
 
-	private static function register(Feature $feature, PmmpHacks $hacks, \ArrayObject $creativeItems) : void{
+	private static function register(Feature $feature, PmmpHacks $hacks, \ArrayObject $creativeFeatures) : void{
 		if($feature instanceof IBlock){
 			BlockFactory::getInstance()->register($feature->block());
 			ExperimentalBlocks::register($feature->stringId(), BlockFactory::getInstance()->get($feature->blockId()->getBlockId(), 0));
@@ -51,7 +51,7 @@ class NewFeatureRegister{
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
 				if(!$feature instanceof IBlockOnly){
 					// Minecraftの挙動的にはStringToItemParserもここに入れるべきだが、クリエイティブインベントリに追加しないだけにしておく
-					$creativeItems->append(ExperimentalBlocks::fromString($feature->stringId())->asItem());
+					$creativeFeatures->append($feature);
 				}
 			}
 

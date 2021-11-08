@@ -4,22 +4,22 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
+use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\Main;
 use pocketmine\inventory\CreativeInventory;
-use pocketmine\item\Item;
 
 class CreativeContentsRegister{
 
 	/**
-	 * @param Item[] $additionalContents
+	 * @param Feature[] $additionalFeatures
 	 */
-	public static function register(array $additionalContents) : void{
+	public static function register(array $additionalFeatures) : void{
 		$resource = Main::getInstance()->getResource("creative_contents.json");
 		$vanilla = json_decode(stream_get_contents($resource), true);
 		fclose($resource);
 		$creative = CreativeInventory::getInstance()->getAll();
 
-		foreach($additionalContents as $item){
+		foreach($additionalFeatures as $feature){
 		}
 	}
 }
