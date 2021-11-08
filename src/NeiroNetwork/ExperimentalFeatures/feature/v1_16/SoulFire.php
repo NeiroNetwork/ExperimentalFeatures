@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_16;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlockOnly;
+use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\Fire;
@@ -15,7 +15,7 @@ use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
-class SoulFire extends Feature implements IBlockOnly{
+class SoulFire extends Feature implements IBlock{
 
 	public function stringId() : string{
 		return "soul_fire";
