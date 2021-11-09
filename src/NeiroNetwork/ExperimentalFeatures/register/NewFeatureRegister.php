@@ -42,19 +42,17 @@ class NewFeatureRegister{
 				$hacks->legacyBlockIdToStringIdMap->hack($feature->fullStringId(), $feature->blockId()->getBlockId());
 				$hacks->legacyItemIdToStringIdMap->hack($feature->fullStringId(), $feature->itemId()->getId());
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
+
+				// (今の仕様だと)PocketMine-MPに登録されていないアイテムが256未満になることはないので、ItemBlockを登録してあげる必要がある
+				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
+				foreach($blocks as $block){
+					ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->itemId()->getId(), $block->getMeta()), $block));
+				}
 			}
 
 			// ItemBlockのIDは256未満 というルールを破ったアイテムが一部存在するため、そういう場合はItemBlockを登録してあげる
 			if(ItemFactory::getInstance()->get($feature->itemId()->getId(), $feature->itemId()->getMeta())->getName() === "Unknown"){
 				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
-			}
-
-			// (今の仕様だと)PocketMine-MPに登録されていないアイテムが256未満になることはないので、ItemBlockを登録してあげる必要がある
-			if(!$feature->isRegisteredPmmp()){
-				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
-				foreach($blocks as $block){
-					ItemFactory::getInstance()->register(new ItemBlock(new ItemIdentifier($feature->itemId()->getId(), $block->getMeta()), $block));
-				}
 			}
 		}
 
