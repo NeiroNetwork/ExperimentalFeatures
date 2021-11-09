@@ -29,7 +29,12 @@ class RuntimeBlockMappingHack{
 		$this->registerMapping->setAccessible(true);
 	}
 
-	public function hack(string $fullStringId, Block $block) : void{
+	/**
+	 * @return Block[]
+	 */
+	public function hack(string $fullStringId, Block $block) : array{
+		$newBlocks = [];
+
 		foreach($this->idToStatesMap[$fullStringId] as $key => $staticRuntimeId){
 			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
 			RuntimeBlockMappingHackTask::addHackArgs([$staticRuntimeId, $block->getId(), $key]);
@@ -40,14 +45,15 @@ class RuntimeBlockMappingHack{
 			}
 
 			if($key < 16 && BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
-				$newBlock = new ($block::class)(
+				$newBlocks[] = new ($block::class)(
 					new BlockIdentifier($block->getId(), $key, $block->getIdInfo()->getItemId(), $block->getIdInfo()->getTileClass()),
 					$block->getName(),
 					$block->getBreakInfo()
 				);
-				BlockFactory::getInstance()->register($newBlock);
 			}
 		}
+
+		return $newBlocks;
 	}
 
 	public function __destruct(){

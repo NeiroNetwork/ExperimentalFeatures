@@ -11,6 +11,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
 use NeiroNetwork\ExperimentalFeatures\register\hack\PmmpHacks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
+use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
@@ -31,7 +32,8 @@ class NewFeatureRegister{
 			StringToItemParser::getInstance()->registerBlock($feature->stringId(), \Closure::fromCallable([ExperimentalBlocks::class, "fromString"]));
 			LegacyStringToItemParser::getInstance()->addMapping($feature->stringId(), $feature->itemId()->getId());
 			LegacyStringToItemParser::getInstance()->addMapping((string) $feature->itemId()->getId(), $feature->itemId()->getId());
-			$hacks->runtimeBlockMapping->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
+			$blocks = $hacks->runtimeBlockMapping->hack($feature->fullStringId(), ExperimentalBlocks::fromString($feature->stringId()));
+			array_map(fn(Block $block) => BlockFactory::getInstance()->register($block), $blocks);
 
 			if(!$feature->isRegisteredPmmp()){
 				ItemFactory::getInstance()->register(new ItemBlock($feature->itemId(), ExperimentalBlocks::fromString($feature->stringId())));
