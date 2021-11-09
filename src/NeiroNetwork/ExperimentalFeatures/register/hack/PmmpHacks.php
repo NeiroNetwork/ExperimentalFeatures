@@ -10,11 +10,13 @@ class PmmpHacks{
 	public ItemTranslatorHack $itemTranslator;
 	public LegacyBlockIdToStringIdMapHack $legacyBlockIdToStringIdMap;
 	public LegacyItemIdToStringIdMapHack $legacyItemIdToStringIdMap;
+	public BlameLegacyStringToItemParser $blameLegacyStringToItemParser;
 
 	public function __construct(){
 		$this->runtimeBlockMapping = new RuntimeBlockMappingHack();
 		$this->itemTranslator = new ItemTranslatorHack();
 		$this->legacyBlockIdToStringIdMap = new LegacyBlockIdToStringIdMapHack();
 		$this->legacyItemIdToStringIdMap = new LegacyItemIdToStringIdMapHack();
+		$this->blameLegacyStringToItemParser = new BlameLegacyStringToItemParser();
 	}
 }
