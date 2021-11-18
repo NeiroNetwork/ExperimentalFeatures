@@ -4,20 +4,21 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\override\expert;
 
-use pocketmine\block\BlockFactory;
-use pocketmine\block\BlockLegacyIds;
 use pocketmine\inventory\CreativeInventory;
+use pocketmine\item\ItemFactory;
+use pocketmine\item\ItemIds;
 
 class ChemistryItemRegister implements Expert{
 
 	public function doOverride() : void{
-		$factory = BlockFactory::getInstance();
-		$inventory = CreativeInventory::getInstance();
+		$addItem = function(int $id, int $meta = 0) : void{
+			CreativeInventory::getInstance()->add(ItemFactory::getInstance()->get($id, $meta));
+		};
 
 		// 強化ガラス
-		$inventory->add($factory->get(BlockLegacyIds::HARD_GLASS, 0)->asItem());
-		for($i = 0; $i < 16; $i++) $inventory->add($factory->get(BlockLegacyIds::HARD_STAINED_GLASS, $i)->asItem());
-		$inventory->add($factory->get(BlockLegacyIds::HARD_GLASS_PANE, 0)->asItem());
-		for($i = 0; $i < 16; $i++) $inventory->add($factory->get(BlockLegacyIds::HARD_STAINED_GLASS_PANE, $i)->asItem());
+		$addItem(ItemIds::HARD_GLASS);
+		for($i = 0; $i < 16; $i++) $addItem(ItemIds::HARD_STAINED_GLASS, $i);
+		$addItem(ItemIds::HARD_GLASS_PANE);
+		for($i = 0; $i < 16; $i++) $addItem(ItemIds::HARD_STAINED_GLASS_PANE, $i);
 	}
 }
