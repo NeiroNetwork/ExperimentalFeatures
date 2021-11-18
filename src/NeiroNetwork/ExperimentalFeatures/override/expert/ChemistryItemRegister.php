@@ -20,5 +20,11 @@ class ChemistryItemRegister implements Expert{
 		for($i = 0; $i < 16; $i++) $addItem(ItemIds::HARD_STAINED_GLASS, $i);
 		$addItem(ItemIds::HARD_GLASS_PANE);
 		for($i = 0; $i < 16; $i++) $addItem(ItemIds::HARD_STAINED_GLASS_PANE, $i);
+
+		// 色付きの松明
+		$addItem(ItemIds::COLORED_TORCH_BP, 0);
+		$addItem(ItemIds::COLORED_TORCH_BP, 8);
+		$addItem(ItemIds::COLORED_TORCH_RG, 0);
+		$addItem(ItemIds::COLORED_TORCH_RG, 8);
 	}
 }
