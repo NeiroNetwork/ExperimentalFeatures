@@ -11,7 +11,6 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
 use NeiroNetwork\ExperimentalFeatures\register\hack\PmmpHacks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
-use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\item\ItemBlock;
 use pocketmine\item\ItemFactory;
