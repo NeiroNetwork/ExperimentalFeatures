@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\block\convert;
 
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\data\bedrock\LegacyBlockIdToStringIdMap;
 
 class SlabConverter{
@@ -17,7 +17,7 @@ class SlabConverter{
 			$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
 			self::$cache[$from->getId()] = str_replace("minecraft:", "", self::internalToSlab($string));
 		}
-		return ExperimentalBlocks::fromString(self::$cache[$from->getId()]);
+		return forward_static_call([VanillaBlocks::class, self::$cache[$from->getId()]]);
 	}
 
 	public static function toDouble(Block $from) : Block{
@@ -25,7 +25,7 @@ class SlabConverter{
 			$string = LegacyBlockIdToStringIdMap::getInstance()->legacyToString($from->getId());
 			self::$cache[$from->getId()] = str_replace("minecraft:", "", self::internalToDouble($string));
 		}
-		return ExperimentalBlocks::fromString(self::$cache[$from->getId()]);
+		return forward_static_call([VanillaBlocks::class, self::$cache[$from->getId()]]);
 	}
 
 	private static function internalToSlab(string $fullId) : string{

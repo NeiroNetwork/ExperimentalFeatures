@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17\block;
 
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockIdentifier;
@@ -14,6 +13,7 @@ use pocketmine\block\utils\AnyFacingTrait;
 use pocketmine\block\utils\BlockDataSerializer;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
+use pocketmine\item\VanillaItems;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
@@ -62,10 +62,10 @@ class BaseAmethystCluster extends Transparent{
 	}
 
 	public function getDropsForCompatibleTool(Item $item) : array{
-		return [ExperimentalItems::fromString("amethyst_shard")->setCount(4)];
+		return [VanillaItems::amethyst_shard()->setCount(4)];
 	}
 
 	public function getDropsForIncompatibleTool(Item $item) : array{
-		return [ExperimentalItems::fromString("amethyst_shard")->setCount(2)];
+		return [VanillaItems::amethyst_shard()->setCount(2)];
 	}
 }

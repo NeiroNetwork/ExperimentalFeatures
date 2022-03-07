@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Block;
 use pocketmine\block\Opaque;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
+use pocketmine\item\VanillaItems;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 
@@ -21,7 +21,7 @@ class Ores extends BlockOverrideExpert{
 		$b = VanillaBlocks::GOLD_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
-				return [ExperimentalItems::RAW_GOLD()];
+				return [VanillaItems::raw_gold()];
 			}
 
 			public function isAffectedBySilkTouch() : bool{
@@ -37,7 +37,7 @@ class Ores extends BlockOverrideExpert{
 		$b = VanillaBlocks::IRON_ORE();
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
-				return [ExperimentalItems::RAW_IRON()];
+				return [VanillaItems::raw_iron()];
 			}
 
 			public function isAffectedBySilkTouch() : bool{

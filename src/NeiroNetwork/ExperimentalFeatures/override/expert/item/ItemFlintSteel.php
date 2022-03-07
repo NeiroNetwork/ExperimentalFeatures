@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\override\expert\item;
 
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockLegacyIds;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\FlintSteel;
 use pocketmine\item\Item;
 use pocketmine\item\ItemUseResult;
@@ -32,7 +32,7 @@ class ItemFlintSteel extends ItemOverrideExpert{
 				// ソウルサンド|ソウルソイル に着火した場合は魂の炎を設置する
 				if($down->getId() === BlockLegacyIds::SOUL_SAND || $down->getName() === "Soul Soil"){
 					$world = $player->getWorld();
-					$world->setBlock($blockReplace->getPosition(), ExperimentalBlocks::fromString("soul_fire"));
+					$world->setBlock($blockReplace->getPosition(), VanillaBlocks::soul_fire());
 					$world->addSound($blockReplace->getPosition()->add(0.5, 0.5, 0.5), new FlintSteelSound());
 
 					$this->applyDamage(1);

@@ -6,11 +6,11 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalBlocks;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
+use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\ToolTier;
 use pocketmine\item\VanillaItems;
@@ -38,13 +38,13 @@ class LitDeepslateRedstoneOre extends Feature implements IBlock{
 				return true;
 			}
 			public function getSilkTouchDrops(Item $item) : array{
-				return [ExperimentalBlocks::fromString("deepslate_redstone_ore")->asItem()];
+				return [VanillaBlocks::deepslate_redstone_ore()->asItem()];
 			}
 			protected function getXpDropAmount() : int{
 				return mt_rand(1, 5);
 			}
 			public function getPickedItem(bool $addUserData = false) : Item{
-				return ExperimentalBlocks::fromString("deepslate_redstone_ore")->asItem();
+				return VanillaBlocks::deepslate_redstone_ore()->asItem();
 			}
 		};
 	}

@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\v1_14\block;
 
-use NeiroNetwork\ExperimentalFeatures\registry\ExperimentalItems;
 use pocketmine\block\Opaque;
 use pocketmine\block\utils\BlockDataSerializer;
 use pocketmine\block\utils\FacesOppositePlacingPlayerTrait;
@@ -12,6 +11,7 @@ use pocketmine\block\utils\NormalHorizontalFacingInMetadataTrait;
 use pocketmine\item\GlassBottle;
 use pocketmine\item\Item;
 use pocketmine\item\Shears;
+use pocketmine\item\VanillaItems;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\sound\BucketFillWaterSound;
@@ -45,7 +45,7 @@ class BaseBeehive extends Opaque{
 			$this->fulledHoney = false;
 			$this->position->world->setBlock($this->position, $this);
 			// TODO: play sound
-			$this->position->world->dropItem($this->position->add(0.5, 0.5, 0.5), ExperimentalItems::HONEYCOMB()->setCount(3));
+			$this->position->world->dropItem($this->position->add(0.5, 0.5, 0.5), VanillaItems::honeycomb()->setCount(3));
 			return true;
 		}elseif($this->fulledHoney && $item instanceof GlassBottle){
 			$this->fulledHoney = false;
@@ -54,12 +54,12 @@ class BaseBeehive extends Opaque{
 			if($player?->hasFiniteResources()){
 				$item->pop();
 				if($item->getCount() === 0){
-					$player?->getInventory()->setItemInHand(ExperimentalItems::HONEY_BOTTLE());
+					$player?->getInventory()->setItemInHand(VanillaItems::honey_bottle());
 				}else{
-					$player?->getInventory()->addItem(ExperimentalItems::HONEY_BOTTLE());
+					$player?->getInventory()->addItem(VanillaItems::honey_bottle());
 				}
 			}else{
-				$player?->getInventory()->addItem(ExperimentalItems::HONEY_BOTTLE());
+				$player?->getInventory()->addItem(VanillaItems::honey_bottle());
 			}
 			return true;
 		}
