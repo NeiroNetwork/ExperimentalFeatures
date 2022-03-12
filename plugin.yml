@@ -2,3 +2,5 @@ name: ExperimentalFeatures
 version: 0.1.0
 main: NeiroNetwork\ExperimentalFeatures\Main
 api: 4.0.0
+softdepend:
+  - Fireworks
