@@ -77,6 +77,7 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
   - [x] 開花したツツジ
   - [x] ツツジの葉
   - [x] ツツジ
+- [x] 望遠鏡
 
 ### [ネザーアップデート (1.16)](https://minecraft.fandom.com/wiki/Nether_Update)
 - [x] 魂の炎

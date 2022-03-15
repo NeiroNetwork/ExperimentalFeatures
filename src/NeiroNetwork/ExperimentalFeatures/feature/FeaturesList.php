@@ -163,6 +163,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIron;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RawIronBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\RedCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\SmallAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Spyglass;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\TintedGlass;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\Tuff;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\WeatheredCopper;
@@ -345,6 +346,7 @@ final class FeaturesList{
 		BrownCandle::class,
 		GreenCandle::class,
 		RedCandle::class,
+		Spyglass::class,
 	];
 
 	/** @var Feature[] */
