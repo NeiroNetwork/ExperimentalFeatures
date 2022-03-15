@@ -78,6 +78,8 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
   - [x] ツツジの葉
   - [x] ツツジ
 - [x] 望遠鏡
+- [ ] 鍾乳石
+  - [x] 鍾乳石ブロック
 
 ### [ネザーアップデート (1.16)](https://minecraft.fandom.com/wiki/Nether_Update)
 - [x] 魂の炎

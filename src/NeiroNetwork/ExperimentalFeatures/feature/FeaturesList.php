@@ -125,6 +125,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileSlab;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileStairs;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DeepslateTileWall;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DoubleCutCopperSlab;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\DripstoneBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopper;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\ExposedCutCopperSlab;
@@ -347,6 +348,7 @@ final class FeaturesList{
 		GreenCandle::class,
 		RedCandle::class,
 		Spyglass::class,
+		DripstoneBlock::class,
 	];
 
 	/** @var Feature[] */
