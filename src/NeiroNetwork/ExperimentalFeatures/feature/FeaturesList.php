@@ -143,6 +143,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LimeCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\LitDeepslateRedstoneOre;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MagentaCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MediumAmethystBud;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MossBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\MossCarpet;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OrangeCandle;
 use NeiroNetwork\ExperimentalFeatures\feature\v1_17\OxidizedCopper;
@@ -351,6 +352,7 @@ final class FeaturesList{
 		Spyglass::class,
 		DripstoneBlock::class,
 		MossCarpet::class,
+		MossBlock::class,
 	];
 
 	/** @var Feature[] */
