@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
 use NeiroNetwork\ExperimentalFeatures\helper\PhpClassesEnumerater;
