@@ -26,5 +26,8 @@ class ChemistryItemRegister implements Expert{
 		$addItem(ItemIds::COLORED_TORCH_BP, 8);
 		$addItem(ItemIds::COLORED_TORCH_RG, 0);
 		$addItem(ItemIds::COLORED_TORCH_RG, 8);
+
+		// 水中の松明
+		$addItem(ItemIds::UNDERWATER_TORCH);
 	}
 }
