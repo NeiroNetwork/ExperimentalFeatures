@@ -9,6 +9,9 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 - [x] 水バケツを使用した際にクライアントに水が残ってしまうバグを修正
 - [x] 火打石と打ち金で火を付けられる場所を制限
 
+### [洞窟と崖：パート II (1.18)](https://minecraft.fandom.com/ja/wiki/Bedrock_Edition_1.18.0)
+- [x] 胞子の花
+
 ### [洞窟と崖 (1.17)](https://minecraft.fandom.com/wiki/Caves_%26_Cliffs)
 - [x] 鉄の原石 / 金の原石
   - [x] 鉱石ブロックのドロップ変更
@@ -86,7 +89,6 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 - [x] 垂れ根
 - [ ] 大きなドリップリーフ
 - [ ] 小さなドリップリーフ
-- [ ] 胞子の花
 - [ ] ヒカリゴケ
 
 ### [ネザーアップデート (1.16)](https://minecraft.fandom.com/wiki/Nether_Update)
