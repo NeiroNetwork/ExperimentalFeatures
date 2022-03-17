@@ -1,5 +1,5 @@
 name: ExperimentalFeatures
-version: 0.1.0
+version: 0.1.1
 main: NeiroNetwork\ExperimentalFeatures\Main
 api: 4.0.0
 softdepend: [Fireworks]
