@@ -11,16 +11,16 @@ use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Opaque;
 
-class RootedDirt extends Feature implements IBlock{
+class DirtWithRoots extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "rooted_dirt";
+		return "dirt_with_roots";
 	}
 
 	public function block() : Block{
 		return new Opaque(
 			$this->blockId(),
-			$this->displayName(),
+			"Rooted Dirt",
 			new BlockBreakInfo(0.5, BlockToolType::SHOVEL)
 		);
 	}
