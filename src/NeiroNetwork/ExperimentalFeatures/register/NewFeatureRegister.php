@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\register;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
-use NeiroNetwork\ExperimentalFeatures\feature\FeaturesList;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IItem;
+use NeiroNetwork\ExperimentalFeatures\helper\PhpClassesEnumerater;
 use NeiroNetwork\ExperimentalFeatures\register\hack\PmmpHacks;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\VanillaBlocks;
@@ -24,8 +24,11 @@ class NewFeatureRegister{
 		// Init VanillaBlocks & VanillaItems
 		VanillaBlocks::AIR(); VanillaItems::AIR();
 
+		$list = PhpClassesEnumerater::list("feature", Feature::class);
+		shuffle($list);
+
 		$hacks = new PmmpHacks();
-		array_map(fn($feature) => self::register($feature, $hacks), FeaturesList::get());
+		array_map(fn(string $class) => self::register(new $class, $hacks), $list);
 	}
 
 	private static function register(Feature $feature, PmmpHacks $hacks) : void{
