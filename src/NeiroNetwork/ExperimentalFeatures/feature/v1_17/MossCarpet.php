@@ -32,9 +32,11 @@ class MossCarpet extends Feature implements IBlock{
 			public function isSolid() : bool{
 				return true;
 			}
+
 			protected function recalculateCollisionBoxes() : array{
 				return [AxisAlignedBB::one()->trim(Facing::UP, 15 / 16)];
 			}
+
 			public function place(BlockTransaction $tx, Item $item, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				$down = $this->getSide(Facing::DOWN);
 				if($down->getId() !== BlockLegacyIds::AIR){
@@ -42,6 +44,7 @@ class MossCarpet extends Feature implements IBlock{
 				}
 				return false;
 			}
+
 			public function onNearbyBlockChange() : void{
 				if($this->getSide(Facing::DOWN)->getId() === BlockLegacyIds::AIR){
 					$this->position->getWorld()->useBreakOn($this->position);
