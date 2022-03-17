@@ -27,7 +27,7 @@ class DeepslateCopperOre extends Feature implements IBlock{
 			new BlockBreakInfo(4.5, BlockToolType::PICKAXE, ToolTier::STONE()->getHarvestLevel(), 30.0)
 		) extends Opaque{
 			public function getDropsForCompatibleTool(Item $item) : array{
-				return [VanillaItems::raw_copper()->setCount(mt_rand(2, 3))];
+				return [VanillaItems::raw_copper()->setCount(mt_rand(2, 5))];
 			}
 			public function isAffectedBySilkTouch() : bool{
 				return true;
