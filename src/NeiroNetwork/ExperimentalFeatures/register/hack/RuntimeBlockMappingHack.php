@@ -59,32 +59,8 @@ class RuntimeBlockMappingHack{
 
 	public function __destruct(){
 		// Hack for ChunkRequestTask
-		$runtimeBlockMappingAsyncHack = function() : void{
-			$asyncPool = Server::getInstance()->getAsyncPool();
-			for($i = 0; $i < $asyncPool->getSize(); ++$i){
-				$asyncPool->submitTaskToWorker(new RuntimeBlockMappingHackTask(), $i);
-			}
-		};
-		$runtimeBlockMappingAsyncHack();
-
-		$pluginManager = Server::getInstance()->getPluginManager();
-		$plugin = $pluginManager->getPlugin("ExperimentalFeatures");
-		$scheduler = $plugin->getScheduler();
-
-		// MemoryManagerのGCのタイミングで再度hackしなおす
-		$config = Server::getInstance()->getConfigGroup();
-		$garbageCollectionPeriod = $config->getPropertyInt("memory.garbage-collection.period", 36000);
-		$garbageCollectionAsync = $config->getPropertyBool("memory.garbage-collection.collect-async-worker", true);
-		if($garbageCollectionPeriod > 0 && $garbageCollectionAsync){
-			$scheduler->scheduleDelayedRepeatingTask(new ClosureTask($runtimeBlockMappingAsyncHack), $garbageCollectionPeriod + 1, $garbageCollectionPeriod);
-		}
-
-		// LowMemoryEvent をリッスンする
-		$pluginManager->registerEvent(
-			LowMemoryEvent::class,
-			fn(LowMemoryEvent $e) => $scheduler->scheduleDelayedTask(new ClosureTask($runtimeBlockMappingAsyncHack), 1),
-			EventPriority::NORMAL,
-			$plugin
-		);
+		Server::getInstance()->getAsyncPool()->addWorkerStartHook(function(int $worker) : void{
+			Server::getInstance()->getAsyncPool()->submitTaskToWorker(new RuntimeBlockMappingHackTask(), $worker);
+		});
 	}
 }
