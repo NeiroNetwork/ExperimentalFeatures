@@ -20,6 +20,7 @@ class RedstoneDust extends BlockOverrideExpert{
 	 */
 	protected function redstone_wire() : Block{
 		$b = VanillaBlocks::REDSTONE_WIRE();
+		return $b;
 		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends RedstoneWire{
 			public function onNearbyBlockChange() : void{
 				if($this->getSide(Facing::DOWN)->isTransparent()){
