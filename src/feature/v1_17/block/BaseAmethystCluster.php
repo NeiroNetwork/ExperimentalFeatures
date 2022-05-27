@@ -12,6 +12,7 @@ use pocketmine\block\Transparent;
 use pocketmine\block\utils\AnyFacingTrait;
 use pocketmine\block\utils\BlockDataSerializer;
 use pocketmine\item\Item;
+use pocketmine\item\ItemFactory;
 use pocketmine\item\ToolTier;
 use pocketmine\item\VanillaItems;
 use pocketmine\math\Facing;
@@ -67,5 +68,13 @@ class BaseAmethystCluster extends Transparent{
 
 	public function getDropsForIncompatibleTool(Item $item) : array{
 		return [VanillaItems::amethyst_shard()->setCount(2)];
+	}
+
+	public function asItem() : Item{
+		// FIXME: これが無いとアイテムにしようとしたときにメタがそのまま残ってしまう (本来の使い方ではないはず)
+		return ItemFactory::getInstance()->get(
+			$this->idInfo->getItemId(),
+			$this->writeStateToItemMeta()
+		);
 	}
 }
