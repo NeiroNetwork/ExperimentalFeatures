@@ -9,6 +9,9 @@ use Webmozart\PathUtil\Path;
 
 class PhpClassesEnumerater{
 
+	/**
+	 * @return string[]
+	 */
 	public static function list(string $path, string $classString) : array{
 		$namespaces = explode("\\", self::class);
 		array_pop($namespaces);
