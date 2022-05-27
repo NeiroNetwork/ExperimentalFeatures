@@ -18,11 +18,14 @@ class WarpedPressurePlate extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		// FIXME: 本来は燃えないが ButtonsAndPressurePlates との関係でWoodenPressurePlateかStonePressurePlateしか選択できずクラスの拡張も出来ない
-		return new WoodenPressurePlate(
+		return new class(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(0.5, BlockToolType::AXE)
-		);
+		) extends WoodenPressurePlate{
+			public function getFuelTime() : int{
+				return 0;
+			}
+		};
 	}
 }

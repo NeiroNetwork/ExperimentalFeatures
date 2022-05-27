@@ -7,6 +7,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 use NeiroNetwork\ExperimentalFeatures\feature\block\convert\SlabConverter;
 use pocketmine\block\Block;
 use pocketmine\block\Transparent;
+use pocketmine\block\utils\SupportType;
 use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\math\AxisAlignedBB;
@@ -61,6 +62,10 @@ class Slab extends Transparent{
 
 	protected function recalculateCollisionBoxes() : array{
 		return [AxisAlignedBB::one()->trim($this->top ? Facing::DOWN : Facing::UP, 0.5)];
+	}
+
+	public function getSupportType(int $facing) : SupportType{
+		return ($facing === Facing::UP && $this->top) || ($facing === Facing::DOWN && !$this->top) ? SupportType::FULL() : SupportType::NONE();
 	}
 
 	public function getDropsForCompatibleTool(Item $item) : array{
