@@ -18,7 +18,11 @@ abstract class BlockOverrideExpert implements Expert{
 				Block::class => [($method->getClosure($this))()],
 				default => [],
 			};
-			array_map(fn($any) => $any instanceof Block && BlockFactory::getInstance()->register($any, true), $array);
+			foreach($array as $any){
+				if($any instanceof Block){
+					BlockFactory::getInstance()->register($any, true);
+				}
+			}
 		}
 	}
 }
