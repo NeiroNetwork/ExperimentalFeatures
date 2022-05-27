@@ -18,23 +18,26 @@ class PhpClassesEnumerater{
 			throw new \RuntimeException("Parsed an unsupported namespace: " . implode("\\", $namespaces));
 		}
 
-		$file = (new \ReflectionClass($plugin))->getParentClass()->getProperty("file");
-		$file->setAccessible(true);
-		$file = $file->getValue($plugin);
-
 		$mainNamespace = explode("\\", $plugin->getDescription()->getMain());
 		array_pop($mainNamespace);
+		$mainNamespace = implode("\\", $mainNamespace);
 
-		$path = Path::join(Path::join($file, "src", ...$mainNamespace), $path);
+		$pluginFile = (new \ReflectionClass($plugin))->getParentClass()->getProperty("file");
+		$pluginFile->setAccessible(true);
+
+		$path = Path::join($pluginFile->getValue($plugin), "src", $path);
 		$iterator = new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($path, \FilesystemIterator::SKIP_DOTS));
 
 		$classList = [];
 
+		/** @var \SplFileInfo $file */
 		foreach($iterator as $file){
-			/** @var \SplFileInfo $file */
-			$class = str_replace(["/", ".php"], ["\\", ""], explode("src", $file->getPathname())[1]);
-			if(class_exists($class) && is_a($class, $classString, true) && !(new \ReflectionClass($class))->isAbstract()){
-				$classList[] = $class;
+			$class = $mainNamespace . str_replace(["/", ".php"], ["\\", ""], explode("src", $file->getPathname())[1]);
+			if(class_exists($class) && is_a($class, $classString, true)){
+				$reflection = new \ReflectionClass($class);
+				if(!$reflection->isAbstract() && !$reflection->isInterface()){
+					$classList[] = $class;
+				}
 			}
 		}
 
