@@ -21,9 +21,6 @@ use pocketmine\item\VanillaItems;
 class NewFeatureRegister{
 
 	public static function registerAll() : void{
-		// Init VanillaBlocks & VanillaItems
-		VanillaBlocks::AIR(); VanillaItems::AIR();
-
 		$list = PhpClassesEnumerater::list("feature", Feature::class);
 		shuffle($list);
 
