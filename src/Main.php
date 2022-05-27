@@ -20,6 +20,7 @@ class Main extends PluginBase{
 		NewFeatureRegister::registerAll();
 		$this->getLogger()->debug("Re-registering creative contents");
 		CreativeContentsRegister::reRegister($this);
+		CreativeContentsRegister::registerAdditionalItems();
 		$this->getLogger()->debug("Re-registering recipes");
 		RecipesRegister::registerAll($this);
 
