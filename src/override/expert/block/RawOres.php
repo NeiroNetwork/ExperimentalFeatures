@@ -9,10 +9,8 @@ use pocketmine\block\Opaque;
 use pocketmine\block\VanillaBlocks;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
-use pocketmine\math\Vector3;
-use pocketmine\player\Player;
 
-class Ores extends BlockOverrideExpert{
+class RawOres extends BlockOverrideExpert{
 
 	/**
 	 * 金鉱石を破壊したときのドロップを金の原石に変更
@@ -42,25 +40,6 @@ class Ores extends BlockOverrideExpert{
 
 			public function isAffectedBySilkTouch() : bool{
 				return true;
-			}
-		};
-	}
-
-	/**
-	 * レッドストーン鉱石を光らないように変更
-	 */
-	protected function redstone_ore() : Block{
-		$b = VanillaBlocks::REDSTONE_ORE();
-		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
-			public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
-				return false;
-			}
-
-			public function onNearbyBlockChange() : void{
-			}
-
-			public function ticksRandomly() : bool{
-				return false;
 			}
 		};
 	}
