@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17\block;
 
 use pocketmine\block\Block;
 use pocketmine\block\Transparent;
+use pocketmine\block\utils\SupportType;
 use pocketmine\item\Durable;
 use pocketmine\item\enchantment\VanillaEnchantments;
 use pocketmine\item\FlintSteel;
@@ -72,6 +73,10 @@ class BaseCandle extends Transparent{
 				->squash(Axis::X, 3 / 16)
 				->squash(Axis::Z, 3 / 16)
 		];
+	}
+
+	public function getSupportType(int $facing) : SupportType{
+		return SupportType::NONE();
 	}
 
 	public function canBePlacedAt(Block $blockReplace, Vector3 $clickVector, int $face, bool $isClickedBlock) : bool{
