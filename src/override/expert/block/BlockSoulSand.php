@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
 use pocketmine\block\Block;
-use pocketmine\block\Opaque;
+use pocketmine\block\SoulSand;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\math\AxisAlignedBB;
 
 class BlockSoulSand extends BlockOverrideExpert{
 
@@ -16,7 +17,11 @@ class BlockSoulSand extends BlockOverrideExpert{
 	 */
 	protected function soul_sand() : Block{
 		$b = VanillaBlocks::SOUL_SAND();
-		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends Opaque{
+		return new class($b->getIdInfo(), $b->getName(), $b->getBreakInfo()) extends SoulSand{
+			protected function recalculateCollisionBoxes() : array{
+				return [AxisAlignedBB::one()];
+			}
+
 			public function burnsForever() : bool{
 				return true;
 			}
