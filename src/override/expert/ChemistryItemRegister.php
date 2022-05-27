@@ -11,6 +11,7 @@ use pocketmine\item\ItemIds;
 class ChemistryItemRegister implements Expert{
 
 	public function doOverride() : void{
+		// TODO: CreativeContentsRegister へ移動
 		$addItem = function(int $id, int $meta = 0) : void{
 			CreativeInventory::getInstance()->add(ItemFactory::getInstance()->get($id, $meta));
 		};
