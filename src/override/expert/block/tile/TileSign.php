@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
+namespace NeiroNetwork\ExperimentalFeatures\override\expert\block\tile;
 
 use pocketmine\block\tile\Sign;
 use pocketmine\nbt\tag\ByteTag;

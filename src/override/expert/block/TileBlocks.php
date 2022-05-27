@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\override\expert\block;
 
+use NeiroNetwork\ExperimentalFeatures\override\expert\block\tile\TileItemFrame;
+use NeiroNetwork\ExperimentalFeatures\override\expert\block\tile\TileSign;
 use pocketmine\block\BaseSign;
 use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
