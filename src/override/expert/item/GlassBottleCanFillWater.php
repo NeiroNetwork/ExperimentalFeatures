@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\override\expert\item;
 
 use pocketmine\block\Block;
 use pocketmine\block\Water;
+use pocketmine\event\player\PlayerDropItemEvent;
 use pocketmine\item\GlassBottle;
 use pocketmine\item\Item;
 use pocketmine\item\ItemUseResult;
@@ -29,8 +30,16 @@ class GlassBottleCanFillWater extends ItemOverrideExpert{
 						if($stack->getCount() === 0){
 							$player->getInventory()->setItemInHand($waterPotion);
 						}else{
+							$overflow = $player->getInventory()->addItem($waterPotion);
+							foreach($overflow as $item){
+								$ev = new PlayerDropItemEvent($player, $item);
+								$ev->call();
+								if($ev->isCancelled()){
+									return ItemUseResult::FAIL();
+								}
+								$player->dropItem($item);
+							}
 							$player->getInventory()->setItemInHand($stack);
-							$player->getInventory()->addItem($waterPotion);
 						}
 					}else{
 						$player->getInventory()->addItem($waterPotion);
