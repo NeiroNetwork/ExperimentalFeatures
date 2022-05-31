@@ -3,4 +3,3 @@ version: 0.2.1
 main: NeiroNetwork\ExperimentalFeatures\Main
 api: 4.0.0
 src-namespace-prefix: NeiroNetwork\ExperimentalFeatures
-softdepend: [Fireworks]

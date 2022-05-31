@@ -180,3 +180,6 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 
 ### [ヴィレッジアンドピレッジアプデート (1.11)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.11.0)
 - [x] 焚き火
+
+### [ベター・トゥギャザー・アップデート (1.2)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.2.0)
+- [x] 花火 (forked from [BlockHorizons/Fireworks](https://github.com/BlockHorizons/Fireworks), [NeiroNetwork/Fireworks](https://github.com/NeiroNetwork/Fireworks))
