@@ -10,6 +10,7 @@ use pocketmine\crafting\FurnaceRecipe;
 use pocketmine\crafting\FurnaceType;
 use pocketmine\crafting\ShapedRecipe;
 use pocketmine\crafting\ShapelessRecipe;
+use pocketmine\crafting\ShapelessRecipeType;
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
@@ -38,13 +39,19 @@ class RecipesRegister{
 		$itemDeserializerFunc = \Closure::fromCallable([self::class, "itemJsonDeserialize"]);
 
 		foreach($recipes["shapeless"] as $recipe){
-			if($recipe["block"] !== "crafting_table"){
+			$recipeType = match($recipe["block"]){
+				"crafting_table" => ShapelessRecipeType::CRAFTING(),
+				"stonecutter" => ShapelessRecipeType::STONECUTTER(),
+				default => null
+			};
+			if($recipeType === null){
 				continue;
 			}
 			try{
 				$result->registerShapelessRecipe(new ShapelessRecipe(
 					array_map($itemDeserializerFunc, $recipe["input"]),
-					array_map($itemDeserializerFunc, $recipe["output"])
+					array_map($itemDeserializerFunc, $recipe["output"]),
+					$recipeType
 				));
 			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
 			}
