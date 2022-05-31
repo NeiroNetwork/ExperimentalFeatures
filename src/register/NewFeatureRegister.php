@@ -68,5 +68,7 @@ class NewFeatureRegister{
 				$hacks->itemTranslator->hack($feature->itemId()->getId(), $feature->runtimeId());
 			}
 		}
+
+		$feature->afterRegistration();
 	}
 }

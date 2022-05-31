@@ -57,4 +57,7 @@ abstract class Feature{
 	public function isRegisteredPmmp() : bool{
 		return $this->registeredPmmp;
 	}
+
+	public function afterRegistration() : void{
+	}
 }
