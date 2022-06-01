@@ -25,36 +25,37 @@ class ItemBucket extends ItemOverrideExpert{
 		return new class($this->toIdentifier($i), $i->getName()) extends Bucket{
 			public function onInteractBlock(Player $player, Block $blockReplace, Block $blockClicked, int $face, Vector3 $clickVector) : ItemUseResult{
 				if($blockClicked instanceof Liquid && $blockClicked->isSource()){
-					$stack = clone $this;
-					$stack->pop();
-
 					$resultItem = ItemFactory::getInstance()->get(ItemIds::BUCKET, $blockClicked->getFlowingForm()->getId());
 					$ev = new PlayerBucketFillEvent($player, $blockReplace, $face, $this, $resultItem);
 					$ev->call();
-					if(!$ev->isCancelled()){
-						$player->getWorld()->setBlock($blockClicked->getPosition(), VanillaBlocks::AIR());
-						$player->getWorld()->addSound($blockClicked->getPosition()->add(0.5, 0.5, 0.5), $blockClicked->getBucketFillSound());
-						if($player->hasFiniteResources()){
-							if($stack->getCount() === 0){
-								$player->getInventory()->setItemInHand($ev->getItem());
-							}else{
-								foreach($player->getInventory()->addItem($ev->getItem()) as $overflow){
-									$dropEv = new PlayerDropItemEvent($player, $overflow);
-									$dropEv->call();
-									if($dropEv->isCancelled()){
-										return ItemUseResult::FAIL();
-									}
-									$player->dropItem($overflow);
-								}
-								$player->getInventory()->setItemInHand($stack);
-							}
-						}else{
-							$player->getInventory()->addItem($ev->getItem());
-						}
-						return ItemUseResult::SUCCESS();
+					if($ev->isCancelled()){
+						return ItemUseResult::FAIL();
 					}
 
-					return ItemUseResult::FAIL();
+					if($player->hasFiniteResources()){
+						$stack = clone $this;
+						$stack->pop();
+						if($stack->getCount() === 0){
+							$player->getInventory()->setItemInHand($ev->getItem());
+						}else{
+							foreach($player->getInventory()->addItem($ev->getItem()) as $overflow){
+								$dropEv = new PlayerDropItemEvent($player, $overflow);
+								$dropEv->call();
+								if($dropEv->isCancelled()){
+									return ItemUseResult::FAIL();
+								}
+								$player->dropItem($overflow);
+							}
+							$player->getInventory()->setItemInHand($stack);
+						}
+					}else{
+						$player->getInventory()->addItem($ev->getItem());
+					}
+
+					$player->getWorld()->setBlock($blockClicked->getPosition(), VanillaBlocks::AIR());
+					$player->getWorld()->addSound($blockClicked->getPosition()->add(0.5, 0.5, 0.5), $blockClicked->getBucketFillSound());
+
+					return ItemUseResult::SUCCESS();
 				}
 
 				return ItemUseResult::NONE();
