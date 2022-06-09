@@ -26,7 +26,7 @@ class RecipesRegister{
 		self::register($plugin->getResource("recipes_1.17.json"));
 		self::register($plugin->getResource("recipes_1.18.json"));
 		self::register($plugin->getResource("recipes_1.19.json"));
-		self::fixRecipes();
+		self::fixUnknownRecipes();
 	}
 
 	/**
@@ -104,7 +104,7 @@ class RecipesRegister{
 	/**
 	 * 追加されてないアイテムをクラフトできるバグを修正する
 	 */
-	private static function fixRecipes() : void{
+	private static function fixUnknownRecipes() : void{
 		$craftingManager = Server::getInstance()->getCraftingManager();
 		$reflectedShapedRecipes = (new \ReflectionClass($craftingManager))->getProperty("shapedRecipes");
 		$reflectedShapedRecipes->setAccessible(true);
