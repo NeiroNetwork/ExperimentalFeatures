@@ -25,6 +25,7 @@ class RecipesRegister{
 	public static function registerAll(PluginBase $plugin) : void{
 		self::register($plugin->getResource("recipes_1.17.json"));
 		self::register($plugin->getResource("recipes_1.18.json"));
+		self::register($plugin->getResource("recipes_1.19.json"));
 		self::fixRecipes();
 	}
 
