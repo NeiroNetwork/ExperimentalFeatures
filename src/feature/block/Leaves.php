@@ -4,18 +4,14 @@ declare(strict_types=1);
 
 namespace NeiroNetwork\ExperimentalFeatures\feature\block;
 
-use pocketmine\block\BlockBreakInfo;
-use pocketmine\block\BlockIdentifier;
 use pocketmine\block\BlockToolType;
 use pocketmine\block\Transparent;
 use pocketmine\item\Item;
 use pocketmine\item\VanillaItems;
 
-class Leaves extends Transparent{
+abstract class Leaves extends Transparent{
 
-	public function __construct(BlockIdentifier $idInfo, string $name, private Item $sapling){
-		parent::__construct($idInfo, $name, new BlockBreakInfo(0.2, BlockToolType::HOE));
-	}
+	abstract protected function getSapling() : Item;
 
 	public function getDropsForCompatibleTool(Item $item) : array{
 		if(($item->getBlockToolType() & BlockToolType::SHEARS) !== 0){
@@ -23,7 +19,7 @@ class Leaves extends Transparent{
 		}
 
 		$drops = [];
-		if(mt_rand(1, 20) === 1) $drops[] = clone $this->sapling;
+		if(mt_rand(1, 20) === 1) $drops[] = $this->getSapling();
 		if(mt_rand(1, 50) === 1) $drops[] = VanillaItems::STICK()->setCount(mt_rand(1, 2));
 		return $drops;
 	}

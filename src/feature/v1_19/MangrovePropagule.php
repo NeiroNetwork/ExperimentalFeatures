@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17;
+namespace NeiroNetwork\ExperimentalFeatures\feature\v1_19;
 
 use NeiroNetwork\ExperimentalFeatures\feature\block\Sapling;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
@@ -10,10 +10,10 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 
-class Azalea extends Feature implements IBlock{
+class MangrovePropagule extends Feature implements IBlock{
 
 	public function stringId() : string{
-		return "azalea";
+		return "mangrove_propagule";
 	}
 
 	public function block() : Block{

@@ -8,7 +8,10 @@ use NeiroNetwork\ExperimentalFeatures\feature\block\Leaves;
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
+use pocketmine\block\BlockBreakInfo;
+use pocketmine\block\BlockToolType;
 use pocketmine\block\VanillaBlocks;
+use pocketmine\item\Item;
 
 class AzaleaLeaves extends Feature implements IBlock{
 
@@ -17,6 +20,14 @@ class AzaleaLeaves extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Leaves($this->blockId(), $this->displayName(), VanillaBlocks::azalea()->asItem());
+		return new class(
+			$this->blockId(),
+			$this->displayName(),
+			new BlockBreakInfo(0.2, BlockToolType::HOE)
+		) extends Leaves{
+			protected function getSapling() : Item{
+				return VanillaBlocks::azalea()->asItem();
+			}
+		};
 	}
 }

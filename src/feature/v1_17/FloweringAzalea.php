@@ -17,10 +17,6 @@ class FloweringAzalea extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Sapling(
-			$this->blockId(),
-			$this->displayName(),
-			BlockBreakInfo::instant()
-		);
+		return new Sapling($this->blockId(), $this->displayName(), BlockBreakInfo::instant());
 	}
 }
