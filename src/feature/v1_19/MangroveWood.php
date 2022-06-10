@@ -18,6 +18,7 @@ class MangroveWood extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
+		// FIXME: なんか向きがおかしい
 		return new Log(
 			$this->blockId(),
 			$this->displayName(),
