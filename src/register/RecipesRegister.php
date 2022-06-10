@@ -93,15 +93,8 @@ class RecipesRegister{
 	 * @throws ItemNotFoundException
 	 */
 	private static function itemJsonDeserialize(array $data) : Item{
-		$id = LegacyItemIdToStringIdMap::getInstance()->stringToLegacy($data["id"]);
-		if(is_null($id)){
-			try{
-				$id = LegacyStringToItemParser::getInstance()->parse($data["id"])->getId();
-			}catch(LegacyStringToItemParserException){
-				throw new ItemNotFoundException();
-			}
-		}
-		$data["id"] = $id;
+		$toLegacy = \Closure::fromCallable([LegacyItemIdToStringIdMap::getInstance(), "stringToLegacy"]);
+		$data["id"] = $toLegacy($data["id"]) ?? $toLegacy("minecraft:" . $data["id"]) ?? throw new ItemNotFoundException();
 		return Item::jsonDeserialize($data);
 	}
 
