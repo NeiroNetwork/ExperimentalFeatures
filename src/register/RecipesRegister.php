@@ -56,8 +56,7 @@ class RecipesRegister{
 					array_map($itemDeserializerFunc, $recipe["output"]),
 					$recipeType
 				));
-			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
-			}
+			}catch(ItemNotFoundException){}
 		}
 		foreach($recipes["shaped"] as $recipe){
 			if($recipe["block"] !== "crafting_table"){
@@ -69,8 +68,7 @@ class RecipesRegister{
 					array_map($itemDeserializerFunc, $recipe["input"]),
 					array_map($itemDeserializerFunc, $recipe["output"])
 				));
-			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
-			}
+			}catch(ItemNotFoundException){}
 		}
 		foreach($recipes["smelting"] as $recipe){
 			$furnaceType = match ($recipe["block"]){
@@ -87,8 +85,7 @@ class RecipesRegister{
 					$itemDeserializerFunc($recipe["output"]),
 					$itemDeserializerFunc($recipe["input"])
 				));
-			}/** @noinspection PhpRedundantCatchClauseInspection */catch(ItemNotFoundException){
-			}
+			}catch(ItemNotFoundException){}
 		}
 	}
 
