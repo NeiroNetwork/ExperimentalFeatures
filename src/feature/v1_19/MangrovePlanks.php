@@ -9,7 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
+use pocketmine\block\Planks;
 
 class MangrovePlanks extends Feature implements IBlock{
 
@@ -18,7 +18,7 @@ class MangrovePlanks extends Feature implements IBlock{
 	}
 
 	public function block() : Block{
-		return new Opaque(
+		return new Planks(
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(2.0, BlockToolType::AXE, 0, 15.0)
