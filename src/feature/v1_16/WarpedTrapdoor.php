@@ -21,7 +21,7 @@ class WarpedTrapdoor extends Feature implements IBlock{
 		return new Trapdoor(
 			$this->blockId(),
 			$this->displayName(),
-			new BlockBreakInfo(3.0, BlockToolType::AXE, 0, 15.0)
+			new BlockBreakInfo(3.0, BlockToolType::AXE)
 		);
 	}
 }
