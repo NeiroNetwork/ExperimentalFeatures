@@ -14,6 +14,8 @@ use pocketmine\crafting\ShapelessRecipeType;
 use pocketmine\data\bedrock\LegacyItemIdToStringIdMap;
 use pocketmine\item\Item;
 use pocketmine\item\ItemBlock;
+use pocketmine\item\LegacyStringToItemParser;
+use pocketmine\item\LegacyStringToItemParserException;
 use pocketmine\plugin\PluginBase;
 use pocketmine\Server;
 
@@ -94,10 +96,15 @@ class RecipesRegister{
 	 * @throws ItemNotFoundException
 	 */
 	private static function itemJsonDeserialize(array $data) : Item{
-		$data["id"] = LegacyItemIdToStringIdMap::getInstance()->stringToLegacy($data["id"]);
-		if($data["id"] === null){
-			throw new ItemNotFoundException();
+		$id = LegacyItemIdToStringIdMap::getInstance()->stringToLegacy($data["id"]);
+		if(is_null($id)){
+			try{
+				$id = LegacyStringToItemParser::getInstance()->parse($data["id"])->getId();
+			}catch(LegacyStringToItemParserException){
+				throw new ItemNotFoundException();
+			}
 		}
+		$data["id"] = $id;
 		return Item::jsonDeserialize($data);
 	}
 
