@@ -12,6 +12,7 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 
 ### [ワイルド・アップデート (1.19)](https://minecraft.fandom.com/wiki/The_Wild_Update)
 - [x] フロッグライト
+- [x] カエルの卵
 
 ### [洞窟と崖：パート II (1.18)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.18.0)
 - [x] 胞子の花
