@@ -27,3 +27,4 @@ class SmoothBasalt extends Feature implements IBlock{
 	}
 }
 
+
