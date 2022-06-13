@@ -8,11 +8,7 @@ use pocketmine\block\Block;
 use pocketmine\block\BlockFactory;
 use pocketmine\block\BlockIdentifier;
 use pocketmine\block\UnknownBlock;
-use pocketmine\block\Wall;
-use pocketmine\event\EventPriority;
-use pocketmine\event\server\LowMemoryEvent;
 use pocketmine\network\mcpe\convert\RuntimeBlockMapping;
-use pocketmine\scheduler\ClosureTask;
 use pocketmine\Server;
 
 class RuntimeBlockMappingHack{
@@ -40,11 +36,6 @@ class RuntimeBlockMappingHack{
 
 			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
 			RuntimeBlockMappingHackTask::addHackArgs([$staticRuntimeId, $block->getId(), $key]);
-
-			if($block instanceof Wall){
-				// バニラの石の壁は種類がありすぎて登録できない, PocketMine-MPが石の壁に対応していない
-				break;
-			}
 
 			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
 				$registeredNewBlocks[] = $newBlock = new ($block::class)(
