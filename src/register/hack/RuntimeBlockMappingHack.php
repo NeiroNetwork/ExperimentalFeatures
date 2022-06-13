@@ -36,6 +36,8 @@ class RuntimeBlockMappingHack{
 		$registeredNewBlocks = [];
 
 		foreach($this->idToStatesMap[$fullStringId] as $key => $staticRuntimeId){
+			if($key >= 1 << Block::INTERNAL_METADATA_BITS) break;
+
 			$this->registerMapping->invoke(RuntimeBlockMapping::getInstance(), $staticRuntimeId, $block->getId(), $key);
 			RuntimeBlockMappingHackTask::addHackArgs([$staticRuntimeId, $block->getId(), $key]);
 
@@ -44,7 +46,7 @@ class RuntimeBlockMappingHack{
 				break;
 			}
 
-			if($key < 16 && BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
+			if(BlockFactory::getInstance()->get($block->getId(), $key) instanceof UnknownBlock){
 				$registeredNewBlocks[] = $newBlock = new ($block::class)(
 					new BlockIdentifier($block->getId(), $key, $block->getIdInfo()->getItemId(), $block->getIdInfo()->getTileClass()),
 					$block->getName(),
