@@ -24,10 +24,43 @@ class SculkCatalyst extends Feature implements IBlock{
 			$this->displayName(),
 			new BlockBreakInfo(3.0, BlockToolType::HOE)
 		) extends Opaque{
-			public function getDropsForCompatibleTool(Item $item) : array{ return []; }
-			protected function getXpDropAmount() : int{ return 20; }
-			public function isAffectedBySilkTouch() : bool{ return true; }
-			public function getLightLevel() : int{ return 6; }
+			private bool $activated = false;
+
+			public function readStateFromData(int $id, int $stateMeta) : void{
+				$this->activated = ($stateMeta & 0x01) !== 0;
+			}
+
+			protected function writeStateToMeta() : int{
+				return $this->activated ? 0x01 : 0;
+			}
+
+			public function getStateBitmask() : int{
+				return 0b1;
+			}
+
+			public function isActivated() : bool{
+				return $this->activated;
+			}
+
+			public function setActivation(bool $activation) : void{
+				$this->activated = $activation;
+			}
+
+			public function getDropsForCompatibleTool(Item $item) : array{
+				return [];
+			}
+
+			protected function getXpDropAmount() : int{
+				return 20;
+			}
+
+			public function isAffectedBySilkTouch() : bool{
+				return true;
+			}
+
+			public function getLightLevel() : int{
+				return 6;
+			}
 		};
 	}
 }
