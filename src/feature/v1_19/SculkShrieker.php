@@ -9,7 +9,7 @@ use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
-use pocketmine\block\Opaque;
+use pocketmine\block\Transparent;
 use pocketmine\block\utils\SupportType;
 use pocketmine\entity\Entity;
 use pocketmine\item\Item;
@@ -27,7 +27,7 @@ class SculkShrieker extends Feature implements IBlock{
 			$this->blockId(),
 			$this->displayName(),
 			new BlockBreakInfo(3.0, BlockToolType::HOE)
-		) extends Opaque{
+		) extends Transparent{
 			private bool $active = false;
 			private bool $canSummon = false;
 
