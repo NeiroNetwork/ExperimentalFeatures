@@ -50,6 +50,10 @@ class SculkSensor extends Feature implements IBlock{
 				$this->powered = $powered;
 			}
 
+			public function getLightLevel() : int{
+				return (int) $this->powered;
+			}
+
 			public function getDropsForCompatibleTool(Item $item) : array{
 				return [];
 			}
