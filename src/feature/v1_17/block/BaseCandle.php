@@ -67,6 +67,7 @@ class BaseCandle extends Transparent{
 	}
 
 	protected function recalculateCollisionBoxes() : array{
+		// TODO: 本数によって当たり判定が違う
 		return [
 			AxisAlignedBB::one()
 				->trim(Facing::UP, 10 / 16)
