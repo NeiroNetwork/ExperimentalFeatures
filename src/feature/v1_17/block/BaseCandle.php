@@ -71,8 +71,8 @@ class BaseCandle extends Transparent{
 		return [
 			AxisAlignedBB::one()
 				->trim(Facing::UP, 10 / 16)
-				->squash(Axis::X, 3 / 16)
-				->squash(Axis::Z, 3 / 16)
+				->squash(Axis::X, 5 / 16)
+				->squash(Axis::Z, 6 / 16)
 		];
 	}
 
