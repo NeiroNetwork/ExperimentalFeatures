@@ -47,7 +47,7 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 - [x] 残響の欠片
 - [x] ヤギの角笛
 - [x] リカバリーコンパス
-- [ ] レコードの破片
+- [x] レコードの破片
   - [ ] レコード「5」
 
 ### [洞窟と崖：パート II (1.18)](https://minecraft.fandom.com/wiki/Bedrock_Edition_1.18.0)
