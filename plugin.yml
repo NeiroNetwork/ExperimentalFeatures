@@ -1,5 +1,5 @@
 name: ExperimentalFeatures
 version: 0.2.2
 main: NeiroNetwork\ExperimentalFeatures\Main
-api: 4.4.0-BETA1
+api: 4.4.0
 src-namespace-prefix: NeiroNetwork\ExperimentalFeatures
