@@ -27,11 +27,11 @@ class SculkCatalyst extends Feature implements IBlock{
 			private bool $bloom = false;
 
 			public function readStateFromData(int $id, int $stateMeta) : void{
-				$this->bloom = ($stateMeta & 0x01) !== 0;
+				$this->bloom = ($stateMeta & 0b01) !== 0;
 			}
 
 			protected function writeStateToMeta() : int{
-				return $this->bloom ? 0x01 : 0;
+				return $this->bloom ? 0b01 : 0;
 			}
 
 			public function getStateBitmask() : int{
