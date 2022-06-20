@@ -81,8 +81,8 @@ class SculkShrieker extends Feature implements IBlock{
 			}
 
 			public function onEntityLand(Entity $entity) : ?float{
-				if(!$this->active){
-					$this->active = true;
+				if(!$this->getActive()){
+					$this->setActive(true);
 					$this->position->world->setBlock($this->position, $this);
 					$this->position->world->scheduleDelayedBlockUpdate($this->position, 90);
 					// TODO: play sound, add particle
@@ -91,8 +91,8 @@ class SculkShrieker extends Feature implements IBlock{
 			}
 
 			public function onScheduledUpdate() : void{
-				if($this->active){
-					$this->active = false;
+				if($this->getActive()){
+					$this->setActive(false);
 					$this->position->world->setBlock($this->position, $this);
 				}
 			}
