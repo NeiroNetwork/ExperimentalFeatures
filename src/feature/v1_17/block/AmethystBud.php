@@ -6,7 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_17\block;
 
 use pocketmine\item\Item;
 
-class AmethystBud extends BaseAmethystCluster{
+abstract class AmethystBud extends BaseAmethystCluster{
 
 	public function getDropsForCompatibleTool(Item $item) : array{
 		return [];

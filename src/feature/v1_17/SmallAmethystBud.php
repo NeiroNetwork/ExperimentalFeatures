@@ -17,10 +17,8 @@ class SmallAmethystBud extends Feature implements IBlock{
 
 	public function block() : Block{
 		return new class($this->blockId(), $this->displayName()) extends AmethystBud{
-			// TODO: recalculateCollisionBoxes()
-			public function getLightLevel() : int{
-				return 1;
-			}
+			public function getLightLevel() : int{ return 1; }
+			public function getWidthHeight() : array{ return [8, 3]; }
 		};
 	}
 }

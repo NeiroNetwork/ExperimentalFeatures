@@ -17,10 +17,8 @@ class AmethystCluster extends Feature implements IBlock{
 
 	public function block() : Block{
 		return new class($this->blockId(), $this->displayName()) extends BaseAmethystCluster{
-			// TODO: recalculateCollisionBoxes()
-			public function getLightLevel() : int{
-				return 5;
-			}
+			public function getLightLevel() : int{ return 5; }
+			public function getWidthHeight() : array{ return [10, 7]; }
 		};
 	}
 }

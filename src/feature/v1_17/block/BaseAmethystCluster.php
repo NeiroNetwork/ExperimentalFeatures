@@ -16,12 +16,14 @@ use pocketmine\item\Item;
 use pocketmine\item\ItemFactory;
 use pocketmine\item\ToolTier;
 use pocketmine\item\VanillaItems;
+use pocketmine\math\Axis;
+use pocketmine\math\AxisAlignedBB;
 use pocketmine\math\Facing;
 use pocketmine\math\Vector3;
 use pocketmine\player\Player;
 use pocketmine\world\BlockTransaction;
 
-class BaseAmethystCluster extends Transparent{
+abstract class BaseAmethystCluster extends Transparent{
 	use AnyFacingTrait;
 
 	protected function writeStateToMeta() : int{
@@ -41,8 +43,23 @@ class BaseAmethystCluster extends Transparent{
 	}
 
 	protected function recalculateCollisionBoxes() : array{
-		return [];
+		[$side1, $side2] = match($this->facing){
+			Facing::UP, Facing::DOWN => [Axis::X, Axis::Z],
+			Facing::NORTH, Facing::SOUTH => [Axis::Y, Axis::X],
+			Facing::WEST, Facing::EAST => [Axis::Y, Axis::Z],
+		};
+		[$width, $height] = $this->getWidthHeight();
+		return [AxisAlignedBB::one()
+			->trim($this->facing, (16 - $height) / 16)
+			->squash($side1, (16 - $width / 2) / 16)
+			->squash($side2, (16 - $width / 2) / 16)
+		];
 	}
+
+	/**
+	 * Returns an array representing the width and height of the block in pixels.
+	 */
+	abstract function getWidthHeight() : array;
 
 	public function getSupportType(int $facing) : SupportType{
 		return SupportType::NONE();
