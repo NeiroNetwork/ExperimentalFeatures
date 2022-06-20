@@ -24,26 +24,26 @@ class SculkCatalyst extends Feature implements IBlock{
 			$this->displayName(),
 			new BlockBreakInfo(3.0, BlockToolType::HOE)
 		) extends Opaque{
-			private bool $activated = false;
+			private bool $bloom = false;
 
 			public function readStateFromData(int $id, int $stateMeta) : void{
-				$this->activated = ($stateMeta & 0x01) !== 0;
+				$this->bloom = ($stateMeta & 0x01) !== 0;
 			}
 
 			protected function writeStateToMeta() : int{
-				return $this->activated ? 0x01 : 0;
+				return $this->bloom ? 0x01 : 0;
 			}
 
 			public function getStateBitmask() : int{
 				return 0b1;
 			}
 
-			public function isActivated() : bool{
-				return $this->activated;
+			public function getBloom() : bool{
+				return $this->bloom;
 			}
 
-			public function setActivation(bool $activation) : void{
-				$this->activated = $activation;
+			public function setBloom(bool $bloom) : void{
+				$this->bloom = $bloom;
 			}
 
 			public function getDropsForCompatibleTool(Item $item) : array{
