@@ -53,7 +53,7 @@ class BaseCandle extends Transparent{
 		return $this->lighting;
 	}
 
-	public function setUnderwater(bool $lighting) : self{
+	public function setLighting(bool $lighting) : self{
 		$this->lighting = $lighting;
 		return $this;
 	}
