@@ -51,7 +51,7 @@ class RespawnAnchor extends Feature implements IBlock{
 
 			public function setCharges(int $charges) : void{
 				if($charges > 4 || $charges < 0){
-					throw new \OutOfRangeException("Value must be between 0 and 4");
+					throw new \InvalidArgumentException("Value must be between 0 and 4");
 				}
 				$this->charges = $charges;
 			}
