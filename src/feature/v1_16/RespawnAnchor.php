@@ -56,6 +56,10 @@ class RespawnAnchor extends Feature implements IBlock{
 				$this->charges = $charges;
 			}
 
+			public function getLightLevel() : int{
+				return [0, 3, 7, 11, 15][$this->charges];
+			}
+
 			public function onInteract(Item $item, int $face, Vector3 $clickVector, ?Player $player = null) : bool{
 				if($item->equals(VanillaBlocks::GLOWSTONE()->asItem())){
 					if($this->charges >= 4){
