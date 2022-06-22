@@ -6,6 +6,7 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_19;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_19\sound\SculkShriekerShriekSound;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
@@ -85,7 +86,8 @@ class SculkShrieker extends Feature implements IBlock{
 					$this->setActive(true);
 					$this->position->world->setBlock($this->position, $this);
 					$this->position->world->scheduleDelayedBlockUpdate($this->position, 90);
-					// TODO: play sound, add particle
+					$this->position->world->addSound($this->position, new SculkShriekerShriekSound());
+					// TODO: add particle
 				}
 				return parent::onEntityLand($entity);
 			}
