@@ -6,6 +6,8 @@ namespace NeiroNetwork\ExperimentalFeatures\feature\v1_19;
 
 use NeiroNetwork\ExperimentalFeatures\feature\Feature;
 use NeiroNetwork\ExperimentalFeatures\feature\interfaces\IBlock;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_19\sound\SculkSensorPowerOffSound;
+use NeiroNetwork\ExperimentalFeatures\feature\v1_19\sound\SculkSensorPowerOnSound;
 use pocketmine\block\Block;
 use pocketmine\block\BlockBreakInfo;
 use pocketmine\block\BlockToolType;
@@ -90,7 +92,7 @@ class SculkSensor extends Feature implements IBlock{
 					$this->setPowered(true);
 					$this->position->world->setBlock($this->position, $this);
 					$this->position->world->scheduleDelayedBlockUpdate($this->position, 40);
-					// TODO: play sound
+					$this->position->world->addSound($this->position, new SculkSensorPowerOnSound());
 				}
 			}
 
@@ -98,6 +100,7 @@ class SculkSensor extends Feature implements IBlock{
 				if($this->getPowered()){
 					$this->setPowered(false);
 					$this->position->world->setBlock($this->position, $this);
+					$this->position->world->addSound($this->position, new SculkSensorPowerOffSound());
 				}
 			}
 		};
