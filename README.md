@@ -8,7 +8,6 @@ PocketMine-MP本体を変更しないのが原則なので(悪い意味で)素�
 - [x] 火打石と打ち金で火を付けられる場所を制限
 - [x] 空のボトルで水を汲めるように
 - [x] 額縁にアイテムが正常に反映されないバグを修正
-- [x] [インベントリが満タンの時にバケツを使うとアイテムが消えるバグ](https://github.com/pmmp/PocketMine-MP/issues/4868)を修正
 
 ### [ワイルド・アップデート (1.19)](https://minecraft.fandom.com/wiki/The_Wild_Update)
 - [x] フロッグライト
