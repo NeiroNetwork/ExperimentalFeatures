@@ -1,9 +1,10 @@
 *.phar
-resources/recipes
 
 # IDEs
 .idea/
 nbproject/
+.vscode/**
+!.vscode/settings.json
 
 # Windows
 Thumbs.db
